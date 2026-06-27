@@ -1,0 +1,57 @@
+========================================================================
+   UNITY BOYS HOSTEL - LOCAL COMPUTER RUNNING GUIDE (HINDI/ENGLISH)
+========================================================================
+
+Aapne Google AI Studio se jo ZIP file download ki hai, usse apne computer
+par local run karne ke liye neeche diye gaye simple steps ko follow karein.
+
+TypeScript aur React code kabhi bhi directly browser me "double-click" karne se 
+ya Notepad me direct open karke "run" nahi kiya ja sakta, kyunki isko chane ke 
+liye Node.js compile engine ki zaroorat hoti hai.
+
+------------------------------------------------------------------------
+STEPS TO RUN THIS PROJECT LOCALLY:
+------------------------------------------------------------------------
+
+STEP 1: NODE.JS INSTALL KAREIN (Only 1-time setup)
+  1. Apne computer me Google Chrome par jayein aur search karein: "Download Node.js"
+  2. Official websites se link par click karein: https://nodejs.org/
+  3. "LTS (Recommended For Most Users)" version par click karke software download karein.
+  4. Software download hone ke bad, double-click karke use next->next karke normal installation complete karein.
+
+STEP 2: ZIP FILE EXTRACTION
+  1. Jo ZIP file apne download ki hai, uspe Right-Click karein.
+  2. "Extract All..." ya "Extract Here" select karein aur use apne Desktop par ek normal folder ki tarah extract karein.
+
+STEP 3: COMMAND PROMPT (CMD) OPEN KAREIN
+  1. Apne computer ke Start Menu me search karein: "cmd" (Command Prompt) aur use open karein.
+  2. Cmd me likhein 'cd ' (cd ke bad ek space dein) aur extract kiye huye folder ka path paste karein.
+     Example path change command:
+     cd "C:\Users\YourName\Desktop\unity-boys-hostel-app"
+  3. Enter press karein. Ab aap project folder ke andar hain.
+
+STEP 4: DEPENDENCIES INSTALL KAREIN
+  Project ke packages download karne ke liye command prompt me ye code likhein aur Enter press karein:
+  
+  npm install
+
+  (Isse internet se React aur Tailwind CSS download ho jayenge aur ek 'node_modules' folder ban jayega. Isme 1-2 minute lag sakte hain.)
+
+STEP 5: SECURE LOCAL DEVELOPMENT SERVER RUN KAREIN
+  Ab visual dynamic app start karne ke liye Terminal me ye command chalayein:
+
+  npm run dev
+
+STEP 6: BROWSER ME PLAY KAREIN!
+  Terminal me ye run karne ke bad, ek address system dikhayega jaise:
+  http://localhost:5173/ ya http://localhost:3000
+
+  Bas is local link ko normal Chrome browser me open karein, aapka pura hostel records portal smoothly chalne lagega!
+
+------------------------------------------------------------------------
+SHORTCUT ALTERNATIVE - ONLINE STANDALONE RUNNER
+------------------------------------------------------------------------
+Agar aap bina kisi install/Terminal commands ke directly double-click karke chalana chahte hain:
+1. App ke Settings segment me jayein.
+2. "Offline Standalone HTML Exporter" section me se "Download Standalone HTML file" par click karein.
+3. Is downloaded pure white .html file ko aap computer me Notepad se bhi open kar sakte hain aur double-click karke directly browser me run bhi kar sakte hain!

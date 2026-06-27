@@ -1,0 +1,6 @@
+{
+  "name": "Unity Boys Hostel",
+  "description": "Premium Boys Hostel Management System and public-facing website for student accommodation in Jaipur, Rajasthan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

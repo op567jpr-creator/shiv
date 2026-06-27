@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unity Boys Hostel - Jaipur</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+:root{
+--primary:#FF6B35;--primary-dark:#e55a24;--secondary:#1A1A2E;--accent:#0F3460;
+--white:#fff;--light:#f8f9fa;--gray:#6c757d;--light-gray:#e9ecef;--dark:#212529;
+--success:#28a745;--danger:#dc3545;--warning:#ffc107;--info:#17a2b8;
+--gradient:linear-gradient(135deg,#FF6B35,#e55a24);
+--gradient-dark:linear-gradient(135deg,#1A1A2E,#0F3460);
+--shadow:0 10px 40px rgba(0,0,0,.1);--radius:14px;--trans:all .3s ease;
+}
+html{scroll-behavior:smooth}
+body{background:#fff;color:var(--dark);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.hidden{display:none!important}
+
+/* ===== HEADER ===== */
+.header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(26,26,46,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,107,53,.2)}
+.navbar{display:flex;align-items:center;justify-content:space-between;padding:15px 40px;max-width:1400px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{width:45px;height:45px;background:var(--gradient);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
+.logo-text h1{font-size:18px;font-weight:700;color:#fff;line-height:1.2}
+.logo-text span{font-size:11px;color:var(--primary)}
+.nav-links{display:flex;align-items:center;gap:5px}
+.nav-link{padding:8px 14px;color:rgba(255,255,255,.8);font-size:14px;font-weight:500;border-radius:8px;cursor:pointer;transition:var(--trans)}
+.nav-link:hover,.nav-link.active{color:var(--primary);background:rgba(255,107,53,.1)}
+.btn-admission{padding:10px 20px;background:var(--gradient);color:#fff!important;border-radius:10px;font-size:14px;font-weight:600;margin-left:10px;cursor:pointer;border:none}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{width:25px;height:2px;background:#fff;border-radius:2px}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:var(--gradient-dark);padding:100px 20px 60px;text-align:center}
+.hero::before{content:'';position:absolute;width:500px;height:500px;background:rgba(255,107,53,.1);border-radius:50%;top:-200px;right:-200px;animation:float 6s ease-in-out infinite}
+.hero::after{content:'';position:absolute;width:300px;height:300px;background:rgba(255,107,53,.05);border-radius:50%;bottom:-100px;left:-100px;animation:float 8s ease-in-out infinite reverse}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-30px)}}
+.hero-content{position:relative;z-index:2;max-width:800px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,107,53,.15);border:1px solid rgba(255,107,53,.4);padding:8px 20px;border-radius:50px;color:var(--primary);font-size:13px;font-weight:600;margin-bottom:30px}
+.hero h1{font-size:clamp(42px,6vw,72px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:25px}
+.gradient-text{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:18px;color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 40px;line-height:1.7}
+.hero-stats{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:20px 30px;margin-bottom:40px;backdrop-filter:blur(10px);flex-wrap:wrap}
+.stat-item{text-align:center;padding:0 25px}
+.stat-num{display:block;font-size:28px;font-weight:800;color:var(--primary)}
+.stat-label{font-size:12px;color:rgba(255,255,255,.6)}
+.stat-divider{width:1px;height:40px;background:rgba(255,255,255,.15)}
+.hero-buttons{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:var(--gradient);color:#fff;border-radius:12px;font-size:16px;font-weight:600;border:none;cursor:pointer;transition:var(--trans)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(255,107,53,.4)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:rgba(255,255,255,.1);color:#fff;border:2px solid rgba(255,255,255,.3);border-radius:12px;font-size:16px;font-weight:600;cursor:pointer}
+
+/* ===== NOTICE BAR ===== */
+.notice-bar{background:var(--gradient);padding:12px 20px;display:flex;align-items:center;gap:15px;overflow:hidden}
+.notice-bar i{color:#fff;font-size:18px;flex-shrink:0}
+.notice-ticker{overflow:hidden;flex:1}
+.notice-ticker span{display:inline-block;white-space:nowrap;color:#fff;font-size:14px;font-weight:500;animation:ticker 25s linear infinite}
+@keyframes ticker{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+
+/* ===== SECTIONS ===== */
+section{padding:80px 0}
+.section-header{text-align:center;margin-bottom:50px}
+.section-tag{display:inline-block;background:rgba(255,107,53,.1);color:var(--primary);padding:6px 20px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:15px;border:1px solid rgba(255,107,53,.2)}
+.section-title{font-size:clamp(28px,4vw,42px);font-weight:800;color:var(--secondary);margin-bottom:15px}
+.section-subtitle{font-size:16px;color:var(--gray);max-width:500px;margin:0 auto}
+.section-header.light .section-title{color:#fff}
+.section-header.light .section-subtitle{color:rgba(255,255,255,.7)}
+
+/* ===== ABOUT ===== */
+.about{background:var(--light)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.about-card{display:flex;gap:15px;padding:20px;background:#fff;border-radius:14px;margin-bottom:15px;border:1px solid var(--light-gray);transition:var(--trans)}
+.about-card:hover{transform:translateX(5px);box-shadow:var(--shadow);border-color:var(--primary)}
+.about-icon{width:50px;height:50px;background:var(--gradient);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;flex-shrink:0}
+.about-info h3{font-size:16px;font-weight:700;color:var(--secondary);margin-bottom:5px}
+.about-info p{font-size:14px;color:var(--gray)}
+.about-visual{background:var(--gradient-dark);border-radius:20px;padding:40px;text-align:center;color:#fff;display:flex;flex-direction:column;justify-content:center}
+.about-visual i{font-size:80px;color:var(--primary);margin-bottom:20px}
+.about-visual h3{font-size:24px;font-weight:700;margin-bottom:8px}
+.about-visual p{color:rgba(255,255,255,.6);margin-bottom:30px}
+.bstats{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
+.bstat{background:rgba(255,107,53,.15);border:1px solid rgba(255,107,53,.3);padding:15px;border-radius:10px;flex:1;min-width:90px}
+.bstat span{display:block;font-size:24px;font-weight:800;color:var(--primary)}
+.bstat small{font-size:11px;color:rgba(255,255,255,.7)}
+
+/* ===== ROOMS ===== */
+.rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.room-card{background:#fff;border-radius:20px;padding:35px 25px;border:2px solid var(--light-gray);position:relative;transition:var(--trans);text-align:center}
+.room-card:hover{transform:translateY(-10px);box-shadow:0 20px 60px rgba(0,0,0,.15);border-color:var(--primary)}
+.room-card.featured{border-color:var(--primary);background:var(--gradient-dark);color:#fff}
+.room-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gradient);color:#fff;padding:6px 20px;border-radius:50px;font-size:12px;font-weight:600}
+.room-icon{width:65px;height:65px;background:rgba(255,107,53,.1);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:26px;color:var(--primary);margin:0 auto 18px}
+.room-card.featured .room-icon{background:rgba(255,107,53,.2)}
+.room-card h3{font-size:20px;font-weight:700;margin-bottom:10px;color:var(--secondary)}
+.room-card.featured h3{color:#fff}
+.room-card p{font-size:14px;color:var(--gray);margin-bottom:20px}
+.room-card.featured p{color:rgba(255,255,255,.7)}
+.room-features{text-align:left;margin-bottom:25px}
+.room-features li{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:13px;color:var(--dark);border-bottom:1px dashed var(--light-gray)}
+.room-card.featured .room-features li{color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.1)}
+.room-features li i{color:var(--success);font-size:11px}
+.room-btn{display:inline-block;padding:12px 30px;background:var(--gradient);color:#fff;border-radius:10px;font-size:14px;font-weight:600;border:none;cursor:pointer}
+
+/* ===== FACILITIES ===== */
+.facilities{background:var(--gradient-dark)}
+.facilities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.facility-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:25px 20px;text-align:center;transition:var(--trans)}
+.facility-card:hover{background:rgba(255,107,53,.15);border-color:rgba(255,107,53,.4);transform:translateY(-5px)}
+.facility-icon{width:55px;height:55px;background:rgba(255,107,53,.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--primary);margin:0 auto 15px}
+.facility-card h4{font-size:14px;font-weight:600;color:#fff;margin-bottom:5px}
+.facility-card p{font-size:12px;color:rgba(255,255,255,.5)}
+
+/* ===== CONTACT ===== */
+.contact{background:var(--light)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:40px}
+.contact-card{display:flex;gap:15px;padding:20px;background:#fff;border-radius:12px;margin-bottom:12px;border:1px solid var(--light-gray);transition:var(--trans)}
+.contact-card:hover{border-color:var(--primary)}
+.contact-icon{width:45px;height:45px;background:var(--gradient);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;flex-shrink:0}
+.contact-details h4{font-size:14px;font-weight:700;color:var(--secondary);margin-bottom:4px}
+.contact-details p{font-size:13px;color:var(--gray)}
+.contact-form-box{background:#fff;padding:35px;border-radius:20px;border:1px solid var(--light-gray)}
+.contact-form-box h3{font-size:20px;font-weight:700;color:var(--secondary);margin-bottom:25px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.form-group{margin-bottom:15px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--secondary);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:2px solid var(--light-gray);border-radius:10px;font-size:14px;font-family:inherit;background:#fff;outline:none;transition:var(--trans)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary)}
+.submit-btn{width:100%;padding:14px;background:var(--gradient);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--secondary);color:#fff;padding:60px 0 20px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.5fr;gap:40px;margin-bottom:40px}
+.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:20px;font-size:20px;font-weight:700}
+.footer-logo i{color:var(--primary);font-size:28px}
+.footer-about p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:20px}
+.social-links{display:flex;gap:10px}
+.social-links a{width:38px;height:38px;background:rgba(255,255,255,.08);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;transition:var(--trans);cursor:pointer}
+.social-links a:hover{background:var(--gradient)}
+.footer-links h4{font-size:15px;font-weight:700;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid rgba(255,107,53,.3)}
+.footer-links ul li{margin-bottom:10px}
+.footer-links ul li a{font-size:13px;color:rgba(255,255,255,.5);cursor:pointer;display:flex;align-items:center;gap:8px;transition:var(--trans)}
+.footer-links ul li a:hover{color:var(--primary)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;text-align:center;font-size:13px;color:rgba(255,255,255,.4)}
+.footer-bottom i{color:var(--primary)}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float{position:fixed;bottom:25px;right:25px;z-index:999;background:#25D366;color:#fff;padding:14px 20px;border-radius:50px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;box-shadow:0 8px 30px rgba(37,211,102,.4);cursor:pointer}
+.whatsapp-float i{font-size:22px}
+
+/* ===== LOGIN PAGE ===== */
+.login-page{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;position:fixed;inset:0;z-index:9998;background:#fff}
+.login-left{background:var(--gradient-dark);display:flex;align-items:center;justify-content:center;padding:40px;position:relative;overflow:hidden;color:#fff}
+.login-left::before{content:'';position:absolute;width:400px;height:400px;background:rgba(255,107,53,.1);border-radius:50%;top:-150px;right:-150px}
+.login-left-content{position:relative;z-index:1;max-width:400px}
+.login-left-content h2{font-size:36px;font-weight:800;margin-bottom:15px}
+.login-left-content h2 span{color:var(--primary)}
+.login-left-content p{color:rgba(255,255,255,.6);font-size:15px;margin-bottom:30px}
+.lf-list{display:flex;flex-direction:column;gap:15px}
+.lf-item{display:flex;align-items:center;gap:15px;padding:15px;background:rgba(255,255,255,.05);border-radius:12px;border:1px solid rgba(255,255,255,.08)}
+.lf-item .lf-icon{width:40px;height:40px;background:rgba(255,107,53,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--primary)}
+.lf-item h4{font-size:13px;font-weight:600;margin-bottom:2px}
+.lf-item p{font-size:11px;color:rgba(255,255,255,.5);margin:0}
+.login-right{background:var(--light);display:flex;align-items:center;justify-content:center;padding:30px;overflow-y:auto}
+.login-box{width:100%;max-width:400px;background:#fff;padding:35px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.1)}
+.login-close{position:absolute;top:20px;right:20px;width:38px;height:38px;background:rgba(255,255,255,.1);color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:14px;z-index:10}
+.role-selector{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:var(--light);padding:5px;border-radius:12px;margin-bottom:25px}
+.role-btn{padding:10px;background:transparent;border:none;border-radius:8px;font-size:13px;font-weight:600;color:var(--gray);cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:6px}
+.role-btn.active{background:var(--gradient);color:#fff}
+.login-header{text-align:center;margin-bottom:25px}
+.login-icon{width:65px;height:65px;background:var(--gradient);border-radius:18px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;margin:0 auto 15px}
+.login-header h2{font-size:22px;font-weight:800;color:var(--secondary);margin-bottom:5px}
+.login-header p{font-size:13px;color:var(--gray)}
+.input-wrap{position:relative;margin-bottom:15px}
+.input-wrap i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gray);font-size:14px}
+.input-wrap input{width:100%;padding:13px 14px 13px 40px;border:2px solid var(--light-gray);border-radius:10px;font-size:14px;font-family:inherit;outline:none;transition:var(--trans)}
+.input-wrap input:focus{border-color:var(--primary)}
+.login-btn{width:100%;padding:13px;background:var(--gradient);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px}
+.demo-creds{background:var(--light);border:2px dashed var(--light-gray);border-radius:12px;padding:15px;margin-top:20px;font-size:11px;color:var(--gray)}
+.demo-creds h5{font-size:12px;color:var(--secondary);margin-bottom:8px}
+.demo-cred{display:flex;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:6px;margin-bottom:5px;cursor:pointer}
+.demo-cred:hover{background:rgba(255,107,53,.05)}
+
+/* ===== DASHBOARD ===== */
+.dashboard-wrap{position:fixed;inset:0;background:#f0f2f5;z-index:9998;display:none;overflow-y:auto}
+.dashboard-wrap.active{display:block}
+.sidebar{position:fixed;top:0;left:0;width:250px;height:100vh;background:var(--gradient-dark);z-index:100;overflow-y:auto;transition:var(--trans)}
+.sidebar::-webkit-scrollbar{display:none}
+.sb-header{padding:20px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:10px}
+.sb-logo{width:40px;height:40px;background:var(--gradient);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
+.sb-text h3{font-size:14px;color:#fff;font-weight:700}
+.sb-text span{font-size:10px;color:rgba(255,255,255,.5)}
+.sb-user{padding:15px;margin:10px;background:rgba(255,255,255,.04);border-radius:12px;display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.07)}
+.sb-user-avatar{width:36px;height:36px;background:var(--gradient);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+.sb-user-info h4{font-size:13px;color:#fff;font-weight:600}
+.sb-user-info span{font-size:10px;color:var(--primary)}
+.sb-nav{padding:10px}
+.sb-section{margin-bottom:5px}
+.sb-section-title{font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1.5px;padding:10px 12px 5px;display:block}
+.sb-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;color:rgba(255,255,255,.65);font-size:13px;cursor:pointer;margin-bottom:2px;transition:var(--trans)}
+.sb-item:hover{background:rgba(255,255,255,.07);color:#fff}
+.sb-item.active{background:rgba(255,107,53,.15);color:var(--primary)}
+.sb-item i{width:18px;font-size:14px}
+.sb-item .badge{margin-left:auto;background:rgba(255,107,53,.2);color:var(--primary);font-size:10px;padding:2px 7px;border-radius:10px;font-weight:700}
+.sb-item .badge.danger{background:rgba(220,53,69,.2);color:var(--danger)}
+.sb-footer{padding:15px;border-top:1px solid rgba(255,255,255,.07);margin-top:auto}
+.logout-link{display:flex;align-items:center;gap:10px;padding:10px 12px;color:rgba(255,255,255,.5);font-size:13px;cursor:pointer;border-radius:10px;background:none;border:none;width:100%;font-family:inherit;text-align:left}
+.logout-link:hover{background:rgba(220,53,69,.15);color:var(--danger)}
+
+.main-area{margin-left:250px;min-height:100vh}
+.topbar{background:#fff;border-bottom:1px solid var(--light-gray);padding:15px 25px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99}
+.topbar h2{font-size:18px;color:var(--secondary)}
+.topbar h2 small{display:block;font-size:11px;color:var(--gray);font-weight:400}
+.topbar-actions{display:flex;align-items:center;gap:12px}
+.tb-btn{padding:8px 16px;background:var(--gradient);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:inherit}
+.tb-icon{width:38px;height:38px;background:var(--light);border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--gray);position:relative}
+.tb-icon .count{position:absolute;top:-2px;right:-2px;background:var(--danger);color:#fff;font-size:9px;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.hamburger-d{display:none;width:38px;height:38px;background:var(--light);border:none;border-radius:10px;cursor:pointer;color:var(--gray);font-size:16px}
+
+.page-content{padding:25px}
+.dash-page{display:none}
+.dash-page.active{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+.welcome-banner{background:var(--gradient-dark);border-radius:18px;padding:25px 30px;display:flex;align-items:center;justify-content:space-between;margin-bottom:25px;color:#fff}
+.welcome-banner h3{font-size:20px;margin-bottom:5px}
+.welcome-banner h3 span{color:var(--primary)}
+.welcome-banner p{font-size:13px;color:rgba(255,255,255,.6)}
+
+.stats-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:15px;margin-bottom:25px}
+.stat-card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 4px 20px rgba(0,0,0,.05);transition:var(--trans)}
+.stat-card:hover{transform:translateY(-3px)}
+.sc-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;margin-bottom:12px}
+.stat-card.blue .sc-icon{background:linear-gradient(135deg,#667eea,#764ba2)}
+.stat-card.green .sc-icon{background:linear-gradient(135deg,#11998e,#38ef7d)}
+.stat-card.orange .sc-icon{background:var(--gradient)}
+.stat-card.purple .sc-icon{background:linear-gradient(135deg,#a18cd1,#fbc2eb)}
+.stat-card.red .sc-icon{background:linear-gradient(135deg,#ff416c,#ff4b2b)}
+.stat-card.teal .sc-icon{background:linear-gradient(135deg,#4facfe,#00f2fe)}
+.sc-label{font-size:11px;color:var(--gray);margin-bottom:4px}
+.sc-value{font-size:22px;font-weight:800;color:var(--secondary);line-height:1.2;margin-bottom:5px}
+.sc-change{font-size:10px;color:var(--success)}
+.sc-change.down{color:var(--danger)}
+
+.section-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}
+.section-bar h3{font-size:16px;color:var(--secondary);display:flex;align-items:center;gap:8px}
+.section-bar h3 i{color:var(--primary)}
+
+.quick-actions{display:grid;grid-template-columns:repeat(8,1fr);gap:12px;margin-bottom:25px}
+.qa-btn{display:flex;flex-direction:column;align-items:center;gap:8px;padding:18px 10px;background:#fff;border:2px solid var(--light-gray);border-radius:14px;cursor:pointer;font-size:11px;font-weight:600;color:var(--gray);font-family:inherit;transition:var(--trans)}
+.qa-btn:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-3px)}
+.qa-icon{width:40px;height:40px;background:rgba(255,107,53,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--primary)}
+
+.dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.dash-card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 4px 20px rgba(0,0,0,.05)}
+.dash-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px;padding-bottom:12px;border-bottom:2px solid var(--light-gray)}
+.dash-card-header h4{font-size:14px;color:var(--secondary);display:flex;align-items:center;gap:8px}
+.dash-card-header h4 i{color:var(--primary)}
+.view-all-btn{font-size:11px;color:var(--primary);background:rgba(255,107,53,.1);border:none;padding:5px 12px;border-radius:6px;cursor:pointer;font-weight:600;font-family:inherit}
+
+.list-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--light-gray)}
+.list-item:last-child{border:none}
+.li-avatar{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0}
+.li-info{flex:1}
+.li-info h5{font-size:13px;color:var(--dark)}
+.li-info span{font-size:11px;color:var(--gray)}
+.li-tag{font-size:10px;padding:3px 10px;border-radius:5px;font-weight:700}
+.li-tag.active{background:rgba(40,167,69,.1);color:var(--success)}
+.li-tag.due{background:rgba(220,53,69,.1);color:var(--danger)}
+.li-tag.notice{background:rgba(255,193,7,.1);color:#e6a800}
+
+/* Page Header */
+.page-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.page-head h3{font-size:20px;color:var(--secondary)}
+.add-btn{display:flex;align-items:center;gap:7px;padding:10px 18px;background:var(--gradient);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+
+/* Filter Bar */
+.filter-bar{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.search-box{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--light-gray);border-radius:10px;padding:10px 15px;flex:1;min-width:200px}
+.search-box input{border:none;outline:none;font-size:13px;flex:1;font-family:inherit;background:transparent}
+.filter-select{padding:10px 14px;border:2px solid var(--light-gray);border-radius:10px;font-size:13px;font-family:inherit;background:#fff;cursor:pointer}
+
+/* Data Table */
+.data-table-container{background:#fff;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,.05);overflow:hidden}
+.data-table{width:100%;border-collapse:collapse;font-size:13px}
+.data-table thead{background:var(--gradient-dark)}
+.data-table thead th{padding:14px 15px;text-align:left;font-size:12px;font-weight:600;color:rgba(255,255,255,.8)}
+.data-table tbody tr{border-bottom:1px solid var(--light-gray);transition:var(--trans)}
+.data-table tbody tr:hover{background:rgba(255,107,53,.03)}
+.data-table tbody td{padding:13px 15px;color:var(--dark)}
+.td-student{display:flex;align-items:center;gap:10px}
+.td-avatar{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px}
+.room-tag{background:rgba(255,107,53,.1);color:var(--primary);padding:3px 10px;border-radius:5px;font-size:12px;font-weight:600}
+.status-tag{padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700}
+.status-tag.active{background:rgba(40,167,69,.1);color:var(--success)}
+.status-tag.due{background:rgba(220,53,69,.1);color:var(--danger)}
+.action-btns{display:flex;gap:6px}
+.act-btn{width:30px;height:30px;border:none;border-radius:7px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center}
+.act-btn.view{background:rgba(23,162,184,.1);color:var(--info)}
+.act-btn.edit{background:rgba(255,107,53,.1);color:var(--primary)}
+.act-btn.delete{background:rgba(220,53,69,.1);color:var(--danger)}
+
+/* Modal */
+.modal-bd{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px)}
+.modal-bd.show{display:flex}
+.modal-box{background:#fff;border-radius:18px;width:100%;max-width:550px;max-height:90vh;overflow-y:auto;animation:slideUp .3s ease}
+@keyframes slideUp{from{transform:translateY(50px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;background:var(--gradient-dark);color:#fff;border-radius:18px 18px 0 0}
+.modal-head h3{font-size:16px}
+.modal-close-btn{background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:8px;cursor:pointer}
+.modal-body{padding:22px}
+
+/* Toast */
+.toast{position:fixed;top:90px;right:20px;background:var(--success);color:#fff;padding:14px 22px;border-radius:10px;font-size:13px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.2);z-index:10000;display:none;animation:slideIn .3s ease}
+.toast.show{display:block}
+.toast.error{background:var(--danger)}
+@keyframes slideIn{from{transform:translateX(100px);opacity:0}to{transform:translateX(0);opacity:1}}
+
+/* Responsive */
+@media(max-width:1024px){
+  .login-page{grid-template-columns:1fr}
+  .login-left{display:none}
+  .nav-links{position:fixed;top:70px;left:0;right:0;background:var(--secondary);flex-direction:column;padding:20px;transform:translateY(-100%);opacity:0;transition:var(--trans);pointer-events:none}
+  .nav-links.active{transform:translateY(0);opacity:1;pointer-events:all}
+  .hamburger{display:flex}
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .main-area{margin-left:0}
+  .hamburger-d{display:flex;align-items:center;justify-content:center}
+  .stats-grid{grid-template-columns:repeat(3,1fr)}
+  .quick-actions{grid-template-columns:repeat(4,1fr)}
+  .dashboard-grid{grid-template-columns:1fr}
+  .about-grid,.facilities-grid,.rooms-grid,.contact-grid,.footer-grid{grid-template-columns:1fr}
+  .facilities-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .quick-actions{grid-template-columns:repeat(2,1fr)}
+  .form-row{grid-template-columns:1fr}
+  .welcome-banner{flex-direction:column;gap:15px;text-align:center}
+  .topbar h2 small{display:none}
+  .tb-btn span{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ MAIN WEBSITE ============ -->
+<div id="websiteView">
+
+<header class="header">
+<nav class="navbar">
+<div class="logo">
+<div class="logo-icon"><i class="fas fa-building"></i></div>
+<div class="logo-text"><h1>Unity Boys Hostel</h1><span>Jaipur, Rajasthan</span></div>
+</div>
+<ul class="nav-links" id="navLinks">
+<li><a class="nav-link active" onclick="scrollTo2('home')">Home</a></li>
+<li><a class="nav-link" onclick="scrollTo2('about')">About</a></li>
+<li><a class="nav-link" onclick="scrollTo2('rooms')">Rooms</a></li>
+<li><a class="nav-link" onclick="scrollTo2('facilities')">Facilities</a></li>
+<li><a class="nav-link" onclick="scrollTo2('contact')">Contact</a></li>
+<li><button class="btn-admission" onclick="openLogin()"><i class="fas fa-sign-in-alt"></i> Admin Login</button></li>
+</ul>
+<div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('active')">
+<span></span><span></span><span></span>
+</div>
+</nav>
+</header>
+
+<section class="hero" id="home">
+<div class="hero-content">
+<div class="hero-badge"><i class="fas fa-star"></i><span>Jaipur's Premium Boys Hostel</span></div>
+<h1>Your Home Away<br><span class="gradient-text">From Home</span></h1>
+<p>Experience comfortable, safe & affordable living at Unity Boys Hostel. Modern facilities, great community, perfect study environment.</p>
+<div class="hero-stats">
+<div class="stat-item"><span class="stat-num">90+</span><span class="stat-label">Beds</span></div>
+<div class="stat-divider"></div>
+<div class="stat-item"><span class="stat-num">36</span><span class="stat-label">Rooms</span></div>
+<div class="stat-divider"></div>
+<div class="stat-item"><span class="stat-num">3</span><span class="stat-label">Floors</span></div>
+<div class="stat-divider"></div>
+<div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">Security</span></div>
+</div>
+<div class="hero-buttons">
+<button class="btn-primary" onclick="scrollTo2('contact')"><i class="fas fa-phone"></i> Enquire Now</button>
+<button class="btn-secondary" onclick="openLogin()"><i class="fas fa-user-shield"></i> Admin Login</button>
+</div>
+</div>
+</section>
+
+<div class="notice-bar">
+<i class="fas fa-bullhorn"></i>
+<div class="notice-ticker"><span>🏠 Admissions Open for 2024-25 &nbsp;|&nbsp; 📞 Call: +91 98765 43210 &nbsp;|&nbsp; 🎉 Limited Seats Available &nbsp;|&nbsp; ✅ Single, Double & Triple Sharing Available</span></div>
+</div>
+
+<section class="about" id="about">
+<div class="container">
+<div class="section-header">
+<span class="section-tag">About Us</span>
+<h2 class="section-title">Why Choose Unity Boys Hostel?</h2>
+<p class="section-subtitle">We provide more than accommodation — we provide a home</p>
+</div>
+<div class="about-grid">
+<div>
+<div class="about-card"><div class="about-icon"><i class="fas fa-shield-alt"></i></div><div class="about-info"><h3>100% Safe & Secure</h3><p>24/7 CCTV surveillance, secure entry, trained security staff.</p></div></div>
+<div class="about-card"><div class="about-icon"><i class="fas fa-wifi"></i></div><div class="about-info"><h3>High Speed WiFi</h3><p>Uninterrupted high-speed internet throughout the hostel.</p></div></div>
+<div class="about-card"><div class="about-icon"><i class="fas fa-utensils"></i></div><div class="about-info"><h3>Nutritious Meals</h3><p>Fresh, hygienic home-style meals served daily.</p></div></div>
+<div class="about-card"><div class="about-icon"><i class="fas fa-book"></i></div><div class="about-info"><h3>Study Environment</h3><p>Dedicated study rooms with proper lighting & quiet atmosphere.</p></div></div>
+</div>
+<div class="about-visual">
+<i class="fas fa-building"></i>
+<h3>Unity Boys Hostel</h3>
+<p>Jaipur, Rajasthan</p>
+<div class="bstats">
+<div class="bstat"><span>G</span><small>Ground<br>12 Rooms</small></div>
+<div class="bstat"><span>1</span><small>First<br>13 Rooms</small></div>
+<div class="bstat"><span>2</span><small>Second<br>11 Rooms</small></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="rooms">
+<div class="container">
+<div class="section-header">
+<span class="section-tag">Accommodation</span>
+<h2 class="section-title">Choose Your Room Type</h2>
+<p class="section-subtitle">Comfortable rooms designed for students</p>
+</div>
+<div class="rooms-grid">
+<div class="room-card featured">
+<div class="room-badge">Most Popular</div>
+<div class="room-icon"><i class="fas fa-user"></i></div>
+<h3>Single Sharing</h3>
+<p>Private room exclusively for you. Maximum privacy & comfort.</p>
+<ul class="room-features">
+<li><i class="fas fa-check"></i> Personal Space</li>
+<li><i class="fas fa-check"></i> Study Table & Chair</li>
+<li><i class="fas fa-check"></i> Cupboard with Lock</li>
+<li><i class="fas fa-check"></i> Attached Bathroom</li>
+<li><i class="fas fa-check"></i> AC Available</li>
+</ul>
+<button class="room-btn" onclick="scrollTo2('contact')">Book Now</button>
+</div>
+<div class="room-card">
+<div class="room-icon"><i class="fas fa-user-friends"></i></div>
+<h3>Double Sharing</h3>
+<p>Share with one roommate. Best balance of privacy & affordability.</p>
+<ul class="room-features">
+<li><i class="fas fa-check"></i> 2 Beds Per Room</li>
+<li><i class="fas fa-check"></i> Study Table & Chair</li>
+<li><i class="fas fa-check"></i> Individual Cupboard</li>
+<li><i class="fas fa-check"></i> Shared Bathroom</li>
+<li><i class="fas fa-check"></i> Fan & Light</li>
+</ul>
+<button class="room-btn" onclick="scrollTo2('contact')">Book Now</button>
+</div>
+<div class="room-card">
+<div class="room-icon"><i class="fas fa-users"></i></div>
+<h3>Triple Sharing</h3>
+<p>Most affordable. Share with two roommates in a spacious room.</p>
+<ul class="room-features">
+<li><i class="fas fa-check"></i> 3 Beds Per Room</li>
+<li><i class="fas fa-check"></i> Study Table & Chair</li>
+<li><i class="fas fa-check"></i> Individual Cupboard</li>
+<li><i class="fas fa-check"></i> Shared Bathroom</li>
+<li><i class="fas fa-check"></i> Fan & Light</li>
+</ul>
+<button class="room-btn" onclick="scrollTo2('contact')">Book Now</button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="facilities" id="facilities">
+<div class="container">
+<div class="section-header light">
+<span class="section-tag">Our Facilities</span>
+<h2 class="section-title">Everything You Need</h2>
+<p class="section-subtitle">Premium amenities for comfortable hostel life</p>
+</div>
+<div class="facilities-grid">
+<div class="facility-card"><div class="facility-icon"><i class="fas fa-wifi"></i></div><h4>WiFi 24/7</h4><p>High speed internet</p></div>
+<div class="facility-card"><div class="facility-icon"><i class="fas fa-bolt"></i></div><h4>Power Backup</h4><p>Uninterrupted supply</p></div>
+<div class="facility-card"><div class="facility-icon"><i class="fas fa-tint"></i></div><h4>RO Water</h4><p>Pure drinking water</p></div>
+<div class="facility-card"><div class="facility-icon"><i class="fas fa-camera"></i></div><h4>CCTV Security</h4><p>24/7 surveillance</p></div>
+<div class="facility-card"><div class="facility-icon"><i class="fas fa-parking"></i></div><h4>Parking</h4><p>Bike & cycle parking</p></div>
+<div class="facility-card"><div class="facility-icon"><i class="fas fa-broom"></i></div><h4>Housekeeping</h4><p>Daily cleaning</p></div>
+<div class="facility-card"><div class="facility-icon"><i class="fas fa-tshirt"></i></div><h4>Laundry</h4><p>Washing facility</p></div>
+<div class="facility-card"><div class="facility-icon"><i class="fas fa-book-open"></i></div><h4>Reading Room</h4><p>Quiet study area</p></div>
+<div class="facility-card"><div class="facility-icon"><i class="fas fa-first-aid"></i></div><h4>First Aid</h4><p>Medical kit ready</p></div>
+<div class="facility-card"><div class="facility-icon"><i class="fas fa-fire-extinguisher"></i></div><h4>Fire Safety</h4><p>Safety equipment</p></div>
+<div class="facility-card"><div class="facility-icon"><i class="fas fa-snowflake"></i></div><h4>AC Rooms</h4><p>On request</p></div>
+<div class="facility-card"><div class="facility-icon"><i class="fas fa-tv"></i></div><h4>Common TV</h4><p>Entertainment</p></div>
+</div>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<div class="container">
+<div class="section-header">
+<span class="section-tag">Contact Us</span>
+<h2 class="section-title">Get In Touch</h2>
+<p class="section-subtitle">We're here to help you anytime</p>
+</div>
+<div class="contact-grid">
+<div>
+<div class="contact-card"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div class="contact-details"><h4>Address</h4><p>Unity Boys Hostel<br>Jaipur, Rajasthan - 302001</p></div></div>
+<div class="contact-card"><div class="contact-icon"><i class="fas fa-phone-alt"></i></div><div class="contact-details"><h4>Phone</h4><p>+91 98765 43210</p></div></div>
+<div class="contact-card"><div class="contact-icon"><i class="fab fa-whatsapp"></i></div><div class="contact-details"><h4>WhatsApp</h4><p>+91 98765 43210</p></div></div>
+<div class="contact-card"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div class="contact-details"><h4>Email</h4><p>info@unityboyshotel.com</p></div></div>
+</div>
+<div class="contact-form-box">
+<h3>Send us a Message</h3>
+<form onsubmit="submitContact(event)">
+<div class="form-row">
+<div class="form-group"><label>Your Name *</label><input type="text" required></div>
+<div class="form-group"><label>Mobile *</label><input type="tel" required></div>
+</div>
+<div class="form-group"><label>Email</label><input type="email"></div>
+<div class="form-group"><label>Room Type</label><select><option>Select Type</option><option>Single Sharing</option><option>Double Sharing</option><option>Triple Sharing</option></select></div>
+<div class="form-group"><label>Message</label><textarea rows="3" placeholder="Any queries..."></textarea></div>
+<button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-about">
+<div class="footer-logo"><i class="fas fa-building"></i><span>Unity Boys Hostel</span></div>
+<p>Premium boys hostel in Jaipur providing comfortable, safe, and affordable accommodation for students.</p>
+<div class="social-links">
+<a><i class="fab fa-facebook"></i></a>
+<a><i class="fab fa-instagram"></i></a>
+<a><i class="fab fa-whatsapp"></i></a>
+<a><i class="fab fa-youtube"></i></a>
+</div>
+</div>
+<div class="footer-links">
+<h4>Quick Links</h4>
+<ul>
+<li><a onclick="scrollTo2('home')"><i class="fas fa-chevron-right"></i> Home</a></li>
+<li><a onclick="scrollTo2('about')"><i class="fas fa-chevron-right"></i> About</a></li>
+<li><a onclick="scrollTo2('rooms')"><i class="fas fa-chevron-right"></i> Rooms</a></li>
+<li><a onclick="scrollTo2('facilities')"><i class="fas fa-chevron-right"></i> Facilities</a></li>
+<li><a onclick="openLogin()"><i class="fas fa-chevron-right"></i> Admin Login</a></li>
+</ul>
+</div>
+<div class="footer-links">
+<h4>Services</h4>
+<ul>
+<li><a><i class="fas fa-chevron-right"></i> Single Sharing</a></li>
+<li><a><i class="fas fa-chevron-right"></i> Double Sharing</a></li>
+<li><a><i class="fas fa-chevron-right"></i> Triple Sharing</a></li>
+<li><a><i class="fas fa-chevron-right"></i> WiFi Service</a></li>
+<li><a><i class="fas fa-chevron-right"></i> Laundry</a></li>
+</ul>
+</div>
+<div class="footer-links">
+<h4>Contact Info</h4>
+<ul>
+<li><a><i class="fas fa-map-marker-alt"></i> Jaipur, Rajasthan</a></li>
+<li><a><i class="fas fa-phone"></i> +91 98765 43210</a></li>
+<li><a><i class="fas fa-envelope"></i> info@unityboys.com</a></li>
+<li><a><i class="fas fa-clock"></i> Mon-Sat: 9AM-8PM</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2024 Unity Boys Hostel, Jaipur. All Rights Reserved. Made with <i class="fas fa-heart"></i> for Students</p>
+</div>
+</div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/919876543210" target="_blank"><i class="fab fa-whatsapp"></i><span>Chat Us</span></a>
+
+</div>
+
+<!-- ============ LOGIN PAGE ============ -->
+<div id="loginView" class="login-page hidden">
+<button class="login-close" onclick="closeLogin()"><i class="fas fa-times"></i></button>
+<div class="login-left">
+<div class="login-left-content">
+<h2>Smart Hostel<br><span>Management System</span></h2>
+<p>Manage your hostel efficiently with complete control</p>
+<div class="lf-list">
+<div class="lf-item"><div class="lf-icon"><i class="fas fa-users"></i></div><div><h4>Student Management</h4><p>Complete lifecycle</p></div></div>
+<div class="lf-item"><div class="lf-icon"><i class="fas fa-rupee-sign"></i></div><div><h4>Fee & Payment</h4><p>Track all payments</p></div></div>
+<div class="lf-item"><div class="lf-icon"><i class="fas fa-chart-bar"></i></div><div><h4>Reports & Analytics</h4><p>Complete insights</p></div></div>
+<div class="lf-item"><div class="lf-icon"><i class="fas fa-shield-alt"></i></div><div><h4>Secure Access</h4><p>Role-based permissions</p></div></div>
+</div>
+</div>
+</div>
+<div class="login-right">
+<div class="login-box">
+<div class="role-selector">
+<button class="role-btn active" id="masterRole" onclick="selectRole('master')"><i class="fas fa-crown"></i> Master</button>
+<button class="role-btn" id="staffRole" onclick="selectRole('staff')"><i class="fas fa-user-tie"></i> Staff</button>
+</div>
+<div class="login-header">
+<div class="login-icon" id="loginIcon"><i class="fas fa-crown"></i></div>
+<h2 id="loginTitle">Master Login</h2>
+<p id="loginSub">Full system access</p>
+</div>
+<form onsubmit="doLogin(event)">
+<div class="input-wrap"><i class="fas fa-user"></i><input type="text" id="loginUser" placeholder="Username" required></div>
+<div class="input-wrap"><i class="fas fa-lock"></i><input type="password" id="loginPass" placeholder="Password" required></div>
+<button type="submit" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login to Dashboard</button>
+</form>
+<div class="demo-creds">
+<h5><i class="fas fa-info-circle"></i> Demo Credentials (Click to fill)</h5>
+<div class="demo-cred" onclick="fillCred('admin','admin123')"><span><b>Master:</b> admin</span><span>admin123</span></div>
+<div class="demo-cred" onclick="fillCred('staff','staff123')"><span><b>Staff:</b> staff</span><span>staff123</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ DASHBOARD ============ -->
+<div id="dashboardView" class="dashboard-wrap">
+<aside class="sidebar" id="sidebar">
+<div class="sb-header">
+<div class="sb-logo"><i class="fas fa-building"></i></div>
+<div class="sb-text"><h3>Unity Hostel</h3><span>Admin Panel</span></div>
+</div>
+<div class="sb-user">
+<div class="sb-user-avatar" id="userAvatar">A</div>
+<div class="sb-user-info"><h4 id="userName">Admin</h4><span id="userRole">Master Admin</span></div>
+</div>
+<nav class="sb-nav">
+<div class="sb-section">
+<span class="sb-section-title">Main</span>
+<div class="sb-item active" onclick="navigate('dashboard')"><i class="fas fa-tachometer-alt"></i> Dashboard</div>
+<div class="sb-item" onclick="navigate('students')"><i class="fas fa-users"></i> Students <span class="badge" id="studentBadge">0</span></div>
+<div class="sb-item" onclick="openAddStudent()"><i class="fas fa-user-plus"></i> Add Student</div>
+</div>
+<div class="sb-section">
+<span class="sb-section-title">Finance</span>
+<div class="sb-item" onclick="navigate('payments')"><i class="fas fa-rupee-sign"></i> Payments</div>
+<div class="sb-item" onclick="navigate('due')"><i class="fas fa-exclamation-triangle"></i> Due Payments <span class="badge danger" id="dueBadge">0</span></div>
+</div>
+<div class="sb-section">
+<span class="sb-section-title">Hostel</span>
+<div class="sb-item" onclick="navigate('rooms')"><i class="fas fa-door-open"></i> Rooms</div>
+<div class="sb-item" onclick="navigate('complaints')"><i class="fas fa-tools"></i> Complaints</div>
+<div class="sb-item" onclick="navigate('visitors')"><i class="fas fa-user-check"></i> Visitors</div>
+</div>
+<div class="sb-section">
+<span class="sb-section-title">Other</span>
+<div class="sb-item" onclick="navigate('reports')"><i class="fas fa-chart-bar"></i> Reports</div>
+<div class="sb-item" onclick="navigate('settings')"><i class="fas fa-cog"></i> Settings</div>
+</div>
+</nav>
+<div class="sb-footer">
+<button class="logout-link" onclick="goWebsite()"><i class="fas fa-globe"></i> View Website</button>
+<button class="logout-link" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+</div>
+</aside>
+
+<div class="main-area">
+<div class="topbar">
+<div style="display:flex;align-items:center;gap:12px">
+<button class="hamburger-d" onclick="document.getElementById('sidebar').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+<h2 id="pageTitle">Dashboard<small id="pageSub">Welcome back!</small></h2>
+</div>
+<div class="topbar-actions">
+<button class="tb-btn" onclick="openAddStudent()"><i class="fas fa-plus"></i><span>Add Student</span></button>
+<button class="tb-icon"><i class="fas fa-bell"></i><span class="count">3</span></button>
+</div>
+</div>
+
+<div class="page-content">
+
+<!-- DASHBOARD PAGE -->
+<div class="dash-page active" id="page-dashboard">
+<div class="welcome-banner">
+<div><h3>Welcome back, <span id="welcomeName">Admin</span>! 👋</h3><p>Here's what's happening at Unity Boys Hostel today</p></div>
+<button class="tb-btn" onclick="openAddStudent()"><i class="fas fa-user-plus"></i> Add Student</button>
+</div>
+
+<div class="stats-grid">
+<div class="stat-card blue"><div class="sc-icon"><i class="fas fa-users"></i></div><div class="sc-label">Total Students</div><div class="sc-value" id="statTotal">0</div><div class="sc-change">All active students</div></div>
+<div class="stat-card green"><div class="sc-icon"><i class="fas fa-bed"></i></div><div class="sc-label">Occupied Beds</div><div class="sc-value" id="statOccupied">0</div><div class="sc-change">Bed utilization</div></div>
+<div class="stat-card orange"><div class="sc-icon"><i class="fas fa-door-open"></i></div><div class="sc-label">Vacant Beds</div><div class="sc-value" id="statVacant">93</div><div class="sc-change">Available now</div></div>
+<div class="stat-card purple"><div class="sc-icon"><i class="fas fa-rupee-sign"></i></div><div class="sc-label">Total Collection</div><div class="sc-value" id="statCollection">₹0</div><div class="sc-change">This month</div></div>
+<div class="stat-card red"><div class="sc-icon"><i class="fas fa-exclamation-triangle"></i></div><div class="sc-label">Due Payments</div><div class="sc-value" id="statDue">0</div><div class="sc-change down">Needs attention</div></div>
+<div class="stat-card teal"><div class="sc-icon"><i class="fas fa-tools"></i></div><div class="sc-label">Complaints</div><div class="sc-value" id="statComplaint">0</div><div class="sc-change">Pending</div></div>
+</div>
+
+<div class="section-bar"><h3><i class="fas fa-bolt"></i> Quick Actions</h3></div>
+<div class="quick-actions">
+<button class="qa-btn" onclick="openAddStudent()"><div class="qa-icon"><i class="fas fa-user-plus"></i></div>Add Student</button>
+<button class="qa-btn" onclick="openAddPayment()"><div class="qa-icon"><i class="fas fa-rupee-sign"></i></div>Receive Payment</button>
+<button class="qa-btn" onclick="navigate('students')"><div class="qa-icon"><i class="fas fa-search"></i></div>View Students</button>
+<button class="qa-btn" onclick="openAddComplaint()"><div class="qa-icon"><i class="fas fa-tools"></i></div>Add Complaint</button>
+<button class="qa-btn" onclick="openAddVisitor()"><div class="qa-icon"><i class="fas fa-user-check"></i></div>Add Visitor</button>
+<button class="qa-btn" onclick="navigate('rooms')"><div class="qa-icon"><i class="fas fa-door-open"></i></div>Room Map</button>
+<button class="qa-btn" onclick="navigate('reports')"><div class="qa-icon"><i class="fas fa-chart-bar"></i></div>Reports</button>
+<button class="qa-btn" onclick="navigate('settings')"><div class="qa-icon"><i class="fas fa-cog"></i></div>Settings</button>
+</div>
+
+<div class="dashboard-grid">
+<div class="dash-card">
+<div class="dash-card-header"><h4><i class="fas fa-users"></i> Recent Students</h4><button class="view-all-btn" onclick="navigate('students')">View All</button></div>
+<div id="recentStudents" style="text-align:center;color:var(--gray);padding:30px 0">No students yet. <a onclick="openAddStudent()" style="color:var(--primary);cursor:pointer">Add one</a></div>
+</div>
+<div class="dash-card">
+<div class="dash-card-header"><h4><i class="fas fa-rupee-sign"></i> Recent Payments</h4><button class="view-all-btn" onclick="navigate('payments')">View All</button></div>
+<div id="recentPayments" style="text-align:center;color:var(--gray);padding:30px 0">No payments yet.</div>
+</div>
+</div>
+</div>
+
+<!-- STUDENTS PAGE -->
+<div class="dash-page" id="page-students">
+<div class="page-head">
+<h3>Student Management</h3>
+<button class="add-btn" onclick="openAddStudent()"><i class="fas fa-plus"></i> Add Student</button>
+</div>
+<div class="filter-bar">
+<div class="search-box"><i class="fas fa-search"></i><input type="text" placeholder="Search students..." id="studentSearch" oninput="renderStudents()"></div>
+<select class="filter-select" id="filterSharing" onchange="renderStudents()"><option value="">All Sharing</option><option>Single</option><option>Double</option><option>Triple</option></select>
+<select class="filter-select" id="filterStatus" onchange="renderStudents()"><option value="">All Status</option><option>Active</option><option>Notice</option></select>
+</div>
+<div class="data-table-container">
+<table class="data-table">
+<thead><tr><th>#</th><th>Student</th><th>Room</th><th>Sharing</th><th>Mobile</th><th>Fee</th><th>Status</th><th>Actions</th></tr></thead>
+<tbody id="studentsTable"></tbody>
+</table>
+</div>
+</div>
+
+<!-- PAYMENTS PAGE -->
+<div class="dash-page" id="page-payments">
+<div class="page-head">
+<h3>Payment Management</h3>
+<button class="add-btn" onclick="openAddPayment()"><i class="fas fa-plus"></i> Receive Payment</button>
+</div>
+<div class="data-table-container">
+<table class="data-table">
+<thead><tr><th>Receipt #</th><th>Student</th><th>Amount</th><th>Mode</th><th>Date</th><th>Month</th><th>Actions</th></tr></thead>
+<tbody id="paymentsTable"></tbody>
+</table>
+</div>
+</div>
+
+<!-- DUE PAGE -->
+<div class="dash-page" id="page-due">
+<div class="page-head"><h3>Due Payments</h3></div>
+<div class="data-table-container">
+<table class="data-table">
+<thead><tr><th>#</th><th>Student</th><th>Room</th><th>Due Amount</th><th>Mobile</th><th>Action</th></tr></thead>
+<tbody id="dueTable"></tbody>
+</table>
+</div>
+</div>
+
+<!-- ROOMS PAGE -->
+<div class="dash-page" id="page-rooms">
+<div class="page-head"><h3>Room Management</h3></div>
+<div style="background:#fff;padding:25px;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,.05)">
+<div id="roomMap"></div>
+</div>
+</div>
+
+<!-- COMPLAINTS PAGE -->
+<div class="dash-page" id="page-complaints">
+<div class="page-head">
+<h3>Complaint Management</h3>
+<button class="add-btn" onclick="openAddComplaint()"><i class="fas fa-plus"></i> Add Complaint</button>
+</div>
+<div class="data-table-container">
+<table class="data-table">
+<thead><tr><th>#</th><th>Type</th><th>Student</th><th>Room</th><th>Description</th><th>Date</th><th>Status</th><th>Action</th></tr></thead>
+<tbody id="complaintsTable"></tbody>
+</table>
+</div>
+</div>
+
+<!-- VISITORS PAGE -->
+<div class="dash-page" id="page-visitors">
+<div class="page-head">
+<h3>Visitor Management</h3>
+<button class="add-btn" onclick="openAddVisitor()"><i class="fas fa-plus"></i> Add Visitor</button>
+</div>
+<div class="data-table-container">
+<table class="data-table">
+<thead><tr><th>#</th><th>Visitor</th><th>Contact</th><th>Visiting</th><th>Purpose</th><th>Date</th><th>Time</th></tr></thead>
+<tbody id="visitorsTable"></tbody>
+</table>
+</div>
+</div>
+
+<!-- REPORTS PAGE -->
+<div class="dash-page" id="page-reports">
+<div class="page-head"><h3>Reports & Analytics</h3></div>
+<div class="quick-actions">
+<button class="qa-btn" onclick="exportData('students')"><div class="qa-icon"><i class="fas fa-users"></i></div>Student Report</button>
+<button class="qa-btn" onclick="exportData('payments')"><div class="qa-icon"><i class="fas fa-rupee-sign"></i></div>Payment Report</button>
+<button class="qa-btn" onclick="exportData('complaints')"><div class="qa-icon"><i class="fas fa-tools"></i></div>Complaint Report</button>
+<button class="qa-btn" onclick="exportData('visitors')"><div class="qa-icon"><i class="fas fa-user-check"></i></div>Visitor Report</button>
+</div>
+<div style="background:#fff;padding:30px;border-radius:14px;text-align:center;color:var(--gray)">
+<i class="fas fa-chart-line" style="font-size:50px;color:var(--primary);margin-bottom:15px"></i>
+<h3 style="color:var(--secondary);margin-bottom:10px">Analytics Dashboard</h3>
+<p>Click any report above to export as CSV file</p>
+</div>
+</div>
+
+<!-- SETTINGS PAGE -->
+<div class="dash-page" id="page-settings">
+<div class="page-head"><h3>Hostel Settings</h3></div>
+<div style="background:#fff;padding:30px;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,.05)">
+<div class="form-row">
+<div class="form-group"><label>Hostel Name</label><input type="text" value="Unity Boys Hostel" id="setName"></div>
+<div class="form-group"><label>Phone</label><input type="tel" value="+91 98765 43210" id="setPhone"></div>
+</div>
+<div class="form-group"><label>Address</label><textarea rows="2" id="setAddress">Jaipur, Rajasthan - 302001</textarea></div>
+<div class="form-row">
+<div class="form-group"><label>WhatsApp</label><input type="tel" value="+91 98765 43210" id="setWA"></div>
+<div class="form-group"><label>Email</label><input type="email" value="info@unity.com" id="setEmail"></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>UPI ID</label><input type="text" value="unity@paytm" id="setUPI"></div>
+<div class="form-group"><label>Late Fee/Day (₹)</label><input type="number" value="50" id="setLate"></div>
+</div>
+<button class="add-btn" onclick="saveSettings()" style="margin-top:10px"><i class="fas fa-save"></i> Save Settings</button>
+<hr style="margin:25px 0;border:none;border-top:1px solid var(--light-gray)">
+<h4 style="margin-bottom:15px;color:var(--secondary)">Data Management</h4>
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+<button class="add-btn" onclick="exportBackup()" style="background:var(--info)"><i class="fas fa-download"></i> Backup All Data</button>
+<button class="add-btn" onclick="clearAllData()" style="background:var(--danger)"><i class="fas fa-trash"></i> Clear All Data</button>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- ============ MODALS ============ -->
+<div class="modal-bd" id="modalAddStudent">
+<div class="modal-box">
+<div class="modal-head"><h3><i class="fas fa-user-plus"></i> Add New Student</h3><button class="modal-close-btn" onclick="closeModal('modalAddStudent')"><i class="fas fa-times"></i></button></div>
+<div class="modal-body">
+<form onsubmit="saveStudent(event)">
+<div class="form-row">
+<div class="form-group"><label>Full Name *</label><input type="text" id="stName" required></div>
+<div class="form-group"><label>Mobile *</label><input type="tel" id="stMobile" required></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>Father Name</label><input type="text" id="stFather"></div>
+<div class="form-group"><label>Father Mobile</label><input type="tel" id="stFatherMob"></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>Room *</label><input type="text" id="stRoom" placeholder="e.g. 101" required></div>
+<div class="form-group"><label>Sharing *</label><select id="stSharing" required><option value="">Select</option><option>Single</option><option>Double</option><option>Triple</option></select></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>Monthly Fee (₹) *</label><input type="number" id="stFee" required></div>
+<div class="form-group"><label>Status</label><select id="stStatus"><option>Active</option><option>Notice</option></select></div>
+</div>
+<div class="form-group"><label>Address</label><textarea rows="2" id="stAddress"></textarea></div>
+<button type="submit" class="login-btn"><i class="fas fa-save"></i> Save Student</button>
+</form>
+</div>
+</div>
+</div>
+
+<div class="modal-bd" id="modalAddPayment">
+<div class="modal-box">
+<div class="modal-head"><h3><i class="fas fa-rupee-sign"></i> Receive Payment</h3><button class="modal-close-btn" onclick="closeModal('modalAddPayment')"><i class="fas fa-times"></i></button></div>
+<div class="modal-body">
+<form onsubmit="savePayment(event)">
+<div class="form-group"><label>Student *</label><select id="payStudent" required><option value="">Select Student</option></select></div>
+<div class="form-row">
+<div class="form-group"><label>Amount (₹) *</label><input type="number" id="payAmount" required></div>
+<div class="form-group"><label>Mode *</label><select id="payMode" required><option>Cash</option><option>UPI</option><option>Bank Transfer</option></select></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>For Month</label><input type="month" id="payMonth"></div>
+<div class="form-group"><label>Date</label><input type="date" id="payDate"></div>
+</div>
+<div class="form-group"><label>Note</label><textarea rows="2" id="payNote"></textarea></div>
+<button type="submit" class="login-btn"><i class="fas fa-save"></i> Save Payment</button>
+</form>
+</div>
+</div>
+</div>
+
+<div class="modal-bd" id="modalAddComplaint">
+<div class="modal-box">
+<div class="modal-head"><h3><i class="fas fa-tools"></i> Add Complaint</h3><button class="modal-close-btn" onclick="closeModal('modalAddComplaint')"><i class="fas fa-times"></i></button></div>
+<div class="modal-body">
+<form onsubmit="saveComplaint(event)">
+<div class="form-group"><label>Student *</label><select id="compStudent" required><option value="">Select Student</option></select></div>
+<div class="form-row">
+<div class="form-group"><label>Type *</label><select id="compType" required><option>WiFi</option><option>Electricity</option><option>Plumbing</option><option>Cleaning</option><option>Other</option></select></div>
+<div class="form-group"><label>Priority</label><select id="compPriority"><option>Low</option><option selected>Medium</option><option>High</option></select></div>
+</div>
+<div class="form-group"><label>Description *</label><textarea rows="3" id="compDesc" required></textarea></div>
+<button type="submit" class="login-btn"><i class="fas fa-save"></i> Submit Complaint</button>
+</form>
+</div>
+</div>
+</div>
+
+<div class="modal-bd" id="modalAddVisitor">
+<div class="modal-box">
+<div class="modal-head"><h3><i class="fas fa-user-check"></i> Add Visitor</h3><button class="modal-close-btn" onclick="closeModal('modalAddVisitor')"><i class="fas fa-times"></i></button></div>
+<div class="modal-body">
+<form onsubmit="saveVisitor(event)">
+<div class="form-row">
+<div class="form-group"><label>Visitor Name *</label><input type="text" id="visName" required></div>
+<div class="form-group"><label>Contact *</label><input type="tel" id="visContact" required></div>
+</div>
+<div class="form-group"><label>Visiting Student *</label><select id="visStudent" required><option value="">Select Student</option></select></div>
+<div class="form-row">
+<div class="form-group"><label>Purpose *</label><input type="text" id="visPurpose" required></div>
+<div class="form-row">
+<div class="form-group"><label>Relation</label><input type="text" id="visRelation" placeholder="Father, Friend..."></div>
+</div>
+<button type="submit" class="login-btn"><i class="fas fa-save"></i> Save Visitor</button>
+</form>
+</div>
+</div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ============ DATA STORAGE ============
+let DB = {
+  students: JSON.parse(localStorage.getItem('students') || '[]'),
+  payments: JSON.parse(localStorage.getItem('payments') || '[]'),
+  complaints: JSON.parse(localStorage.getItem('complaints') || '[]'),
+  visitors: JSON.parse(localStorage.getItem('visitors') || '[]'),
+  settings: JSON.parse(localStorage.getItem('settings') || '{"name":"Unity Boys Hostel","phone":"+91 98765 43210","address":"Jaipur, Rajasthan - 302001","wa":"+91 98765 43210","email":"info@unity.com","upi":"unity@paytm","lateFee":"50"}'),
+  session: JSON.parse(localStorage.getItem('session') || 'null')
+};
+
+function saveDB() {
+  localStorage.setItem('students', JSON.stringify(DB.students));
+  localStorage.setItem('payments', JSON.stringify(DB.payments));
+  localStorage.setItem('complaints', JSON.stringify(DB.complaints));
+  localStorage.setItem('visitors', JSON.stringify(DB.visitors));
+  localStorage.setItem('settings', JSON.stringify(DB.settings));
+}
+
+// ============ INIT ============
+window.onload = function() {
+  if (DB.session) showDashboard();
+  renderAll();
+  generateRoomMap();
+};
+
+// ============ NAVIGATION ============
+function scrollTo2(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({behavior:'smooth'});
+  document.getElementById('navLinks').classList.remove('active');
+}
+
+// ============ LOGIN ============
+let currentRole = 'master';
+function openLogin() {
+  document.getElementById('websiteView').classList.add('hidden');
+  document.getElementById('loginView').classList.remove('hidden');
+}
+function closeLogin() {
+  document.getElementById('loginView').classList.add('hidden');
+  document.getElementById('websiteView').classList.remove('hidden');
+}
+function selectRole(role) {
+  currentRole = role;
+  document.getElementById('masterRole').classList.toggle('active', role==='master');
+  document.getElementById('staffRole').classList.toggle('active', role==='staff');
+  document.getElementById('loginIcon').innerHTML = role==='master' ? '<i class="fas fa-crown"></i>' : '<i class="fas fa-user-tie"></i>';
+  document.getElementById('loginTitle').textContent = role==='master' ? 'Master Login' : 'Staff Login';
+  document.getElementById('loginSub').textContent = role==='master' ? 'Full system access' : 'Limited access';
+}
+function fillCred(u, p) {
+  document.getElementById('loginUser').value = u;
+  document.getElementById('loginPass').value = p;
+}
+function doLogin(e) {
+  e.preventDefault();
+  const u = document.getElementById('loginUser').value;
+  const p = document.getElementById('loginPass').value;
+  const creds = {master:{u:'admin',p:'admin123'}, staff:{u:'staff',p:'staff123'}};
+  
+  if (creds[currentRole] && u === creds[currentRole].u && p === creds[currentRole].p) {
+    DB.session = {role: currentRole, name: currentRole==='master'?'Admin':'Staff User', user: u};
+    localStorage.setItem('session', JSON.stringify(DB.session));
+    toast('Login successful! ✅');
+    setTimeout(showDashboard, 500);
+  } else {
+    toast('Invalid credentials!', true);
+  }
+}
+function showDashboard() {
+  document.getElementById('websiteView').classList.add('hidden');
+  document.getElementById('loginView').classList.add('hidden');
+  document.getElementById('dashboardView').classList.add('active');
+  const s = DB.session;
+  if (s && s.name) {
+    const initial = s.name.charAt(0).toUpperCase();
+    document.getElementById('userAvatar').textContent = initial;
+    document.getElementById('userName').textContent = s.name;
+    document.getElementById('userRole').textContent = s.role==='master'?'Master Admin':'Staff User';
+    document.getElementById('welcomeName').textContent = s.name.split(' ')[0];
+  }
+  renderAll();
+}
+function logout() {
+  if (confirm('Logout?')) {
+    DB.session = null;
+    localStorage.removeItem('session');
+    location.reload();
+  }
+}
+function goWebsite() {
+  document.getElementById('dashboardView').classList.remove('active');
+  document.getElementById('websiteView').classList.remove('hidden');
+}
+
+// ============ DASHBOARD NAVIGATION ============
+function navigate(page) {
+  document.querySelectorAll('.dash-page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  document.querySelectorAll('.sb-item').forEach(i => i.classList.remove('active'));
+  if(event && event.currentTarget && event.currentTarget.closest) {
+    const targetItem = event.currentTarget.closest('.sb-item');
+    if (targetItem) targetItem.classList.add('active');
+  }
+  document.getElementById('sidebar').classList.remove('open');
+  const titles = {dashboard:'Dashboard', students:'Students', payments:'Payments', due:'Due Payments', rooms:'Rooms', complaints:'Complaints', visitors:'Visitors', reports:'Reports', settings:'Settings'};
+  document.getElementById('pageTitle').innerHTML = (titles[page] || 'Dashboard')+'<small>Manage '+(titles[page] || 'dashboard').toLowerCase()+'</small>';
+  window.scrollTo(0,0);
+}
+
+// ============ MODALS ============
+function openModal(id) { document.getElementById(id).classList.add('show'); }
+function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+function openAddStudent() { openModal('modalAddStudent'); }
+function openAddPayment() { fillStudentSelect('payStudent'); openModal('modalAddPayment'); }
+function openAddComplaint() { fillStudentSelect('compStudent'); openModal('modalAddComplaint'); }
+function openAddVisitor() { fillStudentSelect('visStudent'); openModal('modalAddVisitor'); }
+
+function fillStudentSelect(id) {
+  const sel = document.getElementById(id);
+  sel.innerHTML = '<option value="">Select Student</option>' + 
+    DB.students.map(s => `<option value="${s.id}">${s.name} (Room ${s.room})</option>`).join('');
+}
+
+// ============ STUDENTS ============
+function saveStudent(e) {
+  e.preventDefault();
+  const student = {
+    id: Date.now(),
+    name: document.getElementById('stName').value,
+    mobile: document.getElementById('stMobile').value,
+    father: document.getElementById('stFather').value,
+    fatherMob: document.getElementById('stFatherMob').value,
+    room: document.getElementById('stRoom').value,
+    sharing: document.getElementById('stSharing').value,
+    fee: parseInt(document.getElementById('stFee').value),
+    status: document.getElementById('stStatus').value,
+    address: document.getElementById('stAddress').value,
+    paid: 0,
+    due: parseInt(document.getElementById('stFee').value),
+    joinDate: new Date().toLocaleDateString('en-IN')
+  };
+  DB.students.push(student);
+  saveDB();
+  closeModal('modalAddStudent');
+  e.target.reset();
+  toast('Student added successfully! ✅');
+  renderAll();
+}
+
+function deleteStudent(id) {
+  if (confirm('Delete this student?')) {
+    DB.students = DB.students.filter(s => s.id !== id);
+    saveDB();
+    renderAll();
+    toast('Student deleted!');
+  }
+}
+
+function renderStudents() {
+  const searchInput = document.getElementById('studentSearch');
+  const search = (searchInput ? searchInput.value : '').toLowerCase();
+  const sharingSel = document.getElementById('filterSharing');
+  const sharing = sharingSel ? sharingSel.value : '';
+  const statusSel = document.getElementById('filterStatus');
+  const status = statusSel ? statusSel.value : '';
+  
+  let list = DB.students.filter(s => {
+    return (s.name.toLowerCase().includes(search) || s.room.includes(search) || s.mobile.includes(search))
+      && (!sharing || s.sharing === sharing)
+      && (!status || s.status === status);
+  });
+  
+  const colors = ['#FF6B35','#6c5ce7','#00b894','#fd79a8','#fdcb6e','#667eea'];
+  const html = list.map((s,i) => `
+    <tr>
+      <td>${i+1}</td>
+      <td><div class="td-student"><div class="td-avatar" style="background:${colors[i%6]}">${s.name.charAt(0).toUpperCase()}</div><div><strong>${s.name}</strong><br><small style="color:var(--gray)">${s.mobile}</small></div></div></td>
+      <td><span class="room-tag">Room ${s.room}</span></td>
+      <td>${s.sharing}</td>
+      <td>${s.mobile}</td>
+      <td><strong style="color:${s.due>0?'var(--danger)':'var(--success)'}">₹${s.due}</strong></td>
+      <td><span class="status-tag ${s.due>0?'due':'active'}">${s.due>0?'Due':s.status}</span></td>
+      <td><div class="action-btns"><button class="act-btn view" onclick="viewStudent(${s.id})"><i class="fas fa-eye"></i></button><button class="act-btn delete" onclick="deleteStudent(${s.id})"><i class="fas fa-trash"></i></button></div></td>
+    </tr>`).join('');
+  
+  document.getElementById('studentsTable').innerHTML = html || '<tr><td colspan="8" style="text-align:center;padding:30px;color:var(--gray)">No students found. <a onclick="openAddStudent()" style="color:var(--primary);cursor:pointer">Add one</a></td></tr>';
+}
+
+function viewStudent(id) {
+  const s = DB.students.find(x => x.id === id);
+  if (!s) return;
+  alert(`👤 STUDENT PROFILE\n\nName: ${s.name}\nMobile: ${s.mobile}\nRoom: ${s.room}\nSharing: ${s.sharing}\nFather: ${s.father||'N/A'}\nFee: ₹${s.fee}\nPaid: ₹${s.paid}\nDue: ₹${s.due}\nStatus: ${s.status}\nJoin Date: ${s.joinDate}`);
+}
+
+// ============ PAYMENTS ============
+function savePayment(e) {
+  e.preventDefault();
+  const student = DB.students.find(s => s.id == document.getElementById('payStudent').value);
+  if (!student) return toast('Select student!', true);
+  
+  const payment = {
+    id: Date.now(),
+    receipt: 'UBH'+Date.now().toString().slice(-6),
+    studentId: student.id,
+    studentName: student.name,
+    room: student.room,
+    amount: parseInt(document.getElementById('payAmount').value),
+    mode: document.getElementById('payMode').value,
+    month: document.getElementById('payMonth').value,
+    date: document.getElementById('payDate').value || new Date().toLocaleDateString('en-IN'),
+    note: document.getElementById('payNote').value
+  };
+  
+  DB.payments.push(payment);
+  student.paid += payment.amount;
+  student.due = Math.max(0, student.fee - student.paid);
+  saveDB();
+  closeModal('modalAddPayment');
+  e.target.reset();
+  toast('Payment received! Receipt: '+payment.receipt);
+  renderAll();
+}
+
+// ============ PRINT RECEIPT ============
+function printReceipt(id) {
+  const p = DB.payments.find(x => x.id === id);
+  if (!p) return;
+  const w = window.open('','','width=600,height=700');
+  w.document.write(`
+    <html><head><title>Receipt #${p.receipt}</title>
+    <style>body{font-family:Arial;padding:40px;max-width:500px;margin:auto}
+    .head{text-align:center;border-bottom:3px solid #FF6B35;padding-bottom:20px;margin-bottom:25px}
+    .head h1{color:#FF6B35;margin-bottom:5px}
+    .row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed #ddd}
+    .total{background:#FF6B35;color:#fff;padding:15px;text-align:center;font-size:20px;font-weight:bold;margin-top:20px;border-radius:8px}
+    .footer{margin-top:30px;text-align:center;color:#666;font-size:12px}
+    </style></head><body>
+    <div class="head"><h1>🏠 UNITY BOYS HOSTEL</h1><p>Jaipur, Rajasthan | +91 98765 43210</p></div>
+    <h2 style="text-align:center;margin-bottom:20px">PAYMENT RECEIPT</h2>
+    <div class="row"><span><b>Receipt No:</b></span><span>#${p.receipt}</span></div>
+    <div class="row"><span><b>Date:</b></span><span>${p.date}</span></div>
+    <div class="row"><span><b>Student:</b></span><span>${p.studentName}</span></div>
+    <div class="row"><span><b>Room:</b></span><span>${p.room}</span></div>
+    <div class="row"><span><b>For Month:</b></span><span>${p.month || 'N/A'}</span></div>
+    <div class="row"><span><b>Payment Mode:</b></span><span>${p.mode}</span></div>
+    ${p.note?'<div class="row"><span><b>Note:</b></span><span>'+p.note+'</span></div>':''}
+    <div class="total">TOTAL PAID: ₹${p.amount}</div>
+    <div class="footer">Thank you for your payment! • This is a system generated receipt.</div>
+    </body></html>`);
+  w.document.close();
+  setTimeout(() => w.print(), 500);
+}
+
+function renderPayments() {
+  const html = DB.payments.slice().reverse().map(p => `
+    <tr>
+      <td><strong>#${p.receipt}</strong></td>
+      <td>${p.studentName}<br><small style="color:var(--gray)">Room ${p.room}</small></td>
+      <td><strong style="color:var(--success)">₹${p.amount}</strong></td>
+      <td><span class="room-tag">${p.mode}</span></td>
+      <td>${p.date}</td>
+      <td>${p.month || '-'}</td>
+      <td><button class="act-btn view" onclick="printReceipt(${p.id})" title="Print Receipt"><i class="fas fa-print"></i></button></td>
+    </tr>`).join('');
+  document.getElementById('paymentsTable').innerHTML = html || '<tr><td colspan="7" style="text-align:center;padding:30px;color:var(--gray)">No payments yet.</td></tr>';
+}
+
+// ============ DUE ============
+function renderDue() {
+  const dueStudents = DB.students.filter(s => s.due > 0);
+  const html = dueStudents.map((s,i) => `
+    <tr>
+      <td>${i+1}</td>
+      <td><strong>${s.name}</strong></td>
+      <td><span class="room-tag">Room ${s.room}</span></td>
+      <td><strong style="color:var(--danger)">₹${s.due}</strong></td>
+      <td>${s.mobile}</td>
+      <td><a href="https://wa.me/91${s.mobile.replace(/\D/g,'')}" target="_blank" class="act-btn" style="background:#25D366;color:#fff;text-decoration:none;display:inline-flex;padding:6px 12px;border-radius:6px;font-size:11px"><i class="fab fa-whatsapp"></i> Remind</a></td>
+    </tr>`).join('');
+  document.getElementById('dueTable').innerHTML = html || '<tr><td colspan="6" style="text-align:center;padding:30px;color:var(--success)">🎉 No due payments!</td></tr>';
+}
+
+// ============ COMPLAINTS ============
+function saveComplaint(e) {
+  e.preventDefault();
+  const student = DB.students.find(s => s.id == document.getElementById('compStudent').value);
+  if (!student) return toast('Select student!', true);
+  
+  DB.complaints.push({
+    id: Date.now(),
+    ticket: 'T'+Date.now().toString().slice(-5),
+    studentId: student.id,
+    studentName: student.name,
+    room: student.room,
+    type: document.getElementById('compType').value,
+    priority: document.getElementById('compPriority').value,
+    description: document.getElementById('compDesc').value,
+    status: 'Pending',
+    date: new Date().toLocaleDateString('en-IN')
+  });
+  saveDB();
+  closeModal('modalAddComplaint');
+  e.target.reset();
+  toast('Complaint registered! ✅');
+  renderAll();
+}
+
+function resolveComplaint(id) {
+  const c = DB.complaints.find(x => x.id === id);
+  if (c) { c.status = 'Resolved'; saveDB(); renderAll(); toast('Complaint resolved!'); }
+}
+
+function renderComplaints() {
+  const html = DB.complaints.slice().reverse().map((c,i) => `
+    <tr>
+      <td><strong>#${c.ticket}</strong></td>
+      <td><span class="room-tag">${c.type}</span></td>
+      <td>${c.studentName}</td>
+      <td>Room ${c.room}</td>
+      <td>${c.description}</td>
+      <td>${c.date}</td>
+      <td><span class="status-tag ${c.status==='Resolved'?'active':'due'}">${c.status}</span></td>
+      <td>${c.status==='Pending'?`<button class="act-btn edit" onclick="resolveComplaint(${c.id})" title="Resolve"><i class="fas fa-check"></i></button>`:'✓'}</td>
+    </tr>`).join('');
+  document.getElementById('complaintsTable').innerHTML = html || '<tr><td colspan="8" style="text-align:center;padding:30px;color:var(--gray)">No complaints yet.</td></tr>';
+}
+
+// ============ VISITORS ============
+function saveVisitor(e) {
+  e.preventDefault();
+  const student = DB.students.find(s => s.id == document.getElementById('visStudent').value);
+  if (!student) return toast('Select student!', true);
+  
+  DB.visitors.push({
+    id: Date.now(),
+    name: document.getElementById('visName').value,
+    contact: document.getElementById('visContact').value,
+    studentName: student.name,
+    room: student.room,
+    purpose: document.getElementById('visPurpose').value,
+    relation: document.getElementById('visRelation').value,
+    date: new Date().toLocaleDateString('en-IN'),
+    time: new Date().toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'})
+  });
+  saveDB();
+  closeModal('modalAddVisitor');
+  e.target.reset();
+  toast('Visitor logged! ✅');
+  renderAll();
+}
+
+function renderVisitors() {
+  const html = DB.visitors.slice().reverse().map((v,i) => `
+    <tr>
+      <td>${i+1}</td>
+      <td><strong>${v.name}</strong>${v.relation?'<br><small style="color:var(--gray)">'+v.relation+'</small>':''}</td>
+      <td>${v.contact}</td>
+      <td>${v.studentName}<br><small style="color:var(--gray)">Room ${v.room}</small></td>
+      <td>${v.purpose}</td>
+      <td>${v.date}</td>
+      <td>${v.time}</td>
+    </tr>`).join('');
+  document.getElementById('visitorsTable').innerHTML = html || '<tr><td colspan="7" style="text-align:center;padding:30px;color:var(--gray)">No visitors yet.</td></tr>';
+}
+
+// ============ ROOM MAP ============
+function generateRoomMap() {
+  const floors = [
+    {name:'Ground Floor', prefix:'G', count:12, start:1},
+    {name:'First Floor', prefix:'1', count:13, start:101},
+    {name:'Second Floor', prefix:'2', count:11, start:201}
+  ];
+  
+  let html = '';
+  floors.forEach(f => {
+    html += `<div style="margin-bottom:25px"><h4 style="color:var(--secondary);margin-bottom:15px;display:flex;align-items:center;gap:8px"><i class="fas fa-layer-group" style="color:var(--primary)"></i> ${f.name}</h4><div style="display:flex;flex-wrap:wrap;gap:10px">`;
+    for (let i = 0; i < f.count; i++) {
+      const num = f.prefix === 'G' ? 'G'+String(i+1).padStart(2,'0') : f.start+i;
+      const occ = DB.students.filter(s => s.room == num).length;
+      const color = occ === 0 ? '#28a745' : occ === 1 ? '#ffc107' : '#dc3545';
+      const bg = occ === 0 ? 'rgba(40,167,69,.1)' : occ === 1 ? 'rgba(255,193,7,.1)' : 'rgba(220,53,69,.1)';
+      html += `<div style="width:75px;padding:12px 8px;background:${bg};border:2px solid ${color}33;border-radius:10px;text-align:center;cursor:pointer" onclick="alert('Room ${num}\\nOccupied: ${occ} students')">
+        <div style="font-size:14px;font-weight:700;color:${color}">${num}</div>
+        <div style="font-size:10px;color:${color};margin-top:4px">${occ} occupied</div></div>`;
+    }
+    html += `</div></div>`;
+  });
+  
+  const el = document.getElementById('roomMap');
+  if (el) el.innerHTML = html;
+}
+
+// ============ DASHBOARD RENDER ============
+function renderDashboard() {
+  document.getElementById('statTotal').textContent = DB.students.length;
+  document.getElementById('statOccupied').textContent = DB.students.length;
+  document.getElementById('statVacant').textContent = 93 - DB.students.length;
+  document.getElementById('statDue').textContent = DB.students.filter(s => s.due > 0).length;
+  document.getElementById('statComplaint').textContent = DB.complaints.filter(c => c.status === 'Pending').length;
+  document.getElementById('statCollection').textContent = '₹' + DB.payments.reduce((a,b) => a+b.amount, 0).toLocaleString('en-IN');
+  document.getElementById('studentBadge').textContent = DB.students.length;
+  document.getElementById('dueBadge').textContent = DB.students.filter(s => s.due > 0).length;
+  
+  const colors = ['#FF6B35','#6c5ce7','#00b894','#fd79a8','#fdcb6e'];
+  const recent = DB.students.slice(-5).reverse();
+  if (recent.length) {
+    document.getElementById('recentStudents').innerHTML = recent.map((s,i) => `
+      <div class="list-item">
+        <div class="li-avatar" style="background:${colors[i%5]}">${s.name.charAt(0).toUpperCase()}</div>
+        <div class="li-info"><h5>${s.name}</h5><span>Room ${s.room} • ${s.sharing}</span></div>
+        <span class="li-tag ${s.due>0?'due':'active'}">${s.due>0?'Due':'Active'}</span>
+      </div>`).join('');
+  }
+  
+  const recentPay = DB.payments.slice(-5).reverse();
+  if (recentPay.length) {
+    document.getElementById('recentPayments').innerHTML = recentPay.map((p,i) => `
+      <div class="list-item">
+        <div class="li-avatar" style="background:#28a745"><i class="fas fa-rupee-sign"></i></div>
+        <div class="li-info"><h5>${p.studentName}</h5><span>${p.mode} • ${p.date}</span></div>
+        <span style="color:var(--success);font-weight:700">₹${p.amount}</span>
+      </div>`).join('');
+  }
+}
+
+function renderAll() {
+  renderDashboard();
+  renderStudents();
+  renderPayments();
+  renderDue();
+  renderComplaints();
+  renderVisitors();
+  generateRoomMap();
+}
+
+// ============ SETTINGS ============
+function saveSettings() {
+  DB.settings = {
+    name: document.getElementById('setName').value,
+    phone: document.getElementById('setPhone').value,
+    address: document.getElementById('setAddress').value,
+    wa: document.getElementById('setWA').value,
+    email: document.getElementById('setEmail').value,
+    upi: document.getElementById('setUPI').value,
+    lateFee: document.getElementById('setLate').value
+  };
+  saveDB();
+  toast('Settings saved! ✅');
+}
+
+function exportBackup() {
+  const data = JSON.stringify(DB, null, 2);
+  const blob = new Blob([data], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'unity-hostel-backup-'+Date.now()+'.json';
+  a.click();
+  toast('Backup downloaded! 📥');
+}
+
+function clearAllData() {
+  if (confirm('⚠️ This will delete ALL data! Are you sure?')) {
+    if (confirm('Really delete everything?')) {
+      DB = {students:[], payments:[], complaints:[], visitors:[], settings:{}, session:DB.session};
+      saveDB();
+      renderAll();
+      toast('All data cleared!');
+    }
+  }
+}
+
+function exportData(type) {
+  const data = DB[type];
+  if (!data.length) return toast('No data to export!', true);
+  const keys = Object.keys(data[0]);
+  const csv = [keys.join(',')].concat(data.map(row => keys.map(k => `"${row[k]||''}"`).join(','))).join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = type+'-report-'+Date.now()+'.csv';
+  a.click();
+  toast(type+' report downloaded! 📊');
+}
+
+// ============ CONTACT FORM ============
+function submitContact(e) {
+  e.preventDefault();
+  toast('Message sent! We will contact you soon. ✅');
+  e.target.reset();
+}
+
+// ============ TOAST ============
+function toast(msg, isError) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (isError ? ' error' : '');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// Close modals on outside click
+document.querySelectorAll('.modal-bd').forEach(m => {
+  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('show'); });
+});
+</script>
+</body>
+</html>
