@@ -1,26 +1,7 @@
 import React, { useState } from 'react';
-import { Settings, Save, Trash2, Download, Upload, HelpCircle, ShieldAlert, Copy, Check, FileText } from 'lucide-react';
+import { Settings, Save, Trash2, Download, Upload, HelpCircle, ShieldAlert, FileText, Zap, Copy } from 'lucide-react';
 import { HostelSettings, Student, Payment, Complaint, Visitor } from '../types';
 import { generateStandaloneHTML } from '../utils/standaloneHTML';
-import { getLiveAppUrl } from '../utils/url';
-
-// Raw source files imported as strings via Vite raw loader
-// @ts-ignore
-import appCode from '../App.tsx?raw';
-// @ts-ignore
-import dueCode from './DuePayments.tsx?raw';
-// @ts-ignore
-import typesCode from '../types.ts?raw';
-// @ts-ignore
-import dashCode from './DashboardHome.tsx?raw';
-// @ts-ignore
-import mockCode from '../mockData.ts?raw';
-// @ts-ignore
-import receiptCode from './ReceiptPrinter.tsx?raw';
-// @ts-ignore
-import studentCode from './StudentManagement.tsx?raw';
-// @ts-ignore
-import paymentCode from './PaymentManagement.tsx?raw';
 
 interface SettingsPanelProps {
   settings: HostelSettings;
@@ -78,189 +59,6 @@ export default function SettingsPanel({
     onShowToast('Login Credentials & Recovery Key successfully updated in storage! 🔐');
   };
 
-  // Notepad export custom state
-  const [selectedCodeFileName, setSelectedCodeFileName] = useState('App.tsx');
-  const [copiedFileStatus, setCopiedFileStatus] = useState<string | null>(null);
-  const [copiedDataStatus, setCopiedDataStatus] = useState<string | null>(null);
-  const [copiedStandaloneStatus, setCopiedStandaloneStatus] = useState(false);
-
-  const handleCopyStandaloneHTML = () => {
-    onShowToast('Preparing standalone HTML copy... ⚙️');
-    try {
-      const htmlCont = generateStandaloneHTML(students, payments, settings, complaints, visitors);
-      navigator.clipboard.writeText(htmlCont).then(() => {
-        setCopiedStandaloneStatus(true);
-        onShowToast('Standalone HTML App Copied! Paste in Notepad and save as "hostel.html" 🚀');
-        setTimeout(() => setCopiedStandaloneStatus(false), 3000);
-      }).catch(() => {
-        onShowToast('Could not copy HTML content! ⚠️', true);
-      });
-    } catch (err) {
-      console.error(err);
-      onShowToast('Failed to generate template! ⚠️', true);
-    }
-  };
-
-  const handleDownloadStandaloneHTML = () => {
-    onShowToast('Preparing standalone HTML download... 📂');
-    try {
-      const htmlCont = generateStandaloneHTML(students, payments, settings, complaints, visitors);
-      const blob = new Blob([htmlCont], { type: 'text/html;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'unity_boys_hostel_offline.html');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      onShowToast('Downloaded unity_boys_hostel_offline.html successfully! 📂 Double-click to run!');
-    } catch (err) {
-      console.error(err);
-      onShowToast('Failed to download standalone file! ⚠️', true);
-    }
-  };
-
-  const handleDownloadIndexHtml = () => {
-    onShowToast('Preparing index.html download... 📂');
-    try {
-      const indexHtmlContent = `<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Unity Boys Hostel - Premium Student Accommodation Jaipur</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script id="offline-data-layer">window.OFFLINE_DB = null;</script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>`;
-      const blob = new Blob([indexHtmlContent], { type: 'text/html;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'index.html');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      onShowToast('index.html downloaded successfully! 📂');
-    } catch (err) {
-      console.error(err);
-      onShowToast('Failed to download index.html! ⚠️', true);
-    }
-  };
-
-  const codeFiles = [
-    { name: 'App.tsx', path: '/src/App.tsx', content: appCode || '', desc: 'Controls admin sessions, local storage persistence, tabs routing, status updates.' },
-    { name: 'DuePayments.tsx', path: '/src/components/DuePayments.tsx', content: dueCode || '', desc: 'Main dues planner, payment schedules calculated from Student joining dates.' },
-    { name: 'DashboardHome.tsx', path: '/src/components/DashboardHome.tsx', content: dashCode || '', desc: 'Visual analytics dashboard, quick action counters for cash flow.' },
-    { name: 'types.ts', path: '/src/types.ts', content: typesCode || '', desc: 'Strict TypeScript interface safety models, Student/Payment state types.' },
-    { name: 'mockData.ts', path: '/src/mockData.ts', content: mockCode || '', desc: 'Default startup registers, pre-seeded room occupancies.' },
-    { name: 'ReceiptPrinter.tsx', path: '/src/components/ReceiptPrinter.tsx', content: receiptCode || '', desc: 'Voucher generator with high-fidelity printer layouts.' },
-    { name: 'StudentManagement.tsx', path: '/src/components/StudentManagement.tsx', content: studentCode || '', desc: 'Active student directory management panel.' },
-    { name: 'PaymentManagement.tsx', path: '/src/components/PaymentManagement.tsx', content: paymentCode || '', desc: 'Logs new collections and maintains payment diaries.' }
-  ];
-
-  const currentSelectedFile = codeFiles.find(f => f.name === selectedCodeFileName) || codeFiles[0];
-
-  const handleCopyCodeToNotepad = () => {
-    if (!currentSelectedFile.content) {
-      onShowToast('Could not extract file content! ⚠️', true);
-      return;
-    }
-    navigator.clipboard.writeText(currentSelectedFile.content).then(() => {
-      setCopiedFileStatus(currentSelectedFile.name);
-      onShowToast(`Successfully copied ${currentSelectedFile.name} code! Paste in Notepad 📝`);
-      setTimeout(() => setCopiedFileStatus(null), 3000);
-    }).catch(err => {
-      onShowToast('Failed to copy to clipboard! ⚠️', true);
-    });
-  };
-
-  const handleCopyDataToNotepad = (dataString: string, typeName: string) => {
-    navigator.clipboard.writeText(dataString).then(() => {
-      setCopiedDataStatus(typeName);
-      onShowToast(`Copied ${typeName} register! Paste in Notepad 📝`);
-      setTimeout(() => setCopiedDataStatus(null), 3000);
-    }).catch(err => {
-      onShowToast('Failed to copy! ⚠️', true);
-    });
-  };
-
-  const generateStudentsText = () => {
-    let t = `==========================================================\n`;
-    t += `       UNITY BOYS HOSTEL - STUDENTS DIRECTORY REGISTER\n`;
-    t += `==========================================================\n`;
-    t += `Total Students Active: ${students.length}\n`;
-    t += `Generated Stamp: ${new Date().toLocaleString('en-IN')}\n`;
-    t += `----------------------------------------------------------\n\n`;
-    students.forEach((s, idx) => {
-      t += `[${idx + 1}] Lodger Name  : ${s.name}\n`;
-      t += `    Room Assigned: Room ${s.room} (Status: ${s.status})\n`;
-      t += `    Join Date    : ${s.joinDate || 'N/A'}\n`;
-      t += `    Contact Mon  : +91 ${s.mobile || 'N/A'}\n`;
-      t += `    Father Name  : ${s.father || 'N/A'}\n`;
-      t += `    Father Mobile: +91 ${s.fatherMob || 'N/A'}\n`;
-      t += `    Monthly Rent : ₹${s.fee.toLocaleString('en-IN')}\n`;
-      t += `    Amount Paid  : ₹${s.paid.toLocaleString('en-IN')}\n`;
-      t += `    Outstanding  : ₹${s.due.toLocaleString('en-IN')}\n`;
-      t += `    Emergency No : ${s.emergencyMobile || 'N/A'}\n`;
-      t += `----------------------------------------------------------\n`;
-    });
-    return t;
-  };
-
-  const generatePaymentsText = () => {
-    let t = `==========================================================\n`;
-    t += `       UNITY BOYS HOSTEL - PAYMENT TRANSACTIONS JOURNAL\n`;
-    t += `==========================================================\n`;
-    t += `Total Completed: ${payments.length} transactions\n`;
-    t += `Generated Stamp: ${new Date().toLocaleString('en-IN')}\n`;
-    t += `----------------------------------------------------------\n\n`;
-    payments.forEach((p, idx) => {
-      t += `[#${p.receipt}] Date: ${p.date}\n`;
-      t += `    Billing Tenant : ${p.studentName}\n`;
-      t += `    Room ID        : Room ${p.room}\n`;
-      t += `    Month Segment  : ${p.month}\n`;
-      t += `    Amount Logged  : ₹${p.amount.toLocaleString('en-IN')}\n`;
-      t += `    Payment Mode   : ${p.mode}\n`;
-      t += `----------------------------------------------------------\n`;
-    });
-    return t;
-  };
-
-  const generateRoomsMapText = () => {
-    let t = `==========================================================\n`;
-    t += `         UNITY BOYS HOSTEL - ROOM OCCUPANCY MAP\n`;
-    t += `==========================================================\n`;
-    t += `Generated Stamp: ${new Date().toLocaleString('en-IN')}\n\n`;
-    
-    // Group students by room
-    const occupancy: { [key: string]: Student[] } = {};
-    students.forEach(s => {
-      if (!occupancy[s.room]) occupancy[s.room] = [];
-      occupancy[s.room].push(s);
-    });
-
-    // Create floors list (101 to 145/201 etc)
-    const listRooms = Array.from({ length: 45 }, (_, i) => {
-      const roomNum = (100 + i + 1).toString();
-      const tenants = occupancy[roomNum] || [];
-      return { roomNum, tenants };
-    });
-
-    listRooms.forEach(r => {
-      const status = r.tenants.length === 0 ? 'VACANT' : r.tenants.length >= 2 ? 'FULLY OCCUPIED' : 'PARTIALLY OCCUPIED';
-      t += `Room #${r.roomNum} : Status: ${status} [${r.tenants.length}/2 beds occupied]\n`;
-      if (r.tenants.length > 0) {
-        t += `    Beds taken by : ` + r.tenants.map(tn => `${tn.name} (Mob: ${tn.mobile}, Due: ₹${tn.due})`).join('  |  ') + `\n`;
-      }
-      t += `----------------------------------------------------------\n`;
-    });
-    return t;
-  };
-
   const handleTextChange = (field: keyof HostelSettings, val: string | number | boolean) => {
     setForm({
       ...form,
@@ -307,6 +105,124 @@ export default function SettingsPanel({
     };
     reader.readAsText(file);
     e.target.value = ''; // Reset file input
+  };
+
+  const handleDownloadStandaloneHTML = async (isGoDaddy = false) => {
+    try {
+      onShowToast('Preparing Standalone HTML file... ⏳');
+      
+      const offlineDB = {
+        students,
+        payments,
+        complaints,
+        visitors,
+        partnerWithdrawals: JSON.parse(localStorage.getItem('ubh_partner_withdrawals') || '[]'),
+        expenses: JSON.parse(localStorage.getItem('ubh_hostel_expenses') || '[]'),
+        settings,
+        timestamp: Date.now()
+      };
+
+      let htmlContent = '';
+      
+      try {
+        const response = await fetch('/index.html');
+        if (response.ok) {
+          const fetchedHTML = await response.text();
+          if (fetchedHTML.includes('id="root"')) {
+            const injectionScript = `\n<script>window.OFFLINE_DB = ${JSON.stringify(offlineDB)};</script>\n`;
+            if (fetchedHTML.includes('<head>')) {
+              htmlContent = fetchedHTML.replace('<head>', `<head>${injectionScript}`);
+            } else {
+              htmlContent = fetchedHTML.replace('<div id="root">', `${injectionScript}<div id="root">`);
+            }
+          }
+        }
+      } catch (e) {
+        console.warn('Fallback to offline template:', e);
+      }
+
+      if (!htmlContent) {
+        htmlContent = generateStandaloneHTML(
+          students,
+          payments,
+          settings,
+          complaints,
+          visitors
+        );
+      }
+
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = isGoDaddy ? 'index.html' : 'unity_boys_hostel_offline.html';
+      link.click();
+      onShowToast(isGoDaddy ? 'GoDaddy-ready index.html downloaded! Upload this directly inside public_html to go LIVE! ⚡' : 'Standalone HTML Website downloaded! 📁');
+    } catch (err) {
+      console.error(err);
+      onShowToast('Failed to export Standalone HTML! ❌', true);
+    }
+  };
+
+  const handleDownloadGoDaddyZip = async () => {
+    try {
+      onShowToast('Generating GoDaddy deployment zip... 📦');
+      
+      const offlineDB = {
+        students,
+        payments,
+        complaints,
+        visitors,
+        partnerWithdrawals: JSON.parse(localStorage.getItem('ubh_partner_withdrawals') || '[]'),
+        expenses: JSON.parse(localStorage.getItem('ubh_hostel_expenses') || '[]'),
+        settings,
+        timestamp: Date.now()
+      };
+
+      let htmlContent = '';
+      
+      try {
+        const response = await fetch('/index.html');
+        if (response.ok) {
+          const fetchedHTML = await response.text();
+          if (fetchedHTML.includes('id="root"')) {
+            const injectionScript = `\n<script>window.OFFLINE_DB = ${JSON.stringify(offlineDB)};</script>\n`;
+            if (fetchedHTML.includes('<head>')) {
+              htmlContent = fetchedHTML.replace('<head>', `<head>${injectionScript}`);
+            } else {
+              htmlContent = fetchedHTML.replace('<div id="root">', `${injectionScript}<div id="root">`);
+            }
+          }
+        }
+      } catch (e) {
+        console.warn('Fallback to offline template for zip:', e);
+      }
+
+      if (!htmlContent) {
+        htmlContent = generateStandaloneHTML(
+          students,
+          payments,
+          settings,
+          complaints,
+          visitors
+        );
+      }
+
+      const JSZipModule = await import('jszip');
+      const zip = new JSZipModule.default();
+      zip.file('index.html', htmlContent);
+      
+      const content = await zip.generateAsync({ type: 'blob' });
+      const url = URL.createObjectURL(content);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'unity_boys_hostel_godaddy.zip';
+      link.click();
+      onShowToast('cPanel deployment zip downloaded! Extract directly in public_html inside GoDaddy File Manager. ⚡');
+    } catch (err) {
+      console.error(err);
+      onShowToast('Failed to generate deployment zip! ❌', true);
+    }
   };
 
   const handleQrUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -967,6 +883,75 @@ export default function SettingsPanel({
         </form>
       </div>
 
+      {/* Standalone Export & Deployment */}
+      <div className="bg-white rounded-2xl border border-gray-150 p-6 shadow-xs space-y-4">
+        <div>
+          <span className="text-[10px] bg-emerald-50 border border-emerald-150 inline-block px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider text-emerald-700">
+            🌐 Live GoDaddy & Offline Export
+          </span>
+          <h4 className="text-sm font-bold text-gray-800 uppercase tracking-tight flex items-center gap-2 mt-1">
+            <Zap className="w-5 h-5 text-yellow-500 fill-yellow-500 animate-pulse" />
+            Website Deployment Control Panel (सीधा लाइव करें)
+          </h4>
+          <p className="text-xs text-gray-400">
+            Download the latest compiled version of your website containing all active database records. You can run it offline on any PC or upload directly inside <strong>public_html</strong> on GoDaddy / Hostinger to go live!
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {/* GoDaddy index.html download */}
+          <button
+            onClick={() => handleDownloadStandaloneHTML(true)}
+            className="p-4 bg-emerald-50/40 hover:bg-emerald-50 border border-emerald-150 hover:border-emerald-250 transition-all rounded-xl text-left cursor-pointer group animate-fade-in"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div className="p-2 bg-emerald-100 rounded-lg text-emerald-700">
+                <Zap className="w-5 h-5 fill-emerald-100" />
+              </div>
+              <span className="text-[9px] bg-emerald-600 text-white font-bold px-2 py-0.5 rounded-full">RECOMMENDED</span>
+            </div>
+            <h5 className="text-xs font-bold text-gray-800 group-hover:text-emerald-700 transition">GoDaddy index.html (⚡)</h5>
+            <p className="text-[10px] text-gray-400 mt-1 leading-normal">
+              Downloads a single-file index.html. Directly upload inside public_html to update your website instantly.
+            </p>
+          </button>
+
+          {/* GoDaddy ZIP download */}
+          <button
+            onClick={handleDownloadGoDaddyZip}
+            className="p-4 bg-blue-50/40 hover:bg-blue-50 border border-blue-150 hover:border-blue-250 transition-all rounded-xl text-left cursor-pointer group"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div className="p-2 bg-blue-100 rounded-lg text-blue-700">
+                <Download className="w-5 h-5" />
+              </div>
+              <span className="text-[9px] bg-blue-600 text-white font-bold px-2 py-0.5 rounded-full">ZIP BUNDLE</span>
+            </div>
+            <h5 className="text-xs font-bold text-gray-800 group-hover:text-blue-700 transition">GoDaddy cPanel Zip (📦)</h5>
+            <p className="text-[10px] text-gray-400 mt-1 leading-normal">
+              Downloads a ready-to-extract deployment ZIP file inside GoDaddy's File Manager.
+            </p>
+          </button>
+
+          {/* Standalone HTML download */}
+          <button
+            onClick={() => handleDownloadStandaloneHTML(false)}
+            className="p-4 bg-orange-50/40 hover:bg-orange-50 border border-orange-150 hover:border-orange-250 transition-all rounded-xl text-left cursor-pointer group"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div className="p-2 bg-orange-100 rounded-lg text-orange-700">
+                <FileText className="w-5 h-5" />
+              </div>
+              <span className="text-[9px] bg-orange-600 text-white font-bold px-2 py-0.5 rounded-full">OFFLINE APP</span>
+            </div>
+            <h5 className="text-xs font-bold text-gray-800 group-hover:text-orange-700 transition">Standalone Offline HTML</h5>
+            <p className="text-[10px] text-gray-400 mt-1 leading-normal">
+              Downloads an offline copy of the entire application. Runs on any computer/browser without internet!
+            </p>
+          </button>
+        </div>
+      </div>
+
       {/* Advanced Database maintenance */}
       <div className="bg-white rounded-2xl border border-gray-150 p-6 shadow-xs space-y-4">
         <div>
@@ -1012,229 +997,7 @@ export default function SettingsPanel({
         </div>
       </div>
 
-      {/* NEW: VISUAL NOTEPAD BACKUP & CODE CENTER */}
-      <div className="bg-white rounded-2xl border-2 border-[#D4AF37]/30 p-6 shadow-md space-y-6 animate-fade-in">
-        <div>
-          <div className="flex items-center gap-2.5">
-            <span className="p-2 bg-[#D4AF37]/10 rounded-xl text-[#D4AF37] blink">
-              <FileText className="w-5 h-5 text-[#bfa032]" />
-            </span>
-            <div>
-              <h4 className="text-sm font-black text-slate-800 uppercase tracking-tight">
-                Notepad Backup, Export & Code Center 📝
-              </h4>
-              <p className="text-xs text-slate-600 font-semibold mt-0.5">
-                Save your entire hostel's statistics, data, and complete source code files directly into your Windows/macOS Notepad!
-              </p>
-            </div>
-          </div>
-        </div>
 
-        {/* STANDALONE DOUBLE-CLICK RUNNABLE HTML SECTION */}
-        <div className="bg-gradient-to-br from-slate-900 to-slate-850 text-white rounded-2xl p-5 border border-slate-700 space-y-4 shadow-md">
-          <div className="flex flex-wrap items-center justify-between gap-2.5">
-            <div className="space-y-1">
-              <span className="text-[10px] font-black uppercase tracking-widest text-orange-400 bg-orange-400/10 px-2.5 py-0.5 rounded-full border border-orange-500/20">
-                LATEST SOLUTION: NOTEPAD DOUBLE-CLICK RUNNER
-              </span>
-              <h5 className="font-extrabold text-sm sm:text-base text-slate-100 flex items-center gap-2">
-                Offline Standalone HTML Exporter 🚀
-              </h5>
-            </div>
-            <span className="text-[10px] font-bold text-slate-400 bg-slate-800 px-2.5 py-1 rounded">No Compiler Needed!</span>
-          </div>
-
-          <p className="text-xs text-slate-300 leading-normal font-medium">
-            <strong>Why TSX doesn't run in Notepad:</strong> Browser directly <code className="bg-slate-800 px-1 py-0.5 rounded text-orange-300 font-mono">App.tsx</code> ya standard React components runtime support nahi karte, kyunki unme TypeScript type safety aur complex modular bundlers imports hote hain!
-          </p>
-
-          <p className="text-xs text-slate-300 leading-normal font-semibold bg-slate-800/50 p-3.5 rounded-xl border border-slate-700/50">
-            <strong>The Solution:</strong> Humein aapke liye pure application ko dynamic status, fully styled dashboard metrics, lodgers list entries, payment receipt prints, aur browser local persistence storage ke sath <strong>Ek Single self-contained runnable offline .html file</strong> me package kar diya hai. Aap isse double click karke computer ya mobile par bina kisi engine ya compiler ke run kar sakte hain!
-          </p>
-
-          <div className="flex flex-wrap gap-2.5 pt-1">
-            <button
-              onClick={handleDownloadStandaloneHTML}
-              className="py-3 px-5 bg-orange-500 hover:bg-orange-600 active:scale-95 text-white text-xs font-black uppercase rounded-xl flex items-center gap-2 transition cursor-pointer shadow-md shadow-orange-500/20"
-              title="Downloads ready-to-use HTML file directly which runs on any browser"
-            >
-              <Download className="w-4 h-4 text-white" />
-              Download Standalone HTML file 📁
-            </button>
-
-            <button
-              onClick={handleDownloadIndexHtml}
-              className="py-3 px-5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs font-black uppercase rounded-xl flex items-center gap-2 transition cursor-pointer shadow-md shadow-blue-500/20"
-              title="Downloads the standard index.html web configuration file for deployment"
-            >
-              <Download className="w-4 h-4 text-white" />
-              Download index.html File 🌐
-            </button>
-
-            <button
-              onClick={handleCopyStandaloneHTML}
-              className="py-3 px-5 bg-slate-800 hover:bg-slate-750 active:scale-95 text-slate-100 text-xs font-black uppercase rounded-xl border border-slate-700 flex items-center gap-2 transition cursor-pointer"
-              title="Copy entire code so you can paste inside empty notepad of your choice"
-            >
-              <Copy className="w-4 h-4 text-orange-400" />
-              {copiedStandaloneStatus ? 'Copied Standalone Code! 📋' : 'Copy HTML Code for Notepad 📝'}
-            </button>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-          
-          {/* COLUMN 1: CODE FILES COPILER */}
-          <div className="p-5 bg-slate-50 border border-slate-100 rounded-2xl space-y-4">
-            <div>
-              <span className="text-[10px] font-black tracking-widest uppercase text-[#FF6B35] bg-[#FF6B35]/15 px-2.5 py-0.5 rounded-full">
-                Step 1: Save System Code Files
-              </span>
-              <h5 className="text-xs sm:text-sm font-extrabold text-slate-800 mt-2">
-                Download & Copy Source Codes
-              </h5>
-              <p className="text-[10px] sm:text-xs text-slate-500 font-medium mt-1">
-                Select any code file below to view & copy. Paste inside empty Notepad and save with corresponding file name.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              <div>
-                <label className="block text-[11px] font-bold text-slate-500 mb-1.5">Choose Code File to Copy:</label>
-                <select
-                  value={selectedCodeFileName}
-                  onChange={e => setSelectedCodeFileName(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-white border-2 border-slate-200 rounded-xl text-xs font-black text-slate-705 outline-none focus:border-[#D4AF37] cursor-pointer"
-                >
-                  {codeFiles.map(file => (
-                    <option key={file.name} value={file.name}>
-                      {file.name} (File path: {file.path})
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Selected File Card Details */}
-              <div className="p-3.5 bg-white border border-slate-100 rounded-xl space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-black text-slate-800 truncate">{currentSelectedFile.name}</span>
-                  <span className="text-[9px] font-bold px-2 py-0.5 bg-slate-100 text-slate-500 rounded-md">
-                    {currentSelectedFile.content ? `${Math.round(currentSelectedFile.content.length / 102.4) / 10} KB` : 'Empty'}
-                  </span>
-                </div>
-                <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium leading-relaxed">
-                  {currentSelectedFile.desc}
-                </p>
-              </div>
-
-              {/* Copy action trigger */}
-              <button
-                onClick={handleCopyCodeToNotepad}
-                className="w-full py-3 bg-[#FF6B35] hover:bg-[#e55a24] text-white text-xs font-black rounded-xl flex items-center justify-center gap-2 transition active:scale-95 shadow-sm cursor-pointer"
-                title="Click to copy full code source string so you can paste in Notepad"
-              >
-                <Copy className="w-4 h-4 text-white" />
-                {copiedFileStatus === currentSelectedFile.name ? 'Code Copied! Paste in Notepad 📋' : `Copy ${currentSelectedFile.name} Code 📁`}
-              </button>
-            </div>
-          </div>
-
-          {/* COLUMN 2: ACTIVE DATA TO NOTEPAD EXPORTER */}
-          <div className="p-5 bg-slate-50 border border-slate-100 rounded-2xl space-y-4">
-            <div>
-              <span className="text-[10px] font-black tracking-widest uppercase text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full">
-                Step 2: Save Active Hostel Data
-              </span>
-              <h5 className="text-xs sm:text-sm font-extrabold text-slate-800 mt-2">
-                Export Live Database to Notepad
-              </h5>
-              <p className="text-[10px] sm:text-xs text-slate-500 font-medium mt-1">
-                Instantly converts database rows into perfectly structured human plain-text logs for seamless paper backups or Notepad editing.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-2.5">
-              
-              {/* Copy Students register */}
-              <button
-                onClick={() => handleCopyDataToNotepad(generateStudentsText(), 'Students Register')}
-                className="w-full py-3 px-4 bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 font-extrabold text-xs rounded-xl flex items-center justify-between transition active:scals-95 cursor-pointer shadow-xs"
-                title="Copies all registered students, their names, mobile numbers, father contacts, room rents and balances"
-              >
-                <span className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#FF6B35]" />
-                  Students Register Text
-                </span>
-                <span className="text-[10px] text-slate-500 font-bold bg-slate-100 px-2 py-0.5 rounded flex items-center gap-1">
-                  <Copy className="w-3 h-3 text-slate-450" />
-                  Copy Text
-                </span>
-              </button>
-
-              {/* Copy room map occupancy */}
-              <button
-                onClick={() => handleCopyDataToNotepad(generateRoomsMapText(), 'Rooms Occupancy Map')}
-                className="w-full py-3 px-4 bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 font-extrabold text-xs rounded-xl flex items-center justify-between transition active:scals-95 cursor-pointer shadow-xs"
-                title="Copies the entire room mapping database showing bed counts, occupied rooms and vacant beds"
-              >
-                <span className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />
-                  Room Map Occupancy Text
-                </span>
-                <span className="text-[10px] text-slate-500 font-bold bg-slate-100 px-2 py-0.5 rounded flex items-center gap-1">
-                  <Copy className="w-3 h-3 text-slate-450" />
-                  Copy Text
-                </span>
-              </button>
-
-              {/* Copy Payments register ledger */}
-              <button
-                onClick={() => handleCopyDataToNotepad(generatePaymentsText(), 'Payments Ledger')}
-                className="w-full py-3 px-4 bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 font-extrabold text-xs rounded-xl flex items-center justify-between transition active:scals-95 cursor-pointer shadow-xs"
-                title="Copy standard ledger list of all completed payments as plain text to clipboard"
-              >
-                <span className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-blue-500" />
-                  Payments Ledger Records
-                </span>
-                <span className="text-[10px] text-slate-500 font-bold bg-slate-100 px-2 py-0.5 rounded flex items-center gap-1">
-                  <Copy className="w-3 h-3 text-slate-450" />
-                  Copy Text
-                </span>
-              </button>
-
-              {/* Raw JSON database representation */}
-              <button
-                onClick={() => handleCopyDataToNotepad(JSON.stringify({ students, payments, complaints, visitors, settings }, null, 2), 'Database Backup JSON')}
-                className="w-full py-3 px-4 bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 font-extrabold text-xs rounded-xl flex items-center justify-between transition active:scals-95 cursor-pointer shadow-xs font-mono"
-                title="Copy raw database backup string"
-              >
-                <span className="flex items-center gap-2 font-mono">
-                  <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-                  Database Backup (JSON String)
-                </span>
-                <span className="text-[10px] text-slate-500 font-bold bg-slate-100 px-2 py-0.5 rounded flex items-center gap-1">
-                  <Copy className="w-3 h-3 text-slate-450" />
-                  Copy JSON String
-                </span>
-              </button>
-
-            </div>
-          </div>
-
-        </div>
-
-        {/* Informational warning help section on how to download files in AI Studio wrapper */}
-        <div className="p-4 bg-sky-50 border border-sky-100 rounded-2xl flex items-start gap-3.5">
-          <HelpCircle className="w-5 h-5 text-sky-600 flex-shrink-0 mt-0.5 animate-bounce" />
-          <div className="space-y-1">
-            <h6 className="text-[11px] font-black text-sky-950 uppercase">How to back up raw original file folders?</h6>
-            <p className="text-[10px] sm:text-xs text-sky-800 leading-normal font-semibold">
-              If you want to save the entire source code file tree structure of this project: press <strong>Settings & Exports button (⚙️ Gear Icon)</strong> in the top menu of your Google AI Studio Build system, and select <strong>"Download ZIP Archive"</strong> or <strong>"Export to GitHub"</strong>. This downloads all files, configurations, and packages to your system in a single click!
-            </p>
-          </div>
-        </div>
-      </div>
 
     </div>
   );

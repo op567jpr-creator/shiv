@@ -7,10 +7,11 @@ interface HeroProps {
   onScrollTo: (id: string) => void;
   onOpenLogin: () => void;
   onOpenDuesLookup: () => void;
+  onOpenSelfRegistration: () => void;
   settings?: HostelSettings;
 }
 
-export default function Hero({ onScrollTo, onOpenLogin, onOpenDuesLookup, settings }: HeroProps) {
+export default function Hero({ onScrollTo, onOpenLogin, onOpenDuesLookup, onOpenSelfRegistration, settings }: HeroProps) {
   // Extract background banner images list
   const bannerImages = settings?.adBannerUrls && settings.adBannerUrls.length > 0
     ? settings.adBannerUrls

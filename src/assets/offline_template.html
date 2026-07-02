@@ -5,15 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Unity Boys Hostel - Jaipur</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
 :root{
---primary:#D4AF37;--primary-dark:#B89742;--secondary:#1E2022;--accent:#121314;
---white:#fff;--light:#f8f9fa;--gray:#8a8f98;--light-gray:#e9ecef;--dark:#212529;
---success:#10b981;--danger:#ef4444;--warning:#f59e0b;--info:#3b82f6;
---gradient:linear-gradient(135deg,#B89742,#D4AF37);
---gradient-dark:linear-gradient(135deg,#1E2022,#121314);
+--primary:#FF6B35;--primary-dark:#e55a24;--secondary:#1A1A2E;--accent:#0F3460;
+--white:#fff;--light:#f8f9fa;--gray:#6c757d;--light-gray:#e9ecef;--dark:#212529;
+--success:#28a745;--danger:#dc3545;--warning:#ffc107;--info:#17a2b8;
+--gradient:linear-gradient(135deg,#FF6B35,#e55a24);
+--gradient-dark:linear-gradient(135deg,#1A1A2E,#0F3460);
 --shadow:0 10px 40px rgba(0,0,0,.1);--radius:14px;--trans:all .3s ease;
 }
 html{scroll-behavior:smooth}
@@ -32,11 +31,8 @@ ul{list-style:none}
 .logo-text span{font-size:11px;color:var(--primary)}
 .nav-links{display:flex;align-items:center;gap:5px}
 .nav-link{padding:8px 14px;color:rgba(255,255,255,.8);font-size:14px;font-weight:500;border-radius:8px;cursor:pointer;transition:var(--trans)}
-.nav-link:hover,.nav-link.active{color:var(--primary);background:rgba(212,175,55,.1)}
-.btn-admission{padding:10px 20px;background:var(--gradient);color:#1E2022!important;border-radius:10px;font-size:14px;font-weight:700;margin-left:10px;cursor:pointer;border:none;transition:var(--trans)}
-.btn-admission:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(212,175,55,.2)}
-.btn-registration{padding:9px 18px;background:transparent;border:1px solid var(--primary);color:var(--primary)!important;border-radius:10px;font-size:14px;font-weight:700;margin-left:10px;cursor:pointer;transition:var(--trans)}
-.btn-registration:hover{background:var(--primary);color:#1E2022!important}
+.nav-link:hover,.nav-link.active{color:var(--primary);background:rgba(255,107,53,.1)}
+.btn-admission{padding:10px 20px;background:var(--gradient);color:#fff!important;border-radius:10px;font-size:14px;font-weight:600;margin-left:10px;cursor:pointer;border:none}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
 .hamburger span{width:25px;height:2px;background:#fff;border-radius:2px}
 
@@ -313,21 +309,11 @@ section{padding:80px 0}
 .modal-bd{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px)}
 .modal-bd.show{display:flex}
 .modal-box{background:#fff;border-radius:18px;width:100%;max-width:550px;max-height:90vh;overflow-y:auto;animation:slideUp .3s ease}
-.modal-box.large{max-width:850px}
 @keyframes slideUp{from{transform:translateY(50px);opacity:0}to{transform:translateY(0);opacity:1}}
 .modal-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;background:var(--gradient-dark);color:#fff;border-radius:18px 18px 0 0}
 .modal-head h3{font-size:16px}
 .modal-close-btn{background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:8px;cursor:pointer}
 .modal-body{padding:22px}
-
-/* ===== ADMIN MULTISTEP ADD STUDENT ===== */
-.st-stepper { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; padding: 10px 0; border-bottom: 1px solid var(--light-gray); }
-.st-step-dot { width: 30px; height: 30px; border-radius: 50%; background: var(--light-gray); color: var(--dark); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; transition: var(--trans); position: relative; border: 2px solid var(--light-gray); }
-.st-step-dot.active { background: var(--gradient); border-color: var(--primary); color: #fff; }
-.st-step-line { flex: 1; height: 2px; background: var(--light-gray); margin: 0 10px; }
-.st-step-line.active { background: var(--primary); }
-.add-student-sec { display: none; }
-.add-student-sec.active { display: block; }
 
 /* Toast */
 .toast{position:fixed;top:90px;right:20px;background:var(--success);color:#fff;padding:14px 22px;border-radius:10px;font-size:13px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.2);z-index:10000;display:none;animation:slideIn .3s ease}
@@ -360,428 +346,6 @@ section{padding:80px 0}
   .topbar h2 small{display:none}
   .tb-btn span{display:none}
 }
-
-/* ===== REGISTRATION SELF-SERVICE PORTAL CSS ===== */
-.registration-wrap {
-  min-height: 100vh;
-  background: #f3f4f6;
-  padding: 40px 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.registration-wrap.hidden {
-  display: none !important;
-}
-.reg-card {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 800px;
-  overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.06);
-}
-.reg-banner {
-  background: linear-gradient(135deg, #1E2022, #2E3135);
-  color: #fff;
-  padding: 30px;
-  position: relative;
-  border-bottom: 2px solid var(--primary);
-}
-.reg-banner::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 151px;
-  height: 151px;
-  background: rgba(212,175,55,0.06);
-  border-radius: 50%;
-  filter: blur(15px);
-}
-.reg-banner-title {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-.reg-banner-title img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1.5px solid var(--primary);
-  background: #fff;
-  object-fit: contain;
-}
-.reg-banner-text h2 {
-  font-size: 20px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: -0.5px;
-  line-height: 1.2;
-}
-.reg-banner-text p {
-  color: var(--primary);
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 2px;
-}
-.reg-close-btn {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: var(--trans);
-}
-.reg-close-btn:hover {
-  background: rgba(255,255,255,0.15);
-}
-.reg-stepper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 25px;
-}
-.reg-step-dot {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 700;
-  transition: var(--trans);
-}
-.reg-step-dot.active {
-  background: var(--primary);
-  color: #1E2022;
-  box-shadow: 0 0 10px rgba(212,175,55,0.3);
-}
-.reg-step-line {
-  flex: 1;
-  height: 2px;
-  background: rgba(255,255,255,0.1);
-}
-.reg-step-line.active {
-  background: var(--primary);
-}
-.reg-step-desc {
-  font-size: 10px;
-  color: #ccc;
-  margin-top: 10px;
-  font-style: italic;
-}
-.reg-content {
-  padding: 30px;
-}
-.reg-section {
-  display: none;
-}
-.reg-section.active {
-  display: block;
-}
-.reg-section-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 20px;
-}
-.reg-section-title i {
-  color: var(--primary);
-  font-size: 18px;
-}
-.reg-section-title h3 {
-  font-size: 16px;
-  font-weight: 700;
-  color: #1E2022;
-}
-.reg-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-@media (max-width: 600px) {
-  .reg-grid {
-    grid-template-columns: 1fr;
-  }
-}
-.reg-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.reg-field.span-2 {
-  grid-column: span 2;
-}
-@media (max-width: 600px) {
-  .reg-field.span-2 {
-    grid-column: span 1;
-  }
-}
-.reg-field label {
-  font-size: 11px;
-  font-weight: 600;
-  color: #666;
-}
-.reg-field input, .reg-field select, .reg-field textarea {
-  padding: 10px 14px;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 10px;
-  font-size: 13px;
-  outline: none;
-  transition: var(--trans);
-  color: #333;
-}
-.reg-field input:focus, .reg-field select:focus, .reg-field textarea:focus {
-  border-color: var(--primary);
-}
-.reg-checkbox-wrap {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 15px;
-}
-.reg-checkbox-wrap input {
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-}
-.reg-checkbox-wrap label {
-  font-size: 11px;
-  font-weight: 600;
-  color: #555;
-  cursor: pointer;
-}
-.reg-review-table {
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-.reg-review-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 15px;
-  border-bottom: 1px solid #e5e7eb;
-  font-size: 12px;
-}
-.reg-review-row:last-child {
-  border-bottom: none;
-}
-.reg-review-label {
-  color: #666;
-  font-weight: 600;
-}
-.reg-review-value {
-  color: #1E2022;
-  font-weight: 700;
-}
-.reg-notice-box {
-  background: #fef3c7;
-  border: 1px solid #fcd34d;
-  color: #92400e;
-  padding: 15px;
-  border-radius: 12px;
-  display: flex;
-  gap: 12px;
-  font-size: 11px;
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
-.reg-notice-box i {
-  font-size: 16px;
-  margin-top: 2px;
-}
-.reg-contact-card {
-  border: 1px solid #e5e7eb;
-  background: #f9fafb;
-  padding: 15px;
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-.reg-contact-card h5 {
-  font-size: 10px;
-  text-transform: uppercase;
-  color: #888;
-  letter-spacing: 0.5px;
-}
-.reg-contact-card p {
-  font-size: 12px;
-  font-weight: 700;
-  color: #333;
-  margin-top: 2px;
-}
-.reg-contact-badge {
-  background: rgba(212,175,55,0.1);
-  color: var(--primary);
-  font-size: 10px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 20px;
-}
-.reg-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
-}
-.reg-btn {
-  padding: 12px 24px;
-  font-size: 13px;
-  font-weight: 700;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: var(--trans);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border: none;
-}
-.reg-btn-prev {
-  background: #fff;
-  border: 1.5px solid #e2e8f0;
-  color: #555;
-}
-.reg-btn-prev:hover {
-  background: #f8f9fa;
-}
-.reg-btn-next {
-  background: #1E2022;
-  color: #fff;
-  border: none;
-}
-.reg-btn-next:hover {
-  background: #2D3035;
-}
-.reg-btn-submit {
-  background: var(--gradient);
-  color: #1E2022 !important;
-  border: none;
-}
-.reg-btn-submit:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(212,175,55,0.25);
-}
-.reg-success-box {
-  text-align: center;
-  padding: 40px 20px;
-}
-.reg-success-icon {
-  width: 60px;
-  height: 60px;
-  background: rgba(16,185,129,0.1);
-  border: 1px solid rgba(16,185,129,0.2);
-  color: #10b981;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  margin: 0 auto 20px;
-}
-.reg-success-box h3 {
-  font-size: 20px;
-  font-weight: 800;
-  color: #1E2022;
-  margin-bottom: 10px;
-}
-.reg-success-box p {
-  font-size: 12px;
-  color: #666;
-  max-width: 450px;
-  margin: 0 auto 20px;
-  line-height: 1.6;
-}
-.reg-receipt {
-  background: #fff9db;
-  border: 1px dashed #ffe066;
-  padding: 15px;
-  border-radius: 12px;
-  text-align: left;
-  max-width: 350px;
-  margin: 0 auto 20px;
-}
-.reg-receipt h6 {
-  font-size: 10px;
-  text-transform: uppercase;
-  color: #f59e0b;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  margin-bottom: 8px;
-}
-.reg-receipt-row {
-  display: flex;
-  font-size: 11px;
-  margin-bottom: 4px;
-}
-.reg-receipt-row span:first-child {
-  color: #777;
-  width: 100px;
-  font-weight: 600;
-}
-.reg-receipt-row span:last-child {
-  color: #222;
-  font-weight: 700;
-}
-.reg-success-btn {
-  width: 100%;
-  max-width: 350px;
-  padding: 12px;
-  font-size: 13px;
-  font-weight: 700;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  margin: 5px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: var(--trans);
-}
-.reg-success-btn.copy {
-  background: #f3f4f6;
-  color: #374151;
-}
-.reg-success-btn.copy:hover {
-  background: #e5e7eb;
-}
-.reg-success-btn.whatsapp {
-  background: #25D366;
-  color: #fff;
-}
-.reg-success-btn.whatsapp:hover {
-  box-shadow: 0 6px 15px rgba(37,211,102,0.25);
-}
-.reg-success-btn.reset {
-  background: #fffbeb;
-  color: #b45309;
-  border: 1px solid #fde68a;
-  font-size: 11px;
-  padding: 8px;
-  max-width: 300px;
-}
 </style>
 </head>
 <body>
@@ -792,8 +356,8 @@ section{padding:80px 0}
 <header class="header">
 <nav class="navbar">
 <div class="logo">
-<img src="/src/assets/images/unity_hostel_logo_1781847359405.jpg" alt="Unity Hostel Logo" style="width:45px;height:45px;border-radius:50%;border:1.5px solid var(--primary);object-fit:contain;background:#fff;padding:1px;box-shadow:0 10px 40px rgba(0,0,0,.1);" referrerPolicy="no-referrer">
-<div class="logo-text"><h1>Unity Boys Hostel</h1><span>Jaipur, Rajasthan</span></div>
+<div class="logo-icon"><i class="fas fa-building"></i></div>
+<div class="logo-text"><h1 id="brandNameLogo">Unity Boys Hostel</h1><span id="brandLocationLogo">Jaipur, Rajasthan</span></div>
 </div>
 <ul class="nav-links" id="navLinks">
 <li><a class="nav-link active" onclick="scrollTo2('home')">Home</a></li>
@@ -801,7 +365,6 @@ section{padding:80px 0}
 <li><a class="nav-link" onclick="scrollTo2('rooms')">Rooms</a></li>
 <li><a class="nav-link" onclick="scrollTo2('facilities')">Facilities</a></li>
 <li><a class="nav-link" onclick="scrollTo2('contact')">Contact</a></li>
-<li><button class="btn-registration" onclick="openRegistration()"><i class="fas fa-file-alt"></i> Admission Form</button></li>
 <li><button class="btn-admission" onclick="openLogin()"><i class="fas fa-sign-in-alt"></i> Admin Login</button></li>
 </ul>
 <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('active')">
@@ -833,7 +396,7 @@ section{padding:80px 0}
 
 <div class="notice-bar">
 <i class="fas fa-bullhorn"></i>
-<div class="notice-ticker"><span>🏠 Admissions Open for 2024-25 &nbsp;|&nbsp; 📞 Call: +91 98765 43210 &nbsp;|&nbsp; 🎉 Limited Seats Available &nbsp;|&nbsp; ✅ Single, Double & Triple Sharing Available</span></div>
+<div class="notice-ticker"><span id="tickerAnnouncement">🏠 Admissions Open for 2024-25 &nbsp;|&nbsp; 📞 Call: +91 98765 43210 &nbsp;|&nbsp; 🎉 Limited Seats Available &nbsp;|&nbsp; ✅ Single, Double & Triple Sharing Available</span></div>
 </div>
 
 <section class="about" id="about">
@@ -949,10 +512,10 @@ section{padding:80px 0}
 </div>
 <div class="contact-grid">
 <div>
-<div class="contact-card"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div class="contact-details"><h4>Address</h4><p>Unity Boys Hostel<br>Jaipur, Rajasthan - 302001</p></div></div>
-<div class="contact-card"><div class="contact-icon"><i class="fas fa-phone-alt"></i></div><div class="contact-details"><h4>Phone</h4><p>+91 98765 43210</p></div></div>
-<div class="contact-card"><div class="contact-icon"><i class="fab fa-whatsapp"></i></div><div class="contact-details"><h4>WhatsApp</h4><p>+91 98765 43210</p></div></div>
-<div class="contact-card"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div class="contact-details"><h4>Email</h4><p>info@unityboyshotel.com</p></div></div>
+<div class="contact-card"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div class="contact-details"><h4>Address</h4><p id="contactAddress">Unity Boys Hostel<br>Jaipur, Rajasthan - 302001</p></div></div>
+<div class="contact-card"><div class="contact-icon"><i class="fas fa-phone-alt"></i></div><div class="contact-details"><h4>Phone</h4><p id="contactPhone">+91 98765 43210</p></div></div>
+<div class="contact-card"><div class="contact-icon"><i class="fab fa-whatsapp"></i></div><div class="contact-details"><h4>WhatsApp</h4><p id="contactWhatsApp">+91 98765 43210</p></div></div>
+<div class="contact-card"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div class="contact-details"><h4>Email</h4><p id="contactEmail">info@unityboyshotel.com</p></div></div>
 </div>
 <div class="contact-form-box">
 <h3>Send us a Message</h3>
@@ -975,10 +538,7 @@ section{padding:80px 0}
 <div class="container">
 <div class="footer-grid">
 <div class="footer-about">
-<div class="footer-logo">
-<img src="/src/assets/images/unity_hostel_logo_1781847359405.jpg" alt="Unity Hostel Logo" style="width:40px;height:40px;border-radius:50%;border:1px solid var(--primary);object-fit:contain;background:#fff;padding:1px;margin-right:10px;" referrerPolicy="no-referrer">
-<span>Unity Boys Hostel</span>
-</div>
+<div class="footer-logo"><i class="fas fa-building"></i><span id="footerBrandName">Unity Boys Hostel</span></div>
 <p>Premium boys hostel in Jaipur providing comfortable, safe, and affordable accommodation for students.</p>
 <div class="social-links">
 <a><i class="fab fa-facebook"></i></a>
@@ -1010,9 +570,9 @@ section{padding:80px 0}
 <div class="footer-links">
 <h4>Contact Info</h4>
 <ul>
-<li><a><i class="fas fa-map-marker-alt"></i> Jaipur, Rajasthan</a></li>
-<li><a><i class="fas fa-phone"></i> +91 98765 43210</a></li>
-<li><a><i class="fas fa-envelope"></i> info@unityboys.com</a></li>
+<li><a><i class="fas fa-map-marker-alt"></i> <span id="footerAddress">Jaipur, Rajasthan</span></a></li>
+<li><a><i class="fas fa-phone"></i> <span id="footerPhone">+91 98765 43210</span></a></li>
+<li><a><i class="fas fa-envelope"></i> <span id="footerEmail">info@unityboys.com</span></a></li>
 <li><a><i class="fas fa-clock"></i> Mon-Sat: 9AM-8PM</a></li>
 </ul>
 </div>
@@ -1023,320 +583,8 @@ section{padding:80px 0}
 </div>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/919876543210" target="_blank"><i class="fab fa-whatsapp"></i><span>Chat Us</span></a>
+<a class="whatsapp-float" href="https://wa.me/919876543210" target="_blank" id="whatsappFloatLink"><i class="fab fa-whatsapp"></i><span>Chat Us</span></a>
 
-</div>
-
-<!-- ============ REGISTRATION SELF-SERVICE PORTAL ============ -->
-<div id="registrationView" class="registration-wrap hidden">
-  <div class="reg-card">
-    <div class="reg-banner">
-      <button class="reg-close-btn" onclick="closeRegistration()"><i class="fas fa-times"></i> Exit Portal</button>
-      <div class="reg-banner-title">
-        <img src="/src/assets/images/unity_hostel_logo_1781847359405.jpg" alt="Unity Hostel Logo" referrerPolicy="no-referrer">
-        <div class="reg-banner-text">
-          <h2>Unity Boys Hostel</h2>
-          <p>Admission Form Self-Service Portal</p>
-        </div>
-      </div>
-      
-      <!-- Stepper Dots -->
-      <div class="reg-stepper" id="regStepper">
-        <div class="reg-step-dot active" id="dot-1">1</div>
-        <div class="reg-step-line" id="line-1"></div>
-        <div class="reg-step-dot" id="dot-2">2</div>
-        <div class="reg-step-line" id="line-2"></div>
-        <div class="reg-step-dot" id="dot-3">3</div>
-        <div class="reg-step-line" id="line-3"></div>
-        <div class="reg-step-dot" id="dot-4">4</div>
-        <div class="reg-step-line" id="line-4"></div>
-        <div class="reg-step-dot" id="dot-5">5</div>
-      </div>
-      <div class="reg-step-desc" id="regDesc">Step 1 of 5: Lodger Basic Information Details</div>
-    </div>
-    
-    <div class="reg-content">
-      <form id="admissionForm" onsubmit="preventSubmit(event)">
-        
-        <!-- STEP 1: PERSONAL DETAILS -->
-        <div class="reg-section active" id="regSec-1">
-          <div class="reg-section-title">
-            <i class="fas fa-user"></i>
-            <h3>1. STUDENT BASIC DETAILS</h3>
-          </div>
-          <div class="reg-grid">
-            <div class="reg-field">
-              <label>Full Name *</label>
-              <input type="text" id="regName" placeholder="Enter full name" required>
-            </div>
-            <div class="reg-field">
-              <label>Date of Birth (DOB) *</label>
-              <input type="date" id="regDob" required>
-            </div>
-            <div class="reg-field">
-              <label>Gender</label>
-              <select id="regGender">
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="reg-field">
-              <label>Blood Group</label>
-              <input type="text" id="regBlood" placeholder="e.g. O+, B+">
-            </div>
-            <div class="reg-field">
-              <label>Aadhaar National Card Number</label>
-              <input type="text" id="regAadhaar" maxLength="12" placeholder="12-digit UID" oninput="this.value=this.value.replace(/\D/g,'')">
-            </div>
-            <div class="reg-field">
-              <label>Student Mobile Number *</label>
-              <input type="tel" id="regMobile" maxLength="10" placeholder="10 digit personal number" oninput="this.value=this.value.replace(/\D/g,'')" required>
-            </div>
-            <div class="reg-field">
-              <label>WhatsApp Contact Address</label>
-              <input type="tel" id="regWhatsapp" maxLength="10" placeholder="10 digit WhatsApp contact" oninput="this.value=this.value.replace(/\D/g,'')">
-            </div>
-            <div class="reg-field">
-              <label>Personal Email ID Address</label>
-              <input type="email" id="regEmail" placeholder="e.g. resident@gmail.com">
-            </div>
-            <div class="reg-field">
-              <label>Nationality</label>
-              <input type="text" id="regNationality" value="Indian">
-            </div>
-          </div>
-        </div>
-        
-        <!-- STEP 2: ADDRESS FILES -->
-        <div class="reg-section" id="regSec-2">
-          <div class="reg-section-title">
-            <i class="fas fa-map-marker-alt"></i>
-            <h3>2. ADDRESS DETAILS</h3>
-          </div>
-          <h4 style="font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; color: #1E2022;">A. Permanent Address</h4>
-          <div class="reg-grid">
-            <div class="reg-field span-2">
-              <label>House No / Apartment / Block / Street *</label>
-              <input type="text" id="regHouse" placeholder="Flat, House no., Building name, Street">
-            </div>
-            <div class="reg-field">
-              <label>Area / Colony / Landmarking Landmark</label>
-              <input type="text" id="regArea" placeholder="Colony, Sector, Locality">
-            </div>
-            <div class="reg-field">
-              <label>City / Village *</label>
-              <input type="text" id="regCity" placeholder="Enter city">
-            </div>
-            <div class="reg-field">
-              <label>State Address State</label>
-              <input type="text" id="regState" value="Rajasthan">
-            </div>
-            <div class="reg-field">
-              <label>PIN Code ZIP Postal *</label>
-              <input type="text" id="regPin" maxLength="6" placeholder="6 digit PIN code" oninput="this.value=this.value.replace(/\D/g,'')">
-            </div>
-          </div>
-          
-          <div class="reg-checkbox-wrap">
-            <input type="checkbox" id="regSameAddress" checked onchange="toggleCurrentAddress()">
-            <label for="regSameAddress">Current Address is same as Permanent Address</label>
-          </div>
-          
-          <div class="reg-field style-area" id="regCurrentWrap" style="display:none; margin-top: 15px;">
-            <label>Current Address Sheets *</label>
-            <textarea id="regCurrentAddress" rows="3" placeholder="Enter details of current staying location..." style="resize:none; width: 100%; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; font-size: 13px;"></textarea>
-          </div>
-        </div>
-        
-        <!-- STEP 3: PARENTS DETAILS -->
-        <div class="reg-section" id="regSec-3">
-          <div class="reg-section-title">
-            <i class="fas fa-shield-alt"></i>
-            <h3>3. PARENT / GUARDIAN DETAILS</h3>
-          </div>
-          <div class="reg-grid">
-            <div class="reg-field">
-              <label>Father Full Name *</label>
-              <input type="text" id="regFather" placeholder="Father Name">
-            </div>
-            <div class="reg-field">
-              <label>Father Mobile Number *</label>
-              <input type="tel" id="regFatherMob" maxLength="10" placeholder="10-digit number" oninput="this.value=this.value.replace(/\D/g,'')">
-            </div>
-            <div class="reg-field">
-              <label>Father Occupation</label>
-              <input type="text" id="regFatherOcc" placeholder="Business, Service, etc.">
-            </div>
-            <div class="reg-field">
-              <label>Mother Full Name</label>
-              <input type="text" id="regMother" placeholder="Mother Name">
-            </div>
-            <div class="reg-field">
-              <label>Mother Mobile Number</label>
-              <input type="tel" id="regMotherMob" maxLength="10" placeholder="Mother contact" oninput="this.value=this.value.replace(/\D/g,'')">
-            </div>
-          </div>
-          
-          <h4 style="font-size: 11px; font-weight: 800; text-transform: uppercase; margin-top: 20px; margin-bottom: 12px; color: #1E2022; border-top: 1px dashed #eee; padding-top: 15px;">B. SOS / Emergency Primary Contact</h4>
-          <div class="reg-grid">
-            <div class="reg-field">
-              <label>Emergency Contact Full Name</label>
-              <input type="text" id="regEmergencyName" placeholder="Emergency Contact Name">
-            </div>
-            <div class="reg-field">
-              <label>Relationship to Student</label>
-              <input type="text" id="regEmergencyRelation" placeholder="e.g. Uncle, Brother, Father">
-            </div>
-            <div class="reg-field span-2">
-              <label>Emergency SOS Mobile Number *</label>
-              <input type="tel" id="regEmergencyMob" maxLength="10" placeholder="10-digit number for emergency alerts" oninput="this.value=this.value.replace(/\D/g,'')">
-            </div>
-          </div>
-        </div>
-        
-        <!-- STEP 4: EDUCATION DETAILS -->
-        <div class="reg-section" id="regSec-4">
-          <div class="reg-section-title">
-            <i class="fas fa-graduation-cap"></i>
-            <h3>4. EDUCATION & BOOKING DETAILS</h3>
-          </div>
-          <div class="reg-grid">
-            <div class="reg-field span-2">
-              <label>College / Institution Name *</label>
-              <input type="text" id="regCollege" placeholder="Enter College or Coaching Institute">
-            </div>
-            <div class="reg-field">
-              <label>Course Name *</label>
-              <input type="text" id="regCourse" placeholder="e.g. B.Tech CSE, NEET Aspirant">
-            </div>
-            <div class="reg-field">
-              <label>Semester / Year</label>
-              <input type="text" id="regSem" placeholder="e.g. 1st Year, Semester III">
-            </div>
-            <div class="reg-field">
-              <label>College ID Number</label>
-              <input type="text" id="regCollegeId" placeholder="College registration UID">
-            </div>
-            <div class="reg-field">
-              <label>College Address</label>
-              <input type="text" id="regCollegeAddr" placeholder="Location / area">
-            </div>
-          </div>
-          
-          <h4 style="font-size: 11px; font-weight: 800; text-transform: uppercase; margin-top: 20px; margin-bottom: 12px; color: #1E2022; border-top: 1px dashed #eee; padding-top: 15px;">B. Hostel Bed Booking Preferences</h4>
-          <div class="reg-grid">
-            <div class="reg-field">
-              <label>Sharing Accommodation Type</label>
-              <select id="regSharing" onchange="updateEstimatedFee()">
-                <option value="Double">Double Sharing (₹7,500/mo)</option>
-                <option value="Triple">Triple Sharing (₹7,000/mo)</option>
-              </select>
-            </div>
-            <div class="reg-field">
-              <label>AC / Non AC Cooling Preference</label>
-              <select id="regAcType">
-                <option value="Non AC">Non-AC Air Cooler Ventilated</option>
-                <option value="AC">Premium Air Conditioned (AC)</option>
-              </select>
-            </div>
-            <div class="reg-field span-2">
-              <label>Washroom Type</label>
-              <select id="regWashroom">
-                <option>Common Washroom Complex</option>
-                <option>Attached Suite Washroom</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        
-        <!-- STEP 5: REVIEW & SUBMIT -->
-        <div class="reg-section" id="regSec-5">
-          <div class="reg-section-title" style="justify-content: center; border-bottom: none; margin-bottom: 10px;">
-            <i class="fas fa-file-alt" style="font-size: 28px;"></i>
-          </div>
-          <h3 style="text-align: center; font-size: 18px; font-weight: 800; margin-bottom: 5px; color:#1E2022;">5. REVIEW & SUBMIT APPLICATION</h3>
-          <p style="text-align: center; font-size: 11px; color: #888; margin-bottom: 20px;">Please double check your credentials. Submissions are restricted to one-entry per student.</p>
-          
-          <div class="reg-review-table">
-            <div class="reg-review-row">
-              <span class="reg-review-label">Student Name:</span>
-              <span class="reg-review-value" id="revName">-</span>
-            </div>
-            <div class="reg-review-row">
-              <span class="reg-review-label">Academic / College:</span>
-              <span class="reg-review-value" id="revCollege">-</span>
-            </div>
-            <div class="reg-review-row">
-              <span class="reg-review-label">Emergency Phone:</span>
-              <span class="reg-review-value" id="revEmergencyMob">-</span>
-            </div>
-            <div class="reg-review-row">
-              <span class="reg-review-label">Selected Sharing Bed:</span>
-              <span class="reg-review-value" id="revSharing">-</span>
-            </div>
-            <div class="reg-review-row">
-              <span class="reg-review-label">Estimated Monthly Base Rent:</span>
-              <span class="reg-review-value" id="revFee">-</span>
-            </div>
-          </div>
-          
-          <div class="reg-notice-box">
-            <i class="fas fa-exclamation-triangle"></i>
-            <p><strong>Notice of Single Submission:</strong> By submitting, you confirm all data is authentic. You will not be able to change or fill this application again from this browser device. Write down details or copy them post successfully submitting.</p>
-          </div>
-          
-          <div class="reg-contact-card">
-            <div>
-              <h5>Warden Admission Contacts</h5>
-              <p>+91 82096 96820, +91 95215 12224</p>
-            </div>
-            <div class="reg-contact-badge">Sanganer Campus</div>
-          </div>
-        </div>
-        
-        <!-- STEP 6: SUCCESS PANEL -->
-        <div class="reg-section" id="regSec-6">
-          <div class="reg-success-box">
-            <div class="reg-success-icon"><i class="fas fa-check"></i></div>
-            <h3 id="successHeading">Admission Form Registered!</h3>
-            <p id="successSubtext">We've recorded your entry. Your bed will be allocated upon arrival. Please copy your details or message the warden to lock your seat.</p>
-            
-            <div class="reg-receipt">
-              <h6>Receipt Token</h6>
-              <div class="reg-receipt-row">
-                <span>👤 Lodger:</span>
-                <span id="recName">-</span>
-              </div>
-              <div class="reg-receipt-row">
-                <span>📞 Phone:</span>
-                <span id="recPhone">-</span>
-              </div>
-              <div class="reg-receipt-row">
-                <span>🗓️ Registered:</span>
-                <span id="recDate">-</span>
-              </div>
-              <div class="reg-receipt-row">
-                <span>⚡ Status:</span>
-                <span style="color: var(--primary); font-weight: 800;">Pending Warden Check</span>
-              </div>
-            </div>
-            
-            <button type="button" class="reg-success-btn copy" onclick="copyAdmissionDetails()"><i class="fas fa-copy"></i> Copy Admission Details</button>
-            <button type="button" class="reg-success-btn whatsapp" onclick="sendAdmissionToWhatsApp()"><i class="fab fa-whatsapp"></i> Send Details to Warden</button>
-            <button type="button" class="reg-success-btn reset" onclick="resetAdmissionForm()"><i class="fas fa-sync-alt"></i> Demo Mode: Reset & Re-fill Admission Form</button>
-          </div>
-        </div>
-        
-        <!-- NAVIGATION ACTIONS -->
-        <div class="reg-actions" id="regActions">
-          <button type="button" class="reg-btn reg-btn-prev" id="regPrevBtn" onclick="prevRegStep()">Previous Step</button>
-          <button type="button" class="reg-btn reg-btn-next" id="regNextBtn" onclick="nextRegStep()">Next Section</button>
-        </div>
-        
-      </form>
-    </div>
-  </div>
 </div>
 
 <!-- ============ LOGIN PAGE ============ -->
@@ -1383,9 +631,7 @@ section{padding:80px 0}
 <div id="dashboardView" class="dashboard-wrap">
 <aside class="sidebar" id="sidebar">
 <div class="sb-header">
-<div class="sb-logo">
-<img src="/src/assets/images/unity_hostel_logo_1781847359405.jpg" alt="Unity Hostel Logo" style="width:100%;height:100%;border-radius:50%;object-fit:contain;background:#fff;" referrerPolicy="no-referrer">
-</div>
+<div class="sb-logo"><i class="fas fa-building"></i></div>
 <div class="sb-text"><h3>Unity Hostel</h3><span>Admin Panel</span></div>
 </div>
 <div class="sb-user">
@@ -1462,7 +708,6 @@ section{padding:80px 0}
 <button class="qa-btn" onclick="navigate('rooms')"><div class="qa-icon"><i class="fas fa-door-open"></i></div>Room Map</button>
 <button class="qa-btn" onclick="navigate('reports')"><div class="qa-icon"><i class="fas fa-chart-bar"></i></div>Reports</button>
 <button class="qa-btn" onclick="navigate('settings')"><div class="qa-icon"><i class="fas fa-cog"></i></div>Settings</button>
-<button class="qa-btn" onclick="shareFormLink()" style="border: 1.5px dashed var(--primary); background: rgba(212,175,55,0.04); color: var(--primary);"><div class="qa-icon" style="background:var(--primary); color:#1E2022;"><i class="fas fa-link"></i></div>Share Form</button>
 </div>
 
 <div class="dashboard-grid">
@@ -1481,10 +726,7 @@ section{padding:80px 0}
 <div class="dash-page" id="page-students">
 <div class="page-head">
 <h3>Student Management</h3>
-<div style="display:flex; gap:10px;">
-  <button class="add-btn" onclick="shareFormLink()" style="background:transparent; border:1.5px solid var(--primary); color:var(--primary); font-weight:800;"><i class="fas fa-link"></i> Share Form</button>
-  <button class="add-btn" onclick="openAddStudent()"><i class="fas fa-plus"></i> Add Student</button>
-</div>
+<button class="add-btn" onclick="openAddStudent()"><i class="fas fa-plus"></i> Add Student</button>
 </div>
 <div class="filter-bar">
 <div class="search-box"><i class="fas fa-search"></i><input type="text" placeholder="Search students..." id="studentSearch" oninput="renderStudents()"></div>
@@ -1493,7 +735,7 @@ section{padding:80px 0}
 </div>
 <div class="data-table-container">
 <table class="data-table">
-<thead><tr><th>#</th><th>Student</th><th>Room</th><th>Sharing</th><th>Contact & City</th><th>Fee</th><th>Status</th><th>Actions</th></tr></thead>
+<thead><tr><th>#</th><th>Student</th><th>Room</th><th>Sharing</th><th>Mobile</th><th>Fee</th><th>Status</th><th>Actions</th></tr></thead>
 <tbody id="studentsTable"></tbody>
 </table>
 </div>
@@ -1516,41 +758,9 @@ section{padding:80px 0}
 <!-- DUE PAGE -->
 <div class="dash-page" id="page-due">
 <div class="page-head"><h3>Due Payments</h3></div>
-
-<!-- Sub Tabs -->
-<div class="due-tabs-container" style="display: flex; gap: 10px; border-bottom: 2px solid #e2e8f0; margin-bottom: 20px; padding-bottom: 0px;">
-  <button id="tab-due-overdue" class="due-tab active" onclick="setDueSubTab('overdue')" style="background:none; border:none; padding: 12px 18px; font-weight:800; cursor:pointer; font-size:13px; color: var(--primary); border-bottom: 3px solid var(--primary); margin-bottom: -2px; font-family: inherit; transition: all 0.2s;">
-    Overdue Balances
-  </button>
-  <button id="tab-due-upcoming" class="due-tab" onclick="setDueSubTab('upcoming')" style="background:none; border:none; padding: 12px 18px; font-weight:800; cursor:pointer; font-size:13px; color: var(--gray); border-bottom: 3px solid transparent; margin-bottom: -2px; font-family: inherit; transition: all 0.2s;">
-    Upcoming Installments Finder
-  </button>
-</div>
-
-<!-- Controls / Search / Month filter -->
-<div id="due-filters-wrapper" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; margin-bottom:20px; background: #fff; padding: 15px; border-radius:12px; border: 1px solid #edf2f7;">
-  <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; flex: 1;">
-    <div class="search-box" style="margin:0; flex: 1; max-w: 350px;">
-      <i class="fas fa-search"></i>
-      <input type="text" id="dueSearchInput" placeholder="Search student or room..." oninput="renderDue()" style="width: 100%;">
-    </div>
-    <select id="dueMonthSelect" onchange="renderDue()" class="filter-select" style="display:none; height: 38px; padding: 0 12px; border-radius: 8px; border: 1.5px solid #e2e8f0; font-size: 13px; font-weight: 700; color: #4a5568; outline: none; background: #f7fafc; cursor: pointer;"></select>
-  </div>
-  <div style="display:flex; gap:8px;">
-    <button id="btn-due-export" onclick="exportDueExcel()" style="background: #107c41; color: #ffffff; border: none; display: flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 10px; font-size: 11.5px; font-weight: 800; cursor: pointer; transition: all 0.2s; font-family: inherit; box-shadow: 0 2px 4px rgba(16,124,65,0.2);">
-      <i class="fas fa-file-excel"></i> Download Excel Report 📊
-    </button>
-    <button id="btn-due-pdf" onclick="exportDuePDF()" style="background: #e53e3e; color: #ffffff; border: none; display: flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 10px; font-size: 11.5px; font-weight: 800; cursor: pointer; transition: all 0.2s; font-family: inherit; box-shadow: 0 2px 4px rgba(229,62,62,0.2);">
-      <i class="fas fa-file-pdf"></i> Print PDF Report 📄
-    </button>
-  </div>
-</div>
-
 <div class="data-table-container">
 <table class="data-table">
-<thead id="dueTableHeader">
-  <tr><th>#</th><th>Student</th><th>Room</th><th>Due Amount</th><th>Mobile</th><th>Action</th></tr>
-</thead>
+<thead><tr><th>#</th><th>Student</th><th>Room</th><th>Due Amount</th><th>Mobile</th><th>Action</th></tr></thead>
 <tbody id="dueTable"></tbody>
 </table>
 </div>
@@ -1614,37 +824,22 @@ section{padding:80px 0}
 <div style="background:#fff;padding:30px;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,.05)">
 <div class="form-row">
 <div class="form-group"><label>Hostel Name</label><input type="text" value="Unity Boys Hostel" id="setName"></div>
-<div class="form-group"><label>Phone</label><input type="tel" value="8209696820, 9521512224" id="setPhone"></div>
+<div class="form-group"><label>Phone</label><input type="tel" value="+91 98765 43210" id="setPhone"></div>
 </div>
-<div class="form-group"><label>Address</label><textarea rows="2" id="setAddress">Near JECRC College, India Gate, Sanganer, Jaipur, Rajasthan - 302033</textarea></div>
+<div class="form-group"><label>Address</label><textarea rows="2" id="setAddress">Jaipur, Rajasthan - 302001</textarea></div>
 <div class="form-row">
-<div class="form-group"><label>WhatsApp</label><input type="tel" value="8209696820" id="setWA"></div>
-<div class="form-group"><label>Email</label><input type="email" value="unityhosteljpr@gmail.com" id="setEmail"></div>
+<div class="form-group"><label>WhatsApp</label><input type="tel" value="+91 98765 43210" id="setWA"></div>
+<div class="form-group"><label>Email</label><input type="email" value="info@unity.com" id="setEmail"></div>
 </div>
 <div class="form-row">
-<div class="form-group"><label>UPI ID</label><input type="text" value="gpay-12189467181@okbizaxis" id="setUPI"></div>
+<div class="form-group"><label>UPI ID</label><input type="text" value="unity@paytm" id="setUPI"></div>
 <div class="form-group"><label>Late Fee/Day (₹)</label><input type="number" value="50" id="setLate"></div>
 </div>
 <button class="add-btn" onclick="saveSettings()" style="margin-top:10px"><i class="fas fa-save"></i> Save Settings</button>
 <hr style="margin:25px 0;border:none;border-top:1px solid var(--light-gray)">
-<h4 style="margin-bottom:15px;color:var(--secondary)"><i class="fas fa-share-alt" style="color:var(--primary)"></i> Share Admission Form</h4>
-<p style="font-size:11.5px;color:var(--gray);margin-bottom:12px">Send the student-facing admission form link to candidates to register their entries directly. They will be logged into your database once checked.</p>
-<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;">
-  <button class="add-btn" onclick="shareFormLink()" style="background:rgba(212,175,55,0.1);color:var(--primary);border:1px solid var(--primary);font-weight:700;"><i class="fas fa-link"></i> Copy Admission Form Link 📋</button>
-</div>
-
-<hr style="margin:25px 0;border:none;border-top:1px solid var(--light-gray)">
-<h4 style="margin-bottom:15px;color:var(--secondary)"><i class="fas fa-file-export" style="color:var(--success)"></i> Standalone HTML Offline Exporter 🚀</h4>
-<p style="font-size:11.5px;color:var(--gray);margin-bottom:12px">Generate and export an updated version of this offline app integrated with your latest local student database, transaction ledger, and complaint logs. This functions as a dynamic local backup that runs double-click on any browser.</p>
-<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;">
-  <button class="add-btn" onclick="downloadStandaloneHTML()" style="background:var(--gradient);color:#1E2022;font-weight:700;"><i class="fas fa-file-download"></i> Download Updated HTML App 📁</button>
-  <button class="add-btn" onclick="copyStandaloneHTMLCode()" style="background:#2d3748;color:var(--white);"><i class="fas fa-copy"></i> Copy HTML Code for Notepad 📝</button>
-</div>
-
-<hr style="margin:25px 0;border:none;border-top:1px solid var(--light-gray)">
-<h4 style="margin-bottom:15px;color:var(--secondary)">Data Management Backup & Dev Tools</h4>
+<h4 style="margin-bottom:15px;color:var(--secondary)">Data Management</h4>
 <div style="display:flex;gap:10px;flex-wrap:wrap">
-<button class="add-btn" onclick="exportBackup()" style="background:var(--info)"><i class="fas fa-download"></i> Backup JSON Register</button>
+<button class="add-btn" onclick="exportBackup()" style="background:var(--info)"><i class="fas fa-download"></i> Backup All Data</button>
 <button class="add-btn" onclick="clearAllData()" style="background:var(--danger)"><i class="fas fa-trash"></i> Clear All Data</button>
 </div>
 </div>
@@ -1656,201 +851,29 @@ section{padding:80px 0}
 
 <!-- ============ MODALS ============ -->
 <div class="modal-bd" id="modalAddStudent">
-<div class="modal-box large">
+<div class="modal-box">
 <div class="modal-head"><h3><i class="fas fa-user-plus"></i> Add New Student</h3><button class="modal-close-btn" onclick="closeModal('modalAddStudent')"><i class="fas fa-times"></i></button></div>
-<div class="modal-body" style="padding:25px 30px;">
-  <!-- Stepper -->
-  <div class="st-stepper">
-    <div class="st-step-dot active" id="stDot-1">1</div>
-    <div class="st-step-line" id="stLine-1"></div>
-    <div class="st-step-dot" id="stDot-2">2</div>
-    <div class="st-step-line" id="stLine-2"></div>
-    <div class="st-step-dot" id="stDot-3">3</div>
-    <div class="st-step-line" id="stLine-3"></div>
-    <div class="st-step-dot" id="stDot-4">4</div>
-  </div>
-
-  <h4 id="stStepTitle" style="font-size:12px; font-weight:800; text-transform:uppercase; margin-bottom:20px; color:var(--primary); border-left:3px solid var(--primary); padding-left:10px;">Step 1 of 4: Student Basic Information</h4>
-
-  <form id="addStudentForm" onsubmit="saveStudent(event)">
-    <!-- STEP 1: BASIC INFORMATION -->
-    <div class="add-student-sec active" id="stSec-1">
-      <div class="form-row">
-        <div class="form-group"><label>Full Name *</label><input type="text" id="stName" placeholder="Enter Full Name" required></div>
-        <div class="form-group"><label>Date of Birth</label><input type="date" id="stDob"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Gender</label>
-          <select id="stGender">
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Blood Group</label><input type="text" id="stBlood" placeholder="e.g. O+, B+"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Aadhaar Number (UID)</label><input type="text" id="stAadhaar" maxLength="12" placeholder="12 digit number" oninput="this.value=this.value.replace(/\D/g,'')"></div>
-        <div class="form-group"><label>Primary Mobile *</label><input type="tel" id="stMobile" maxLength="10" placeholder="10 digit number" oninput="this.value=this.value.replace(/\D/g,'')" required></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>WhatsApp Number</label><input type="tel" id="stWhatsapp" maxLength="10" placeholder="WhatsApp contact" oninput="this.value=this.value.replace(/\D/g,'')"></div>
-        <div class="form-group"><label>Email address</label><input type="email" id="stEmail" placeholder="e.g. name@domain.com"></div>
-      </div>
-      <div class="form-group"><label>Nationality</label><input type="text" id="stNationality" value="Indian"></div>
-    </div>
-
-    <!-- STEP 2: PARENTAL & ADDRESS DETAILS -->
-    <div class="add-student-sec" id="stSec-2">
-      <div class="form-row">
-        <div class="form-group"><label>Father's Name *</label><input type="text" id="stFather" placeholder="Father name" required></div>
-        <div class="form-group"><label>Father's Mobile *</label><input type="tel" id="stFatherMob" maxLength="10" placeholder="Father mobile number" oninput="this.value=this.value.replace(/\D/g,'')" required></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Father's Occupation</label><input type="text" id="stFatherOcc" placeholder="e.g. Business/Service"></div>
-        <div class="form-group"><label>Mother's Name</label><input type="text" id="stMother" placeholder="Mother name"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Mother's Mobile</label><input type="tel" id="stMotherMob" maxLength="10" placeholder="Mother mobile" oninput="this.value=this.value.replace(/\D/g,'')"></div>
-        <div class="form-group"><label>Emergency Contact Person</label><input type="text" id="stEmergencyName" placeholder="Local guardian or relative"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Emergency Relation</label><input type="text" id="stEmergencyRelation" placeholder="e.g. Brother, Uncle, Mother"></div>
-        <div class="form-group"><label>Emergency Mobile *</label><input type="tel" id="stEmergencyMob" maxLength="10" placeholder="Emergency mobile number" oninput="this.value=this.value.replace(/\D/g,'')" required></div>
-      </div>
-      <hr style="margin:15px 0; border:none; border-top:1px dashed #eee">
-      <h5 style="margin-bottom:12px; color:var(--secondary)">Permanent Address Section</h5>
-      <div class="form-row">
-        <div class="form-group"><label>House / Street No *</label><input type="text" id="stHouse" placeholder="House/Flat No., Street" required></div>
-        <div class="form-group"><label>Colony / Area</label><input type="text" id="stArea" placeholder="Colony, Area, Milestone"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>City *</label><input type="text" id="stCity" placeholder="City" required></div>
-        <div class="form-group"><label>State *</label><input type="text" id="stState" value="Rajasthan" required></div>
-      </div>
-      <div class="form-group"><label>PIN Code *</label><input type="text" id="stPin" maxLength="6" placeholder="6-digit PIN code" oninput="this.value=this.value.replace(/\D/g,'')" required></div>
-      
-      <div class="form-group" style="display:flex; align-items:center; gap:8px; margin-top: 15px;">
-        <input type="checkbox" id="stSameAddress" checked onchange="toggleAddStudentCurrentAddress()" style="width:16px;height:16px;cursor:pointer">
-        <label for="stSameAddress" style="font-weight:600; cursor:pointer">Current Address is same as Permanent Address</label>
-      </div>
-
-      <div class="form-group" id="stCurrentAddressWrap" style="display:none; margin-top: 15px;">
-        <label>Current Address Details *</label>
-        <textarea id="stCurrentAddress" rows="2" placeholder="Where is student staying currently..." style="width:100%; border:1.5px solid #e2e8f0; border-radius:10px; padding:10px; font-size:13px;"></textarea>
-      </div>
-    </div>
-
-    <!-- STEP 3: ACADEMIC & ROOM ALLOCATION -->
-    <div class="add-student-sec" id="stSec-3">
-      <div class="form-row">
-        <div class="form-group"><label>Institution / College Name</label><input type="text" id="stCollege" placeholder="College or Coaching"></div>
-        <div class="form-group"><label>Course / Stream</label><input type="text" id="stCourse" placeholder="e.g. B.Tech / IIT / NEET"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Semester / Year</label><input type="text" id="stSem" placeholder="e.g. Sem 3 / Year I"></div>
-        <div class="form-group"><label>College Roll No / ID Card</label><input type="text" id="stCollegeId" placeholder="College ID Number"></div>
-      </div>
-      <div class="form-group"><label>College Location Address</label><input type="text" id="stCollegeAddr" placeholder="College physical description"></div>
-      
-      <hr style="margin:15px 0; border:none; border-top:1px dashed #eee">
-      <h5 style="margin-bottom:12px; color:var(--secondary)">Hostel Allocation Details</h5>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Hostel Floor</label>
-          <select id="stFloor">
-            <option>Ground Floor</option>
-            <option>First Floor</option>
-            <option>Second Floor</option>
-            <option>Third Floor</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Room Number *</label><input type="text" id="stRoom" placeholder="e.g. 101" required></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Bed Designation (A/B/C)</label><input type="text" id="stBedNumber" placeholder="Bed Designation e.g. A"></div>
-        <div class="form-group">
-          <label>Sharing Category *</label>
-          <select id="stSharing" required onchange="updateAddStudentEstimatedFee()">
-            <option value="Double">Double Sharing</option>
-            <option value="Triple">Triple Sharing</option>
-            <option value="Single">Single Room Luxury</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>AC Cooling Preference</label>
-          <select id="stAcType">
-            <option value="Non AC">Non-AC Air Cooler</option>
-            <option value="AC">Premium Air Conditioned (AC)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Bathroom Washroom Type</label>
-          <select id="stWashroom">
-            <option>Common Washroom Complex</option>
-            <option>Attached Suite Washroom</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 4: STAY TIMEPLAN & BILLING PANEL -->
-    <div class="add-student-sec" id="stSec-4">
-      <div class="form-row">
-        <div class="form-group"><label>Stay Start Date *</label><input type="date" id="stStartDate" required></div>
-        <div class="form-group"><label>Stay End Date / Term</label><input type="date" id="stEndDate"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Notice Period Required</label><input type="text" id="stNoticePeriod" value="30 Days"></div>
-        <div class="form-group"><label>Lock-In Period</label><input type="text" id="stLockIn" value="None"></div>
-      </div>
-      <hr style="margin:15px 0; border:none; border-top:1px dashed #eee">
-      <h5 style="margin-bottom:12px; color:var(--secondary)">Billing & Core Rent Parameters</h5>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Agreement / Fee Plan</label>
-          <select id="stFeePlan">
-            <option>1 Month</option>
-            <option>2 Months</option>
-            <option>3 Months</option>
-            <option>6 Months</option>
-            <option>Academic Session</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Monthly Rent Fee (₹) *</label><input type="number" id="stFee" value="7500" required></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Allowed Discount (₹)</label><input type="number" id="stDiscount" value="0"></div>
-        <div class="form-group"><label>Security Deposit Keep (₹)</label><input type="number" id="stSecurity" value="2000"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Initial Electricity Units Charge (₹)</label><input type="number" id="stElectricity" value="0"></div>
-        <div class="form-group"><label>Other Addon / Mess Charges (₹)</label><input type="number" id="stOtherCharges" value="0"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Payment Collection Mode</label>
-          <select id="stPayMode">
-            <option>UPI</option>
-            <option>Cash</option>
-            <option>Bank Transfer</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Transaction ID / Cash Receipt</label><input type="text" id="stTxnId" placeholder="Transaction invoice No"></div>
-      </div>
-    </div>
-
-    <!-- Stepper Buttons -->
-    <div style="display:flex; justify-content:space-between; margin-top:25px; padding-top:15px; border-top:1px solid var(--light-gray);">
-      <button type="button" class="add-btn" id="addStudentPrevBtn" onclick="prevAddStudentStep()" style="background:#8a8f98"><i class="fas fa-chevron-left"></i> Previous</button>
-      <div style="flex:1"></div>
-      <button type="button" class="add-btn" id="addStudentNextBtn" onclick="nextAddStudentStep()">Next Section <i class="fas fa-chevron-right"></i></button>
-      <button type="submit" class="add-btn" id="addStudentSubmitBtn" style="background:var(--success); display:none;"><i class="fas fa-save"></i> Save & Allocate Bed</button>
-    </div>
-  </form>
+<div class="modal-body">
+<form onsubmit="saveStudent(event)">
+<div class="form-row">
+<div class="form-group"><label>Full Name *</label><input type="text" id="stName" required></div>
+<div class="form-group"><label>Mobile *</label><input type="tel" id="stMobile" required></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>Father Name</label><input type="text" id="stFather"></div>
+<div class="form-group"><label>Father Mobile</label><input type="tel" id="stFatherMob"></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>Room *</label><input type="text" id="stRoom" placeholder="e.g. 101" required></div>
+<div class="form-group"><label>Sharing *</label><select id="stSharing" required><option value="">Select</option><option>Single</option><option>Double</option><option>Triple</option></select></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>Monthly Fee (₹) *</label><input type="number" id="stFee" required></div>
+<div class="form-group"><label>Status</label><select id="stStatus"><option>Active</option><option>Notice</option></select></div>
+</div>
+<div class="form-group"><label>Address</label><textarea rows="2" id="stAddress"></textarea></div>
+<button type="submit" class="login-btn"><i class="fas fa-save"></i> Save Student</button>
+</form>
 </div>
 </div>
 </div>
@@ -1930,323 +953,98 @@ let sourceSettings = ##_SETTINGS_JSON_##;
 
 if (fileTimestamp > localTimestamp) {
   // Freshly downloaded file has newer real-time data! Sync to localStorage.
-  localStorage.setItem('ubh_students', JSON.stringify(sourceStudents));
-  localStorage.setItem('ubh_payments', JSON.stringify(sourcePayments));
-  localStorage.setItem('ubh_complaints', JSON.stringify(sourceComplaints));
-  localStorage.setItem('ubh_visitors', JSON.stringify(sourceVisitors));
-  localStorage.setItem('ubh_settings', JSON.stringify(sourceSettings));
+  localStorage.setItem('students', JSON.stringify(sourceStudents));
+  localStorage.setItem('payments', JSON.stringify(sourcePayments));
+  localStorage.setItem('complaints', JSON.stringify(sourceComplaints));
+  localStorage.setItem('visitors', JSON.stringify(sourceVisitors));
+  localStorage.setItem('settings', JSON.stringify(sourceSettings));
   localStorage.setItem('ubh_last_sync_timestamp', fileTimestamp.toString());
 }
 
 let DB = {
-  students: localStorage.getItem('ubh_students') ? JSON.parse(localStorage.getItem('ubh_students')) : sourceStudents,
-  payments: localStorage.getItem('ubh_payments') ? JSON.parse(localStorage.getItem('ubh_payments')) : sourcePayments,
-  complaints: localStorage.getItem('ubh_complaints') ? JSON.parse(localStorage.getItem('ubh_complaints')) : sourceComplaints,
-  visitors: localStorage.getItem('ubh_visitors') ? JSON.parse(localStorage.getItem('ubh_visitors')) : sourceVisitors,
-  settings: localStorage.getItem('ubh_settings') ? JSON.parse(localStorage.getItem('ubh_settings')) : sourceSettings,
-  session: localStorage.getItem('ubh_session') ? JSON.parse(localStorage.getItem('ubh_session')) : null
+  students: localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : sourceStudents,
+  payments: localStorage.getItem('payments') ? JSON.parse(localStorage.getItem('payments')) : sourcePayments,
+  complaints: localStorage.getItem('complaints') ? JSON.parse(localStorage.getItem('complaints')) : sourceComplaints,
+  visitors: localStorage.getItem('visitors') ? JSON.parse(localStorage.getItem('visitors')) : sourceVisitors,
+  settings: localStorage.getItem('settings') ? JSON.parse(localStorage.getItem('settings')) : sourceSettings,
+  session: localStorage.getItem('session') ? JSON.parse(localStorage.getItem('session')) : null
 };
 
 function saveDB() {
-  localStorage.setItem('ubh_students', JSON.stringify(DB.students));
-  localStorage.setItem('ubh_payments', JSON.stringify(DB.payments));
-  localStorage.setItem('ubh_complaints', JSON.stringify(DB.complaints));
-  localStorage.setItem('ubh_visitors', JSON.stringify(DB.visitors));
-  localStorage.setItem('ubh_settings', JSON.stringify(DB.settings));
+  localStorage.setItem('students', JSON.stringify(DB.students));
+  localStorage.setItem('payments', JSON.stringify(DB.payments));
+  localStorage.setItem('complaints', JSON.stringify(DB.complaints));
+  localStorage.setItem('visitors', JSON.stringify(DB.visitors));
+  localStorage.setItem('settings', JSON.stringify(DB.settings));
 }
 
-// ============ STUDENT SELF-REGISTRATION PORTAL ============
-let regStep = 1;
-
-function preventSubmit(e) {
-  e.preventDefault();
-}
-
-function openRegistration() {
-  const isSubmitted = localStorage.getItem('ubh_student_submitted') === 'true';
-  if (isSubmitted) {
-    const pName = localStorage.getItem('ubh_submitted_name') || 'Student';
-    const pMob = localStorage.getItem('ubh_submitted_mobile') || '';
-    const pDate = localStorage.getItem('ubh_submitted_date') || new Date().toLocaleDateString('en-IN');
-    
-    document.getElementById('recName').textContent = pName;
-    document.getElementById('recPhone').textContent = pMob;
-    document.getElementById('recDate').textContent = pDate;
-    
-    regStep = 6;
-    showRegStep(6);
-    document.getElementById('regActions').style.display = 'none';
-  } else {
-    regStep = 1;
-    showRegStep(1);
-    document.getElementById('regActions').style.display = 'flex';
+// ============ SETTINGS APPLICATION ============
+function applySettings() {
+  const s = DB.settings || {};
+  const name = s.name || "Unity Boys Hostel";
+  const phone = s.phone || "+91 98765 43210";
+  const address = s.address || "Jaipur, Rajasthan - 302001";
+  const wa = s.wa || "+91 98765 43210";
+  const email = s.email || "info@unity.com";
+  
+  // Brand name elements
+  const logoEl = document.getElementById('brandNameLogo');
+  if (logoEl) logoEl.textContent = name;
+  const footerLogoEl = document.getElementById('footerBrandName');
+  if (footerLogoEl) footerLogoEl.textContent = name;
+  
+  // Contact elements
+  const contactAddrEl = document.getElementById('contactAddress');
+  if (contactAddrEl) contactAddrEl.innerHTML = address.replace(/\n/g, '<br>');
+  const contactPhoneEl = document.getElementById('contactPhone');
+  if (contactPhoneEl) contactPhoneEl.textContent = phone;
+  const contactWAEl = document.getElementById('contactWhatsApp');
+  if (contactWAEl) contactWAEl.textContent = wa;
+  const contactEmailEl = document.getElementById('contactEmail');
+  if (contactEmailEl) contactEmailEl.textContent = email;
+  
+  // Footer contacts
+  const footerAddrEl = document.getElementById('footerAddress');
+  if (footerAddrEl) footerAddrEl.textContent = address.split(',')[0] || "Jaipur, Rajasthan";
+  const footerPhoneEl = document.getElementById('footerPhone');
+  if (footerPhoneEl) footerPhoneEl.textContent = phone;
+  const footerEmailEl = document.getElementById('footerEmail');
+  if (footerEmailEl) footerEmailEl.textContent = email;
+  
+  // WhatsApp float
+  const waFloat = document.getElementById('whatsappFloatLink');
+  if (waFloat) {
+    const rawNum = wa.replace(/\D/g, '');
+    waFloat.href = "https://wa.me/" + (rawNum.startsWith('91') ? rawNum : '91' + rawNum);
   }
   
-  document.getElementById('websiteView').classList.add('hidden');
-  document.getElementById('registrationView').classList.remove('hidden');
-  window.scrollTo(0,0);
-}
-
-function closeRegistration() {
-  document.getElementById('registrationView').classList.add('hidden');
-  document.getElementById('websiteView').classList.remove('hidden');
-}
-
-function toggleCurrentAddress() {
-  const isSame = document.getElementById('regSameAddress').checked;
-  document.getElementById('regCurrentWrap').style.display = isSame ? 'none' : 'block';
-}
-
-function updateEstimatedFee() {
-  const sharing = document.getElementById('regSharing').value;
-  const standardFee = sharing === 'Triple' ? 7000 : 7500;
-  document.getElementById('revFee').textContent = '₹' + standardFee.toLocaleString('en-IN') + '/mo (+ GST)';
-}
-
-function showRegStep(step) {
-  document.querySelectorAll('.reg-section').forEach(sec => sec.classList.remove('active'));
-  document.getElementById('regSec-' + step).classList.add('active');
-  
-  for (let s = 1; s <= 5; s++) {
-    const dot = document.getElementById('dot-' + s);
-    if (dot) {
-      dot.classList.toggle('active', step >= s);
-    }
-    const line = document.getElementById('line-' + s);
-    if (line) {
-      line.classList.toggle('active', step > s);
-    }
+  // Ticker announcement
+  const ticker = document.getElementById('tickerAnnouncement');
+  if (ticker) {
+    ticker.innerHTML = `🏠 Admissions Open for Current Batch &nbsp;|&nbsp; 📞 Call: ${phone} &nbsp;|&nbsp; 🎉 Limited Seats Available &nbsp;|&nbsp; ✅ Single, Double & Triple Sharing Available`;
   }
   
-  const descriptions = {
-    1: 'Step 1 of 5: Lodger Basic Information Details',
-    2: 'Step 2 of 5: Address Sheets Representation',
-    3: 'Step 3 of 5: Parent / Guardian sos registries',
-    4: 'Step 4 of 5: Academics & Educational criteria',
-    5: 'Step 5 of 5: Self Admission review checklist & submission',
-    6: 'Registration Successful! Secure receipt details'
-  };
-  document.getElementById('regDesc').textContent = descriptions[step] || '';
-  
-  document.getElementById('regPrevBtn').style.visibility = (step > 1 && step < 6) ? 'visible' : 'hidden';
-  
-  const nextBtn = document.getElementById('regNextBtn');
-  if (step === 5) {
-    nextBtn.className = 'reg-btn reg-btn-submit';
-    nextBtn.innerHTML = '<i class="fas fa-check-circle"></i> Complete Self Registration Submit';
-  } else {
-    nextBtn.className = 'reg-btn reg-btn-next';
-    nextBtn.innerHTML = 'Next Section <i class="fas fa-arrow-right"></i>';
-  }
-}
-
-function nextRegStep() {
-  if (regStep === 1) {
-    const name = document.getElementById('regName').value;
-    const mob = document.getElementById('regMobile').value;
-    if (!name || !mob) {
-      toast('Please enter your Full Name and Mobile Number! ⚠️', true);
-      return;
-    }
-  }
-  if (regStep === 2) {
-    const house = document.getElementById('regHouse').value;
-    const city = document.getElementById('regCity').value;
-    const pin = document.getElementById('regPin').value;
-    if (!house || !city || !pin) {
-      toast('Please fill in permanent address details! 🏠', true);
-      return;
-    }
-  }
-  if (regStep === 3) {
-    const father = document.getElementById('regFather').value;
-    const fatherMob = document.getElementById('regFatherMob').value;
-    const emergencyMob = document.getElementById('regEmergencyMob').value;
-    if (!father || !fatherMob || !emergencyMob) {
-      toast('Please fill in Parental & Emergency mobile numbers! ⚠️', true);
-      return;
-    }
-  }
-  if (regStep === 4) {
-    const college = document.getElementById('regCollege').value;
-    const course = document.getElementById('regCourse').value;
-    if (!college || !course) {
-      toast('Please enter your College Name and registered Course! 🎓', true);
-      return;
-    }
-    
-    document.getElementById('revName').textContent = document.getElementById('regName').value;
-    document.getElementById('revCollege').textContent = document.getElementById('regCollege').value;
-    document.getElementById('revEmergencyMob').textContent = document.getElementById('regEmergencyMob').value;
-    
-    const sharing = document.getElementById('regSharing').value;
-    const acType = document.getElementById('regAcType').value;
-    document.getElementById('revSharing').textContent = sharing + ' Sharing (' + acType + ')';
-    
-    const standardFee = sharing === 'Triple' ? 7000 : 7500;
-    document.getElementById('revFee').textContent = '₹' + standardFee.toLocaleString('en-IN') + '/mo (+ GST)';
-  }
-  
-  if (regStep === 5) {
-    submitAdmissionForm();
-    return;
-  }
-  
-  regStep = Math.min(regStep + 1, 6);
-  showRegStep(regStep);
-  window.scrollTo(0,0);
-}
-
-function prevRegStep() {
-  regStep = Math.max(regStep - 1, 1);
-  showRegStep(regStep);
-  window.scrollTo(0,0);
-}
-
-function submitAdmissionForm() {
-  const name = document.getElementById('regName').value;
-  const mob = document.getElementById('regMobile').value;
-  const father = document.getElementById('regFather').value;
-  const fatherMob = document.getElementById('regFatherMob').value;
-  const sharing = document.getElementById('regSharing').value;
-  const standardFee = sharing === 'Triple' ? 7000 : 7500;
-  
-  const house = document.getElementById('regHouse').value;
-  const area = document.getElementById('regArea').value;
-  const city = document.getElementById('regCity').value;
-  const state = document.getElementById('regState').value;
-  const pin = document.getElementById('regPin').value;
-  const isSame = document.getElementById('regSameAddress').checked;
-  
-  let fullAddr = 'Permanent Address:\nHouse No: ' + house + (area ? ', ' + area : '') + ', ' + city + ', ' + state + ' - ' + pin;
-  if (!isSame) {
-    fullAddr += '\n\nCurrent Address:\n' + document.getElementById('regCurrentAddress').value;
-  }
-  
-  const newStudent = {
-    id: 'STU' + Date.now().toString().slice(-6),
-    name: name,
-    mobile: mob,
-    father: father,
-    fatherMob: fatherMob,
-    room: "Unassigned",
-    sharing: sharing,
-    fee: standardFee,
-    paid: 0,
-    due: standardFee + 2000,
-    status: "Notice",
-    joinDate: new Date().toLocaleDateString('en-IN'),
-    address: fullAddr,
-    dob: document.getElementById('regDob').value,
-    gender: document.getElementById('regGender').value,
-    bloodGroup: document.getElementById('regBlood').value,
-    aadhaar: document.getElementById('regAadhaar').value,
-    whatsapp: document.getElementById('regWhatsapp').value || mob,
-    email: document.getElementById('regEmail').value,
-    nationality: document.getElementById('regNationality').value,
-    houseNo: house,
-    area: area,
-    city: city,
-    state: state,
-    pinCode: pin,
-    currentAddress: isSame ? fullAddr : document.getElementById('regCurrentAddress').value,
-    fatherOccupation: document.getElementById('regFatherOcc').value,
-    motherName: document.getElementById('regMother').value,
-    motherMobile: document.getElementById('regMotherMob').value,
-    guardianName: "",
-    guardianMobile: "",
-    emergencyName: document.getElementById('regEmergencyName').value || father,
-    emergencyRelation: document.getElementById('regEmergencyRelation').value || "Father",
-    emergencyMobile: document.getElementById('regEmergencyMob').value,
-    collegeName: document.getElementById('regCollege').value,
-    courseName: document.getElementById('regCourse').value,
-    semesterYear: document.getElementById('regSem').value,
-    collegeId: document.getElementById('regCollegeId').value,
-    collegeAddress: document.getElementById('regCollegeAddr').value,
-    acType: document.getElementById('regAcType').value,
-    washroomType: document.getElementById('regWashroom').value,
-    floor: "Unassigned",
-    bedNumber: "Pending",
-    agreementStartDate: new Date().toLocaleDateString('en-IN'),
-    feePlan: '1 Month',
-    monthsCount: 1,
-    discount: 0,
-    totalRent: standardFee,
-    securityDeposit: 2000,
-    finalPayableAmount: standardFee + 2000
-  };
-  
-  DB.students.push(newStudent);
-  saveLocal();
-  
-  const nowStr = new Date().toLocaleDateString('en-IN');
-  localStorage.setItem('ubh_student_submitted', 'true');
-  localStorage.setItem('ubh_submitted_name', name);
-  localStorage.setItem('ubh_submitted_mobile', mob);
-  localStorage.setItem('ubh_submitted_date', nowStr);
-  
-  document.getElementById('recName').textContent = name;
-  document.getElementById('recPhone').textContent = mob;
-  document.getElementById('recDate').textContent = nowStr;
-  
-  document.getElementById('regActions').style.display = 'none';
-  
-  regStep = 6;
-  showRegStep(6);
-  toast('Admission form registered successfully! 🎉');
-  window.scrollTo(0,0);
-}
-
-function getCompiledAdmissionText() {
-  const name = document.getElementById('recName').textContent;
-  const mob = document.getElementById('recPhone').textContent;
-  const dateStr = document.getElementById('recDate').textContent;
-  
-  return `===============================
-UNITY BOYS HOSTEL – ADMISSION FORM
-===============================
-
-1. STUDENT BASIC DETAILS
-
-Full Name: ${name}
-Mobile Number: ${mob}
-Submission Date: ${dateStr}
-Verification Status: Pending review by Warden
-
-We've recorded your entry. Your bed will be allocated upon arrival.
-===============================`;
-}
-
-function copyAdmissionDetails() {
-  const text = getCompiledAdmissionText();
-  navigator.clipboard.writeText(text).then(() => {
-    toast('Form Details Copied to Clipboard! 📋');
-  });
-}
-
-function sendAdmissionToWhatsApp() {
-  const text = getCompiledAdmissionText();
-  const encodedText = encodeURIComponent(text);
-  window.open('https://wa.me/918209696820?text=' + encodedText, '_blank');
-}
-
-function resetAdmissionForm() {
-  localStorage.removeItem('ubh_student_submitted');
-  localStorage.removeItem('ubh_submitted_name');
-  localStorage.removeItem('ubh_submitted_mobile');
-  localStorage.removeItem('ubh_submitted_date');
-  
-  document.getElementById('admissionForm').reset();
-  
-  regStep = 1;
-  showRegStep(1);
-  document.getElementById('regActions').style.display = 'flex';
-  toast('Admission form cleared! Reopen or re-fill. 📋');
+  // Update Settings Form Fields if they are on page
+  const setName = document.getElementById('setName');
+  if (setName) setName.value = name;
+  const setPhone = document.getElementById('setPhone');
+  if (setPhone) setPhone.value = phone;
+  const setAddress = document.getElementById('setAddress');
+  if (setAddress) setAddress.value = address;
+  const setWA = document.getElementById('setWA');
+  if (setWA) setWA.value = wa;
+  const setEmail = document.getElementById('setEmail');
+  if (setEmail) setEmail.value = email;
+  const setUPI = document.getElementById('setUPI');
+  if (setUPI) setUPI.value = s.upi || "unity@paytm";
+  const setLate = document.getElementById('setLate');
+  if (setLate) setLate.value = s.lateFee || "50";
 }
 
 // ============ INIT ============
 window.onload = function() {
   if (DB.session) showDashboard();
+  applySettings();
   renderAll();
   generateRoomMap();
 };
@@ -2288,7 +1086,7 @@ function doLogin(e) {
   
   if (creds[currentRole] && u === creds[currentRole].u && p === creds[currentRole].p) {
     DB.session = {role: currentRole, name: currentRole==='master'?'Admin':'Staff User', user: u};
-    localStorage.setItem('ubh_session', JSON.stringify(DB.session));
+    localStorage.setItem('session', JSON.stringify(DB.session));
     toast('Login successful! ✅');
     setTimeout(showDashboard, 500);
   } else {
@@ -2312,7 +1110,7 @@ function showDashboard() {
 function logout() {
   if (confirm('Logout?')) {
     DB.session = null;
-    localStorage.removeItem('ubh_session');
+    localStorage.removeItem('session');
     location.reload();
   }
 }
@@ -2322,105 +1120,45 @@ function goWebsite() {
 }
 
 // ============ DASHBOARD NAVIGATION ============
-function navigate(page) {
+function navigate(page, el) {
   document.querySelectorAll('.dash-page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-'+page).classList.add('active');
+  const pageEl = document.getElementById('page-'+page);
+  if (pageEl) pageEl.classList.add('active');
+  
   document.querySelectorAll('.sb-item').forEach(i => i.classList.remove('active'));
-  if(event && event.currentTarget && event.currentTarget.closest) {
-    const targetItem = event.currentTarget.closest('.sb-item');
-    if (targetItem) targetItem.classList.add('active');
+  
+  if (el) {
+    el.classList.add('active');
+  } else {
+    // Find active sidebar item by searching text content dynamically
+    const items = document.querySelectorAll('.sb-item');
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      if (page === 'due' && text.includes('due')) {
+        item.classList.add('active');
+      } else if (page === 'dashboard' && text.includes('dashboard')) {
+        item.classList.add('active');
+      } else if (text.includes(page)) {
+        item.classList.add('active');
+      }
+    });
   }
-  document.getElementById('sidebar').classList.remove('open');
+  
+  const sidebar = document.getElementById('sidebar');
+  if (sidebar) sidebar.classList.remove('open');
+  
   const titles = {dashboard:'Dashboard', students:'Students', payments:'Payments', due:'Due Payments', rooms:'Rooms', complaints:'Complaints', visitors:'Visitors', reports:'Reports', settings:'Settings'};
-  document.getElementById('pageTitle').innerHTML = (titles[page] || 'Dashboard')+'<small>Manage '+(titles[page] || 'dashboard').toLowerCase()+'</small>';
+  const pageTitle = document.getElementById('pageTitle');
+  if (pageTitle) {
+    pageTitle.innerHTML = (titles[page] || 'Dashboard')+'<small>Manage '+(titles[page] || 'dashboard').toLowerCase()+'</small>';
+  }
   window.scrollTo(0,0);
 }
 
 // ============ MODALS ============
 function openModal(id) { document.getElementById(id).classList.add('show'); }
 function closeModal(id) { document.getElementById(id).classList.remove('show'); }
-
-let addStudentStep = 1;
-function showAddStudentStep(stepNum) {
-  addStudentStep = stepNum;
-  document.querySelectorAll('.add-student-sec').forEach((sec, idx) => {
-    sec.style.display = (idx + 1 === stepNum) ? 'block' : 'none';
-  });
-  
-  // Stepper dots
-  for (let i = 1; i <= 4; i++) {
-    const dot = document.getElementById(`stDot-${i}`);
-    if (dot) {
-      dot.classList.toggle('active', i === stepNum);
-    }
-    const line = document.getElementById(`stLine-${i}`);
-    if (line) {
-      line.classList.toggle('active', i < stepNum);
-    }
-  }
-  
-  // Update step title text
-  const stepTitles = [
-    'Step 1 of 4: Student Basic Information',
-    'Step 2 of 4: Permanent & Current Address Detail',
-    'Step 3 of 4: Academic Studies & Room Allocation',
-    'Step 4 of 4: Admission Stay Plan & Base Rental Charges'
-  ];
-  document.getElementById('stStepTitle').textContent = stepTitles[stepNum - 1];
-  
-  // Button controls
-  document.getElementById('addStudentPrevBtn').style.display = stepNum === 1 ? 'none' : 'inline-block';
-  document.getElementById('addStudentNextBtn').style.display = stepNum === 4 ? 'none' : 'inline-block';
-  document.getElementById('addStudentSubmitBtn').style.display = stepNum === 4 ? 'inline-block' : 'none';
-}
-
-function nextAddStudentStep() {
-  if (addStudentStep === 1) {
-    if (!document.getElementById('stName').value || !document.getElementById('stMobile').value) {
-      toast('Please fill Full Name and Mobile Number! ⚠️', true);
-      return;
-    }
-  }
-  if (addStudentStep === 2) {
-    if (!document.getElementById('stFather').value || !document.getElementById('stFatherMob').value || !document.getElementById('stHouse').value || !document.getElementById('stCity').value || !document.getElementById('stPin').value || !document.getElementById('stEmergencyMob').value) {
-      toast('Please fill Father Name, Parental Mobile, & Address! ⚠️', true);
-      return;
-    }
-  }
-  if (addStudentStep === 3) {
-    if (!document.getElementById('stRoom').value) {
-      toast('Please assign a Room Number! ⚠️', true);
-      return;
-    }
-  }
-  showAddStudentStep(addStudentStep + 1);
-}
-
-function prevAddStudentStep() {
-  showAddStudentStep(addStudentStep - 1);
-}
-
-function toggleAddStudentCurrentAddress() {
-  const isSame = document.getElementById('stSameAddress').checked;
-  document.getElementById('stCurrentAddressWrap').style.display = isSame ? 'none' : 'block';
-}
-
-function updateAddStudentEstimatedFee() {
-  const sharing = document.getElementById('stSharing').value;
-  let fee = 7500;
-  if (sharing === 'Triple') fee = 7000;
-  else if (sharing === 'Single') fee = 12000;
-  document.getElementById('stFee').value = fee;
-}
-
-function openAddStudent() { 
-  addStudentStep = 1;
-  document.getElementById('addStudentForm').reset();
-  toggleAddStudentCurrentAddress();
-  showAddStudentStep(1);
-  openModal('modalAddStudent'); 
-}
-
+function openAddStudent() { openModal('modalAddStudent'); }
 function openAddPayment() { fillStudentSelect('payStudent'); openModal('modalAddPayment'); }
 function openAddComplaint() { fillStudentSelect('compStudent'); openModal('modalAddComplaint'); }
 function openAddVisitor() { fillStudentSelect('visStudent'); openModal('modalAddVisitor'); }
@@ -2434,25 +1172,6 @@ function fillStudentSelect(id) {
 // ============ STUDENTS ============
 function saveStudent(e) {
   e.preventDefault();
-  
-  const baseRent = parseInt(document.getElementById('stFee').value || '7500');
-  const discount = parseInt(document.getElementById('stDiscount').value || '0');
-  const security = parseInt(document.getElementById('stSecurity').value || '2000');
-  const electricity = parseInt(document.getElementById('stElectricity').value || '0');
-  const other = parseInt(document.getElementById('stOtherCharges').value || '0');
-  const payMode = document.getElementById('stPayMode').value;
-  const txnId = document.getElementById('stTxnId').value;
-  
-  const grandTotal = baseRent - discount + security + electricity + other;
-  
-  const house = document.getElementById('stHouse').value;
-  const area = document.getElementById('stArea').value;
-  const city = document.getElementById('stCity').value;
-  const state = document.getElementById('stState').value;
-  const pin = document.getElementById('stPin').value;
-  const isSameAddress = document.getElementById('stSameAddress').checked;
-  const currentAddress = isSameAddress ? `Permanent: ${house}, ${area || ''}, ${city}, ${state} - ${pin}` : document.getElementById('stCurrentAddress').value;
-  
   const student = {
     id: Date.now(),
     name: document.getElementById('stName').value,
@@ -2461,95 +1180,19 @@ function saveStudent(e) {
     fatherMob: document.getElementById('stFatherMob').value,
     room: document.getElementById('stRoom').value,
     sharing: document.getElementById('stSharing').value,
-    fee: baseRent,
-    status: 'Active',
-    address: `Permanent: ${house}, ${city} - ${pin}`,
+    fee: parseInt(document.getElementById('stFee').value),
+    status: document.getElementById('stStatus').value,
+    address: document.getElementById('stAddress').value,
     paid: 0,
-    due: grandTotal,
-    joinDate: document.getElementById('stStartDate').value ? new Date(document.getElementById('stStartDate').value).toLocaleDateString('en-IN') : new Date().toLocaleDateString('en-IN'),
-    
-    dob: document.getElementById('stDob').value,
-    gender: document.getElementById('stGender').value,
-    bloodGroup: document.getElementById('stBlood').value,
-    aadhaar: document.getElementById('stAadhaar').value,
-    whatsapp: document.getElementById('stWhatsapp').value,
-    email: document.getElementById('stEmail').value,
-    nationality: document.getElementById('stNationality').value,
-    
-    houseNo: house,
-    area: area,
-    city: city,
-    state: state,
-    pinCode: pin,
-    currentAddress: currentAddress,
-    
-    fatherOccupation: document.getElementById('stFatherOcc').value,
-    motherName: document.getElementById('stMother').value,
-    motherMobile: document.getElementById('stMotherMob').value,
-    emergencyName: document.getElementById('stEmergencyName').value || document.getElementById('stFather').value,
-    emergencyRelation: document.getElementById('stEmergencyRelation').value || "Father",
-    emergencyMobile: document.getElementById('stEmergencyMob').value,
-    
-    collegeName: document.getElementById('stCollege').value,
-    courseName: document.getElementById('stCourse').value,
-    semesterYear: document.getElementById('stSem').value,
-    collegeId: document.getElementById('stCollegeId').value,
-    collegeAddress: document.getElementById('stCollegeAddr').value,
-    
-    floor: document.getElementById('stFloor').value,
-    bedNumber: document.getElementById('stBedNumber').value || "A",
-    acType: document.getElementById('stAcType').value,
-    washroomType: document.getElementById('stWashroom').value,
-    
-    agreementStartDate: document.getElementById('stStartDate').value,
-    agreementEndDate: document.getElementById('stEndDate').value,
-    noticePeriod: document.getElementById('stNoticePeriod').value,
-    lockInPeriod: document.getElementById('stLockIn').value,
-    
-    feePlan: document.getElementById('stFeePlan').value,
-    discount: discount,
-    securityDeposit: security,
-    electricityCharges: electricity,
-    otherCharges: other,
-    paymentMode: payMode,
-    transactionId: txnId
+    due: parseInt(document.getElementById('stFee').value),
+    joinDate: new Date().toLocaleDateString('en-IN')
   };
-  
-  // If there was an initial payment made right away during allocation, auto-record a payment!
-  if (txnId || payMode) {
-    const autoPaymentAmount = grandTotal; // Assume they paid the full first month billing or security
-    const pId = Date.now() + 1;
-    const payment = {
-      id: pId,
-      receipt: 'UBH' + pId.toString().slice(-6),
-      studentId: student.id,
-      studentName: student.name,
-      room: student.room,
-      amount: autoPaymentAmount,
-      mode: payMode,
-      month: new Date().toISOString().slice(0, 7), // "2026-06"
-      date: new Date().toLocaleDateString('en-IN'),
-      note: 'Initial Allocation Billing Collection'
-    };
-    DB.payments.push(payment);
-    student.paid = autoPaymentAmount;
-    student.due = 0;
-  }
-  
   DB.students.push(student);
   saveDB();
   closeModal('modalAddStudent');
-  document.getElementById('addStudentForm').reset();
-  toast('Student registered and allocated successfully! ✅');
+  e.target.reset();
+  toast('Student added successfully! ✅');
   renderAll();
-}
-
-function shareFormLink() {
-  const origin = window.location.origin;
-  const link = (origin && !origin.startsWith('file')) ? (origin + '/?mode=student-form') : 'https://ais-pre-cwfhs3kjnhahsqos4mg4ru-1012192092682.asia-southeast1.run.app/?mode=student-form';
-  navigator.clipboard.writeText(link).then(() => {
-    toast('Admission Form Link copied! Send this to students to fill. 📋');
-  });
 }
 
 function deleteStudent(id) {
@@ -2579,16 +1222,10 @@ function renderStudents() {
   const html = list.map((s,i) => `
     <tr>
       <td>${i+1}</td>
-      <td><div class="td-student"><div class="td-avatar" style="background:${colors[i%6]}">${s.name.charAt(0).toUpperCase()}</div><div><strong>${s.name}</strong><br><small style="color:var(--gray)">Joined: ${s.joinDate || 'N/A'}</small></div></div></td>
+      <td><div class="td-student"><div class="td-avatar" style="background:${colors[i%6]}">${s.name.charAt(0).toUpperCase()}</div><div><strong>${s.name}</strong><br><small style="color:var(--gray)">${s.mobile}</small></div></div></td>
       <td><span class="room-tag">Room ${s.room}</span></td>
       <td>${s.sharing}</td>
-      <td>
-        <div style="font-size:11.5px; line-height: 1.4; text-align: left;">
-          <div><strong style="color:var(--primary)">St:</strong> <a href="tel:${s.mobile}" style="color:inherit; text-decoration:none">${s.mobile}</a></div>
-          ${s.fatherMob ? `<div><strong style="color:var(--secondary)">Papa:</strong> <a href="tel:${s.fatherMob}" style="color:inherit; text-decoration:none">${s.fatherMob}</a></div>` : ''}
-          <div style="color:var(--gray); font-size:10px; margin-top:2px;">📍 ${s.city || 'Jaipur'}</div>
-        </div>
-      </td>
+      <td>${s.mobile}</td>
       <td><strong style="color:${s.due>0?'var(--danger)':'var(--success)'}">₹${s.due}</strong></td>
       <td><span class="status-tag ${s.due>0?'due':'active'}">${s.due>0?'Due':s.status}</span></td>
       <td><div class="action-btns"><button class="act-btn view" onclick="viewStudent(${s.id})"><i class="fas fa-eye"></i></button><button class="act-btn delete" onclick="deleteStudent(${s.id})"><i class="fas fa-trash"></i></button></div></td>
@@ -2677,542 +1314,18 @@ function renderPayments() {
 }
 
 // ============ DUE ============
-let currentDueSubTab = 'overdue';
-
-function setDueSubTab(sub) {
-  currentDueSubTab = sub;
-  document.querySelectorAll('.due-tab').forEach(btn => {
-    btn.style.color = 'var(--gray)';
-    btn.style.borderBottom = '3px solid transparent';
-  });
-  
-  const activeBtn = document.getElementById('tab-due-' + sub);
-  if (activeBtn) {
-    activeBtn.style.color = 'var(--primary)';
-    activeBtn.style.borderBottom = '3px solid var(--primary)';
-  }
-  
-  // Update filter select visibility
-  const monthSelect = document.getElementById('dueMonthSelect');
-  if (monthSelect) {
-    if (sub === 'upcoming') {
-      monthSelect.style.display = 'inline-block';
-      
-      // Populate months list dynamically
-      const installments = getInstallments();
-      const months = ['All Months', ...new Set(installments.map(inst => inst.dueMonthLabel))];
-      const prevVal = monthSelect.value;
-      monthSelect.innerHTML = months.map(m => `<option value="${m}">${m}</option>`).join('');
-      if (months.includes(prevVal)) {
-        monthSelect.value = prevVal;
-      } else {
-        monthSelect.value = 'All Months';
-      }
-    } else {
-      monthSelect.style.display = 'none';
-    }
-  }
-  
-  renderDue();
-}
-
-function parseStudentJoinDate(dateStr) {
-  if (!dateStr) return new Date();
-  const parts = dateStr.split('/');
-  if (parts.length === 3) {
-    const day = parseInt(parts[0], 10);
-    const month = parseInt(parts[1], 10) - 1;
-    const year = parseInt(parts[2], 10);
-    return new Date(year, month, day);
-  }
-  return new Date(dateStr);
-}
-
-function getInstallments() {
-  const installmentsList = [];
-  const now = new Date();
-  const currentYear = now.getFullYear();
-  const currentMonth = now.getMonth();
-
-  DB.students.forEach(s => {
-    let interval = 1;
-    if (s.feePlan) {
-      const match = s.feePlan.match(/\d+/);
-      if (match) {
-        interval = parseInt(match[0]) || 1;
-      }
-    }
-
-    const maxInstallments = Math.max(1, Math.floor(12 / interval));
-
-    let installmentAmount = 0;
-    if (s.yearlyTotalFee !== undefined && s.yearlyTotalFee > 0) {
-      installmentAmount = Math.round(s.yearlyTotalFee / maxInstallments);
-    } else {
-      const monthlyFee = s.fee || 7500;
-      installmentAmount = monthlyFee * interval;
-    }
-    
-    const joinDateObj = parseStudentJoinDate(s.joinDate || s.agreementStartDate);
-
-    let cumulativeRequired = 0;
-    for (let i = 1; i <= maxInstallments; i++) {
-      cumulativeRequired += installmentAmount;
-      
-      const d = new Date(joinDateObj);
-      d.setMonth(joinDateObj.getMonth() + (i - 1) * interval);
-      
-      const dueDateStr = d.toLocaleDateString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric' });
-      const dueMonthLabel = d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-      
-      let status = 'Upcoming';
-      let remainingAmount = installmentAmount;
-      const paidSoFar = s.paid || 0;
-      const prevRequired = cumulativeRequired - installmentAmount;
-
-      if (paidSoFar >= cumulativeRequired) {
-        status = 'Paid';
-        remainingAmount = 0;
-      } else if (paidSoFar > prevRequired) {
-        status = 'Partial';
-        remainingAmount = cumulativeRequired - paidSoFar;
-      } else {
-        status = 'Upcoming';
-        remainingAmount = installmentAmount;
-      }
-
-      const dueYear = d.getFullYear();
-      const dueMonth = d.getMonth();
-      const isAlertActive = (currentYear > dueYear) || (currentYear === dueYear && currentMonth >= dueMonth);
-
-      installmentsList.push({
-        id: `${s.id}-inst-${i}`,
-        student: s,
-        installmentNum: i,
-        dueDate: dueDateStr,
-        dueDateObj: d,
-        dueMonthLabel,
-        amount: installmentAmount,
-        status,
-        remainingAmount,
-        isAlertActive: isAlertActive && remainingAmount > 0
-      });
-    }
-  });
-
-  return installmentsList.sort((a, b) => a.dueDateObj.getTime() - b.dueDateObj.getTime());
-}
-
 function renderDue() {
-  const searchInput = document.getElementById('dueSearchInput');
-  const search = (searchInput ? searchInput.value : '').toLowerCase();
-  
-  if (currentDueSubTab === 'overdue') {
-    // 1. Render Overdue / Outstanding Balances
-    document.getElementById('dueTableHeader').innerHTML = `
-      <tr><th>#</th><th>Student</th><th>Room</th><th>Due Amount</th><th>Mobile</th><th>Action</th></tr>
-    `;
-    
-    const dueStudents = DB.students.filter(s => {
-      const matchesSearch = s.name.toLowerCase().includes(search) || s.room.includes(search);
-      return s.due > 0 && matchesSearch;
-    });
-    
-    const html = dueStudents.map((s,i) => `
-      <tr>
-        <td>${i+1}</td>
-        <td><strong>${s.name}</strong></td>
-        <td><span class="room-tag">Room ${s.room}</span></td>
-        <td><strong style="color:var(--danger)">₹${s.due.toLocaleString('en-IN')}</strong></td>
-        <td>${s.mobile}</td>
-        <td>
-          <a href="https://wa.me/91${s.mobile.replace(/\D/g,'')}?text=${encodeURIComponent('Hello ' + s.name + ', regarding outstanding hostel due balance of ₹' + s.due + ' from Unity Boys Hostel. समय पर जमा कराए अन्यथा पेनल्टी (penalty) लग जाएगी। Please clear it ASAP. Thank you!')}" target="_blank" class="act-btn" style="background:#25D366;color:#fff;text-decoration:none;display:inline-flex;padding:6px 12px;border-radius:6px;font-size:11px;font-weight:700;"><i class="fab fa-whatsapp"></i> WA Student</a>
-          <a href="sms:+91${s.mobile.replace(/\D/g,'')}?body=${encodeURIComponent('Hello ' + s.name + ', regarding outstanding hostel due balance of ₹' + s.due + ' from Unity Boys Hostel. समय पर जमा कराए अन्यथा पेनल्टी (penalty) लग जाएगी। Please clear it ASAP. Thank you!')}" class="act-btn" style="background:#7C3AED;color:#fff;text-decoration:none;display:inline-flex;padding:6px 12px;border-radius:6px;font-size:11px;font-weight:700;margin-left:5px;"><i class="fas fa-comment-alt"></i> SMS Student</a>
-          <a href="https://wa.me/91${(s.fatherMob || '').replace(/\D/g,'')}?text=${encodeURIComponent('Hello ' + (s.father || 'Parent') + ', regarding outstanding hostel due balance of ₹' + s.due + ' for student ' + s.name + ' from Unity Boys Hostel. समय पर जमा कराए अन्यथा पेनल्टी (penalty) लग जाएगी। Please clear it. Thank you!')}" target="_blank" class="act-btn" style="background:#1E3A8A;color:#fff;text-decoration:none;display:inline-flex;padding:6px 12px;border-radius:6px;font-size:11px;font-weight:700;margin-left:5px;"><i class="fab fa-whatsapp"></i> WA Father</a>
-          <a href="sms:+91${(s.fatherMob || '').replace(/\D/g,'')}?body=${encodeURIComponent('Hello ' + (s.father || 'Parent') + ', regarding outstanding hostel due balance of ₹' + s.due + ' for student ' + s.name + ' from Unity Boys Hostel. समय पर जमा कराए अन्यथा पेनल्टी (penalty) लग जाएगी। Please clear it. Thank you!')}" class="act-btn" style="background:#7C3AED;color:#fff;text-decoration:none;display:inline-flex;padding:6px 12px;border-radius:6px;font-size:11px;font-weight:700;margin-left:5px;"><i class="fas fa-comment-alt"></i> SMS Father</a>
-        </td>
-      </tr>`).join('');
-    
-    document.getElementById('dueTable').innerHTML = html || '<tr><td colspan="6" style="text-align:center;padding:30px;color:var(--success)">🎉 No outstanding due payments!</td></tr>';
-  } else {
-    // 2. Render Upcoming Installments Finder
-    document.getElementById('dueTableHeader').innerHTML = `
-      <tr><th>#</th><th>Student</th><th>Installment</th><th>Due Date</th><th>Remaining Due</th><th>Status</th><th>Notify Actions</th></tr>
-    `;
-    
-    const monthSelect = document.getElementById('dueMonthSelect');
-    const selectedMonth = monthSelect ? monthSelect.value : 'All Months';
-    
-    const installments = getInstallments();
-    const filtered = installments.filter(inst => {
-      const matchesSearch = inst.student.name.toLowerCase().includes(search) || inst.student.room.includes(search);
-      const matchesMonth = selectedMonth === 'All Months' || inst.dueMonthLabel === selectedMonth;
-      return matchesSearch && matchesMonth && inst.remainingAmount > 0;
-    });
-    
-    const html = filtered.map((inst,i) => `
-      <tr style="${inst.isAlertActive ? 'background: #fff5f5;' : ''}">
-        <td>${i+1}</td>
-        <td><strong>${inst.student.name}</strong><br><small style="color:var(--gray)">Room ${inst.student.room}</small></td>
-        <td><span class="room-tag">#${inst.installmentNum} of ${inst.student.feePlan || '1 Month'}</span></td>
-        <td><strong>${inst.dueDate}</strong><br><small style="color:var(--gray)">${inst.dueMonthLabel}</small></td>
-        <td><strong style="color: ${inst.isAlertActive ? 'var(--danger)' : '#4a5568'}">₹${inst.remainingAmount.toLocaleString('en-IN')}</strong></td>
-        <td>
-          <span style="display:inline-block;padding:3px 8px;border-radius:12px;font-size:10px;font-weight:800;text-transform:uppercase;${
-            inst.status === 'Partial' ? 'background:#fef3c7;color:#d97706;' : 'background:#e0f2fe;color:#0284c7;'
-          }">
-            ${inst.status}${inst.isAlertActive ? ' 🚨 Overdue' : ''}
-          </span>
-        </td>
-        <td>
-          <a href="https://wa.me/91${inst.student.mobile.replace(/\D/g,'')}?text=${encodeURIComponent('Hello ' + inst.student.name + ', installment #' + inst.installmentNum + ' of ₹' + inst.remainingAmount + ' is due on ' + inst.dueDate + '. समय पर जमा कराए अन्यथा पेनल्टी (penalty) लग जाएगी। Please pay. Thank you!\n- Unity Boys Hostel')}" target="_blank" class="act-btn" style="background:#25D366;color:#fff;text-decoration:none;display:inline-flex;padding:6px 12px;border-radius:6px;font-size:11px;font-weight:700;"><i class="fab fa-whatsapp"></i> WA Student</a>
-          <a href="sms:+91${inst.student.mobile.replace(/\D/g,'')}?body=${encodeURIComponent('Hello ' + inst.student.name + ', installment #' + inst.installmentNum + ' of ₹' + inst.remainingAmount + ' is due on ' + inst.dueDate + '. समय पर जमा कराए अन्यथा पेनल्टी (penalty) लग जाएगी। Please pay. Thank you!\n- Unity Boys Hostel')}" class="act-btn" style="background:#7C3AED;color:#fff;text-decoration:none;display:inline-flex;padding:6px 12px;border-radius:6px;font-size:11px;font-weight:700;margin-left:5px;"><i class="fas fa-comment-alt"></i> SMS Student</a>
-          <a href="https://wa.me/91${(inst.student.fatherMob || '').replace(/\D/g,'')}?text=${encodeURIComponent('Hello ' + (inst.student.father || 'Parent') + ', installment #' + inst.installmentNum + ' of ₹' + inst.remainingAmount + ' for student ' + inst.student.name + ' is due on ' + inst.dueDate + '. समय पर जमा कराए अन्यथा पेनल्टी (penalty) लग जाएगी। Please clear. Thank you!\n- Unity Boys Hostel')}" target="_blank" class="act-btn" style="background:#1E3A8A;color:#fff;text-decoration:none;display:inline-flex;padding:6px 12px;border-radius:6px;font-size:11px;font-weight:700;margin-left:5px;"><i class="fab fa-whatsapp"></i> WA Father</a>
-          <a href="sms:+91${(inst.student.fatherMob || '').replace(/\D/g,'')}?body=${encodeURIComponent('Hello ' + (inst.student.father || 'Parent') + ', installment #' + inst.installmentNum + ' of ₹' + inst.remainingAmount + ' for student ' + inst.student.name + ' is due on ' + inst.dueDate + '. समय पर जमा कराए अन्यथा पेनल्टी (penalty) लग जाएगी। Please clear. Thank you!\n- Unity Boys Hostel')}" class="act-btn" style="background:#7C3AED;color:#fff;text-decoration:none;display:inline-flex;padding:6px 12px;border-radius:6px;font-size:11px;font-weight:700;margin-left:5px;"><i class="fas fa-comment-alt"></i> SMS Father</a>
-        </td>
-      </tr>`).join('');
-      
-    document.getElementById('dueTable').innerHTML = html || '<tr><td colspan="7" style="text-align:center;padding:30px;color:var(--gray)">No filtered installments scheduled.</td></tr>';
-  }
-}
-
-function exportDueExcel() {
-  try {
-    let csv = "\uFEFF"; // UTF-8 BOM so Excel opens with proper regional formatting and symbols
-    
-    if (currentDueSubTab === 'overdue') {
-      csv += "Student Name,Room Number,Monthly Rent (INR),Paid So Far (INR),Outstanding Balance (INR),Student Mobile,Father Name,Father Mobile,City\n";
-      DB.students.filter(s => s.due > 0).forEach(s => {
-        const name = (s.name || '').replace(/"/g, '""');
-        const room = (s.room || '').replace(/"/g, '""');
-        const mobile = (s.mobile || '').replace(/"/g, '""');
-        const father = (s.father || 'N/A').replace(/"/g, '""');
-        const fatherMob = (s.fatherMob || 'N/A').replace(/"/g, '""');
-        const city = (s.city || 'Jaipur').replace(/"/g, '""');
-        csv += `"${name}","Room ${room}",${s.fee},${s.paid},${s.due},"${mobile}","${father}","${fatherMob}","${city}"\n`;
-      });
-      
-      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'unity_hostel_outstanding_dues.csv');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      toast('Excel Dues Report downloaded! 📊');
-    } else {
-      const monthSelect = document.getElementById('dueMonthSelect');
-      const selectedMonth = monthSelect ? monthSelect.value : 'All Months';
-      
-      csv += "Student Name,Room Number,Installment Plan,Installment Number,Scheduled Due Date,Month,Gross Amount (INR),Expected Remaining (INR),Status,Student Mobile,Father Mobile\n";
-      
-      const installments = getInstallments();
-      const filtered = installments.filter(inst => {
-        const matchesMonth = selectedMonth === 'All Months' || inst.dueMonthLabel === selectedMonth;
-        return matchesMonth && inst.remainingAmount > 0;
-      });
-      
-      filtered.forEach(inst => {
-        const name = (inst.student.name || '').replace(/"/g, '""');
-        const room = (inst.student.room || '').replace(/"/g, '""');
-        const plan = (inst.student.feePlan || '1 Month').replace(/"/g, '""');
-        const mobile = (inst.student.mobile || '').replace(/"/g, '""');
-        const fatherMobile = (inst.student.fatherMob || 'N/A').replace(/"/g, '""');
-        csv += `"${name}","Room ${room}","${plan}",${inst.installmentNum},"${inst.dueDate}","${inst.dueMonthLabel}",${inst.amount},${inst.remainingAmount},"${inst.status}","${mobile}","${fatherMobile}"\n`;
-      });
-      
-      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'unity_hostel_upcoming_installments.csv');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      toast('Excel Installments Planner downloaded! 📊');
-    }
-  } catch (err) {
-    console.error("Excel generation error", err);
-  }
-}
-
-function exportDuePDF() {
-  const printWindow = window.open('', '_blank');
-  if (!printWindow) {
-    alert("Please allow pop-ups to print PDF reports!");
-    return;
-  }
-
-  const nowStr = new Date().toLocaleString('en-IN');
-  let title = 'Outstanding Dues Report - Unity Boys Hostel';
-  let subtitle = 'Outstanding Fee Dues Ledger Report';
-  let metaRight = `TOTAL DELINQUENT LEDGERS: ${DB.students.filter(s => s.due > 0).length} Students Pending`;
-  
-  let html = `
-    <html>
-    <head>
-      <title>${title}</title>
-      <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-        body {
-          font-family: 'Inter', sans-serif;
-          color: #1a202c;
-          padding: 40px;
-          margin: 0;
-          background-color: #fff;
-        }
-        .header {
-          text-align: center;
-          border-bottom: 3px double #e2e8f0;
-          padding-bottom: 20px;
-          margin-bottom: 30px;
-        }
-        .header h1 {
-          font-size: 24px;
-          font-weight: 850;
-          text-transform: uppercase;
-          margin: 0 0 5px 0;
-          letter-spacing: 1px;
-          color: #111;
-        }
-        .header p {
-          font-size: 13px;
-          color: #4a5568;
-          margin: 0;
-          font-weight: 700;
-        }
-        .meta-info {
-          display: flex;
-          justify-content: space-between;
-          font-size: 11px;
-          color: #4a5568;
-          margin-bottom: 20px;
-          font-weight: 600;
-        }
-        table {
-          width: 100%;
-          border-collapse: collapse;
-          font-size: 11px;
-          margin-bottom: 30px;
-        }
-        th {
-          background-color: #1e2022;
-          color: #ffffff;
-          font-weight: 800;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          border-bottom: 2px solid #2d3748;
-          padding: 12px 10px;
-          text-align: left;
-        }
-        td {
-          padding: 12px 10px;
-          border-bottom: 1px solid #edf2f7;
-          color: #2d3748;
-        }
-        tr:nth-child(even) td {
-          background-color: #f7fafc;
-        }
-        .amount-due {
-          color: #e53e3e;
-          font-weight: 800;
-        }
-        .total-row {
-          font-weight: 800;
-          background-color: #e2e8f0 !important;
-          border-top: 2px solid #cbd5e0;
-        }
-        @media print {
-          body { padding: 10px; }
-          .no-print { display: none; }
-        }
-        .footer {
-          margin-top: 50px;
-          text-align: center;
-          font-size: 10px;
-          color: #718096;
-          border-top: 1px solid #edf2f7;
-          padding-top: 15px;
-        }
-        .print-btn {
-          background-color: #e53e3e;
-          color: white;
-          border: none;
-          padding: 10px 20px;
-          font-size: 12px;
-          font-weight: bold;
-          border-radius: 6px;
-          cursor: pointer;
-          margin-bottom: 20px;
-        }
-        .badge {
-          display: inline-block;
-          background-color: #feebcb;
-          color: #c05621;
-          font-size: 9px;
-          padding: 2px 6px;
-          border-radius: 4px;
-          font-weight: 800;
-          text-transform: uppercase;
-        }
-        .badge-unpaid {
-          background-color: #fff5f5;
-          color: #c53030;
-        }
-        .badge-paid {
-          background-color: #c6f6d5;
-          color: #22543d;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="no-print" style="text-align: right;">
-        <button class="print-btn" onclick="window.print()">🖨️ Save as PDF / Print Report</button>
-      </div>
-      <div class="header">
-        <h1>Unity Boys Hostel, Jaipur</h1>
-        <p id="sub-title"></p>
-      </div>
-      <div class="meta-info">
-        <div>DATE OF REPORT: \${nowStr}</div>
-        <div id="meta-right"></div>
-      </div>
-  `;
-
-  if (currentDueSubTab === 'overdue') {
-    subtitle = 'Outstanding Fee Dues Ledger Report';
-    metaRight = 'TOTAL DELINQUENT LEDGERS: ' + DB.students.filter(s => s.due > 0).length + ' Students Pending';
-    
-    html += `
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 5%;">#</th>
-            <th style="width: 25%;">Student Name</th>
-            <th style="width: 10%;">Room</th>
-            <th style="width: 12%;">Monthly Rent</th>
-            <th style="width: 12%;">Paid So Far</th>
-            <th style="width: 12%;">Outstanding</th>
-            <th style="width: 24%;">Contact Details (Student / Father / City)</th>
-          </tr>
-        </thead>
-        <tbody>
-    `;
-
-    let totalRent = 0;
-    let totalPaid = 0;
-    let totalDue = 0;
-
-    DB.students.filter(s => s.due > 0).forEach((s, idx) => {
-      totalRent += s.fee;
-      totalPaid += s.paid;
-      totalDue += s.due;
-      html += \`
-        <tr>
-          <td>\${idx + 1}</td>
-          <td><strong>\${s.name}</strong></td>
-          <td>Room \${s.room} (\${s.sharing})</td>
-          <td>₹\${s.fee.toLocaleString('en-IN')}</td>
-          <td>₹\${s.paid.toLocaleString('en-IN')}</td>
-          <td class="amount-due">₹\${s.due.toLocaleString('en-IN')}</td>
-          <td>
-            <strong>Student:</strong> \${s.mobile}<br/>
-            \${s.fatherMob ? \`<strong>Father:</strong> \${s.fatherMob}<br/>\` : ''}
-            <strong>City:</strong> \${s.city || 'Jaipur'}
-          </td>
-        </tr>
-      \`;
-    });
-
-    html += `
-          <tr class="total-row">
-            <td colspan="3" style="text-align: right;">TOTAL:</td>
-            <td>₹` + totalRent.toLocaleString('en-IN') + `</td>
-            <td>₹` + totalPaid.toLocaleString('en-IN') + `</td>
-            <td class="amount-due">₹` + totalDue.toLocaleString('en-IN') + `</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    `;
-  } else {
-    const monthSelect = document.getElementById('dueMonthSelect');
-    const selectedMonth = monthSelect ? monthSelect.value : 'All Months';
-    
-    subtitle = 'Upcoming Installments billing Planner';
-    
-    const installments = getInstallments();
-    const filtered = installments.filter(inst => {
-      const matchesMonth = selectedMonth === 'All Months' || inst.dueMonthLabel === selectedMonth;
-      return matchesMonth && inst.remainingAmount > 0;
-    });
-
-    metaRight = 'FILTERED PLANNER SCHEDULES (' + selectedMonth + '): ' + filtered.length + ' Records';
-
-    html += `
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 5%;">#</th>
-            <th style="width: 25%;">Student Name</th>
-            <th style="width: 10%;">Room</th>
-            <th style="width: 15%;">Installment Detail</th>
-            <th style="width: 15%;">Scheduled Date</th>
-            <th style="width: 15%;">Remaining Due</th>
-            <th style="width: 15%;">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-    `;
-
-    let totalDueAmt = 0;
-
-    filtered.forEach((inst, idx) => {
-      totalDueAmt += inst.remainingAmount;
-      const statusClass = inst.status.toLowerCase() === 'unpaid' ? 'badge-unpaid' : 'badge-paid';
-      html += \`
-        <tr>
-          <td>\${idx + 1}</td>
-          <td><strong>\${inst.student.name}</strong><br/><small style="color:#718096">Mob: \${inst.student.mobile}</small></td>
-          <td>Room \${inst.student.room}</td>
-          <td>Installment #\${inst.installmentNum} (\${inst.student.feePlan || '1 Month'})</td>
-          <td><strong>\${inst.dueDate}</strong><br/><small style="color:#718096">\${inst.dueMonthLabel}</small></td>
-          <td><strong>₹\${inst.remainingAmount.toLocaleString('en-IN')}</strong></td>
-          <td><span class="badge \${statusClass}">\${inst.status.toUpperCase()}</span></td>
-        </tr>
-      \`;
-    });
-
-    html += `
-          <tr class="total-row">
-            <td colspan="5" style="text-align: right;">TOTAL PENDING:</td>
-            <td><strong>₹` + totalDueAmt.toLocaleString('en-IN') + `</strong></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    `;
-  }
-
-  html += `
-      <div class="footer">
-        Unity Boys Hostel Management System • Generated Digitally • Jaipur, Rajasthan
-      </div>
-    </body>
-    <script>
-      document.getElementById('sub-title').textContent = "` + subtitle + `";
-      document.getElementById('meta-right').textContent = "` + metaRight + `";
-      window.onload = function() {
-        setTimeout(function() { window.print(); }, 400);
-      }
-    <\/script>
-    </html>
-  `;
-
-  printWindow.document.write(html);
-  printWindow.document.close();
-  toast('Print PDF document initialized!');
+  const dueStudents = DB.students.filter(s => s.due > 0);
+  const html = dueStudents.map((s,i) => `
+    <tr>
+      <td>${i+1}</td>
+      <td><strong>${s.name}</strong></td>
+      <td><span class="room-tag">Room ${s.room}</span></td>
+      <td><strong style="color:var(--danger)">₹${s.due}</strong></td>
+      <td>${s.mobile}</td>
+      <td><a href="https://wa.me/91${s.mobile.replace(/\D/g,'')}" target="_blank" class="act-btn" style="background:#25D366;color:#fff;text-decoration:none;display:inline-flex;padding:6px 12px;border-radius:6px;font-size:11px"><i class="fab fa-whatsapp"></i> Remind</a></td>
+    </tr>`).join('');
+  document.getElementById('dueTable').innerHTML = html || '<tr><td colspan="6" style="text-align:center;padding:30px;color:var(--success)">🎉 No due payments!</td></tr>';
 }
 
 // ============ COMPLAINTS ============
@@ -3380,6 +1493,7 @@ function saveSettings() {
     lateFee: document.getElementById('setLate').value
   };
   saveDB();
+  applySettings();
   toast('Settings saved! ✅');
 }
 
@@ -3402,74 +1516,6 @@ function clearAllData() {
       toast('All data cleared!');
     }
   }
-}
-
-function downloadStandaloneHTML() {
-  toast('Preparing your standalone offline HTML cloner... ⚙️');
-  
-  let sourceText = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-  const newTimestamp = Date.now();
-  
-  // Replace the JSON variables
-  sourceText = sourceText.replace(/const\s+fileTimestamp\s*=\s*##_TIMESTAMP_##/g, `const fileTimestamp = ${newTimestamp}`)
-                         .replace(/const\s+fileTimestamp\s*=\s*\d+/g, `const fileTimestamp = ${newTimestamp}`);
-                         
-  sourceText = sourceText.replace(/let\s+sourceStudents\s*=\s*##_STUDENTS_JSON_##/g, `let sourceStudents = ${JSON.stringify(DB.students)}`)
-                         .replace(/let\s+sourceStudents\s*=\s*\[[\s\S]*?\]\s*;/g, `let sourceStudents = ${JSON.stringify(DB.students)};`);
-
-  sourceText = sourceText.replace(/let\s+sourcePayments\s*=\s*##_PAYMENTS_JSON_##/g, `let sourcePayments = ${JSON.stringify(DB.payments)}`)
-                         .replace(/let\s+sourcePayments\s*=\s*\[[\s\S]*?\]\s*;/g, `let sourcePayments = ${JSON.stringify(DB.payments)};`);
-
-  sourceText = sourceText.replace(/let\s+sourceComplaints\s*=\s*##_COMPLAINTS_JSON_##/g, `let sourceComplaints = ${JSON.stringify(DB.complaints)}`)
-                         .replace(/let\s+sourceComplaints\s*=\s*\[[\s\S]*?\]\s*;/g, `let sourceComplaints = ${JSON.stringify(DB.complaints)};`);
-
-  sourceText = sourceText.replace(/let\s+sourceVisitors\s*=\s*##_VISITORS_JSON_##/g, `let sourceVisitors = ${JSON.stringify(DB.visitors)}`)
-                         .replace(/let\s+sourceVisitors\s*=\s*\[[\s\S]*?\]\s*;/g, `let sourceVisitors = ${JSON.stringify(DB.visitors)};`);
-
-  sourceText = sourceText.replace(/let\s+sourceSettings\s*=\s*##_SETTINGS_JSON_##/g, `let sourceSettings = ${JSON.stringify(DB.settings)}`)
-                         .replace(/let\s+sourceSettings\s*=\s*\{[\s\S]*?\}\s*;/g, `let sourceSettings = ${JSON.stringify(DB.settings)};`);
-
-  // Fire a file download!
-  const blob = new Blob([sourceText], { type: 'text/html;charset=utf-8;' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.setAttribute('download', 'unity_boys_hostel_offline.html');
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  toast('Updated Portable App HTML downloaded successfully! 📁 Double-click to run!');
-}
-
-function copyStandaloneHTMLCode() {
-  toast('Generating HTML code... ⚙️');
-  
-  let sourceText = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-  const newTimestamp = Date.now();
-  
-  sourceText = sourceText.replace(/const\s+fileTimestamp\s*=\s*##_TIMESTAMP_##/g, `const fileTimestamp = ${newTimestamp}`)
-                         .replace(/const\s+fileTimestamp\s*=\s*\d+/g, `const fileTimestamp = ${newTimestamp}`);
-                         
-  sourceText = sourceText.replace(/let\s+sourceStudents\s*=\s*##_STUDENTS_JSON_##/g, `let sourceStudents = ${JSON.stringify(DB.students)}`)
-                         .replace(/let\s+sourceStudents\s*=\s*\[[\s\S]*?\]\s*;/g, `let sourceStudents = ${JSON.stringify(DB.students)};`);
-
-  sourceText = sourceText.replace(/let\s+sourcePayments\s*=\s*##_PAYMENTS_JSON_##/g, `let sourcePayments = ${JSON.stringify(DB.payments)}`)
-                         .replace(/let\s+sourcePayments\s*=\s*\[[\s\S]*?\]\s*;/g, `let sourcePayments = ${JSON.stringify(DB.payments)};`);
-
-  sourceText = sourceText.replace(/let\s+sourceComplaints\s*=\s*##_COMPLAINTS_JSON_##/g, `let sourceComplaints = ${JSON.stringify(DB.complaints)}`)
-                         .replace(/let\s+sourceComplaints\s*=\s*\[[\s\S]*?\]\s*;/g, `let sourceComplaints = ${JSON.stringify(DB.complaints)};`);
-
-  sourceText = sourceText.replace(/let\s+sourceVisitors\s*=\s*##_VISITORS_JSON_##/g, `let sourceVisitors = ${JSON.stringify(DB.visitors)}`)
-                         .replace(/let\s+sourceVisitors\s*=\s*\[[\s\S]*?\]\s*;/g, `let sourceVisitors = ${JSON.stringify(DB.visitors)};`);
-
-  sourceText = sourceText.replace(/let\s+sourceSettings\s*=\s*##_SETTINGS_JSON_##/g, `let sourceSettings = ${JSON.stringify(DB.settings)}`)
-                         .replace(/let\s+sourceSettings\s*=\s*\{[\s\S]*?\}\s*;/g, `let sourceSettings = ${JSON.stringify(DB.settings)};`);
-
-  navigator.clipboard.writeText(sourceText).then(() => {
-    toast('Standalone HTML App code copied! Paste in Notepad and save as "ubh_offline.html"! 📋');
-  }).catch(() => {
-    toast('Failed to copy. Use the download button instead!', true);
-  });
 }
 
 function exportData(type) {

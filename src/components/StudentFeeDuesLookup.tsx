@@ -1449,13 +1449,6 @@ export default function StudentFeeDuesLookup({
                                         >
                                           <Download className="w-3.5 h-3.5" /> Save
                                         </button>
-                                        <button 
-                                          onClick={() => handlePortalDocRemove(doc.key)}
-                                          className="py-1.5 px-2 border border-rose-950/40 text-rose-400 hover:bg-rose-950/20 rounded-xl transition cursor-pointer"
-                                          title="Remove Document"
-                                        >
-                                          <Trash2 className="w-3.5 h-3.5" />
-                                        </button>
                                       </>
                                     ) : (
                                       <div className="text-[9px] text-gray-500 text-center w-full leading-normal italic">

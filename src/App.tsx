@@ -95,6 +95,8 @@ export default function App() {
       if (offlineDB.payments) localStorage.setItem('ubh_payments', JSON.stringify(offlineDB.payments));
       if (offlineDB.complaints) localStorage.setItem('ubh_complaints', JSON.stringify(offlineDB.complaints));
       if (offlineDB.visitors) localStorage.setItem('ubh_visitors', JSON.stringify(offlineDB.visitors));
+      if (offlineDB.partnerWithdrawals) localStorage.setItem('ubh_partner_withdrawals', JSON.stringify(offlineDB.partnerWithdrawals));
+      if (offlineDB.expenses) localStorage.setItem('ubh_hostel_expenses', JSON.stringify(offlineDB.expenses));
       if (offlineDB.settings) localStorage.setItem('ubh_settings', JSON.stringify(offlineDB.settings));
       if (offlineDB.session) localStorage.setItem('ubh_session', JSON.stringify(offlineDB.session));
       
@@ -760,6 +762,7 @@ export default function App() {
               onScrollTo={handleScrollTo} 
               onOpenLogin={() => setCurView('login')} 
               onOpenDuesLookup={() => setCurView('student-dues-lookup')}
+              onOpenSelfRegistration={() => setCurView('student-registration')}
               settings={settings}
             />
             <NoticeBar />
